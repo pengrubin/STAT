@@ -1,0 +1,5 @@
+rawdata <- read.table("/Users/hongwei/Downloads/birthwt.dat",header = FALSE)
+rawdata <- read.table("/Users/hongwei/Downloads/birthwt.dat")
+colnames(rawdata) <- c("birthweight","age","gender")
+my.lm <- lm(birthweight~ age*as.factor(gender),x=TRUE, data = rawdata)
+summary(my.lm)
