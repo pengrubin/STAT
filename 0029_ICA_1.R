@@ -1,0 +1,32 @@
+setwd("/Users/hongwei/Desktop")
+rawdata <- read.table("emissionssw.dat",header = TRUE)
+pdf(file="0029_ICA_1.pdf", height=6, width=4)#plot in pdf with 4inch height each and 6inch wide. 3 graphs mean 4*3=12inch height.
+par(mfrow=c(2,2))
+summary(rawdata)
+pairs(rawdata[1:4], main = "Plot1 emissionssw",pch = 21)
+cat("\n this is a test.\n")
+model1<- lm(nox~noxem+ws+humidity, data=rawdata)
+print(summary(model1))
+model2 <- lm(nox~log(noxem)+log(ws)+log(humidity), data=rawdata)
+print(summary(model2))
+
+data <- as.data.frame(scale(rawdata))
+hist(data$nox,main = "Plot2 Histogram of data$nox")
+hist(data$noxem,main = "Plot3 Histogram of data$noxem")
+hist(data$ws,main = "Plot4 Histogram of data$ws")
+hist(data$humidity,main = "Plot5 Histogram of data$humidity")
+print(summary(data))
+pairs(data[1:4], main = "Plot6 emissionssw",pch = 21)
+model3 <- lm(nox~noxem+ws+humidity, data=data)
+print(summary(model3))
+model4 <- lm(nox~noxem+ws+humidity-1, data=data)
+print(summary(model4))
+boxplot(data$humidity,outline = F)
+
+print(kappa(data[-1]))
+print(eigen(cor(data[-1])))
+
+model4 <- lm(nox~noxem+ws-1, data=data)
+print(summary(model4))
+print(AIC(model4))
+dev.off()#end the plot and put pdf out
