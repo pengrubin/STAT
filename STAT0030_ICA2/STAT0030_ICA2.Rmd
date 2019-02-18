@@ -4,6 +4,7 @@ author: "Hongwei Peng"
 date: "10/02/2019"
 output:
   pdf_document: default
+  word_document: default
   html_document:
     df_print: paged
 ---
@@ -49,13 +50,13 @@ t.test(mpg~tr, data=logdata)
 model<-lm(mpg~tr+hp+wt, data=logdata); # i.e, full without qsec and gears
 summary(model)
 summary(model$residuals)
-par(mfrow=c(2,2))
-plot(model)
+par(mfrow=c(2,2)) #put 4 graphes together
+plot(model) #plot 4 graphes as following
 
 best<-step(model, direction="both")
 summary(best)
 summary(best$residuals)
-par(mfrow=c(2,2))
-plot(best)
+par(mfrow=c(2,2)) #put 4 graphes together
+plot(best)#plot 4 graphes as following
 
 ```
