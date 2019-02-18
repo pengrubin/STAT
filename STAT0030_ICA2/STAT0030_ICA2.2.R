@@ -38,3 +38,4 @@ cat("the estimates of μ and σ are ",est$estimate[1]," and ",est$estimate[2])
 #question_2_f
 se<-diag(solve(est$hessian)) #the parameters standard errors for these estimates
 cat("the μ and σ standard errors for these estimates are ",se[1]," and ",se[2])
+
