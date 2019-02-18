@@ -1,7 +1,8 @@
+#SN:17052480
 #question_1_a
-setwd('/Users/hongwei/Documents/GitHub/STAT/STAT0030_ICA2')
 rawdata <- read.table("cars.dat", #input data
                       header=TRUE) #the first line as the names of the variables 
+
 #question_1_b
 summary(rawdata)
 table(rawdata$tr)
@@ -31,7 +32,7 @@ summary(model)
 summary(model$residuals)
 par(mfrow=c(2,2)) #put 4 graphes together
 plot(model) #plot 4 graphes as following. 
-#ddition: if you run the last line code directly, there will be an error "figure margins too large".
+#addition: if you run the last line code directly, there will be an error "figure margins too large".
 #there two way to fix it: 1, click "clear all plots" and then run it. 
 #                         2, run >>x11() at first if you are run in Windows computer.
 #BTW: there is no error if i use it in R Markdown
@@ -39,5 +40,5 @@ best<-step(model, direction="both")
 summary(best)
 summary(best$residuals)
 par(mfrow=c(2,2)) #put 4 graphes together
-plot(best)#there will be the same error as line 33 and line 34-36 is the solvtion.
+plot(best)#there will be the same error as "plot(model)" and above addition is the solvtion.
 
