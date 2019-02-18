@@ -45,7 +45,12 @@ pairs(logdata[,2:4], # plot log(hp), log(wt), log(mpg)
       bg = c("red", "green3")[unclass(logdata$tr)+1]) #different tr shows different colour
 ```
 
-```{R question_1_b.3, fig.height=3, fig.width=6, warning=FALSE}
+**We can see from the plot that the point group by TR is significantly different in the other three variables, but the  plot is not easy to see what kind of specific difference it is. So next step we will do boxplots.
+**
+
+ &nbsp;
+ 
+```{R question_1_b.3, fig.height=3, fig.width=6, warning=FALSE,echo=FALSE}
 par(mfrow=c(1,3))
 boxplot(hp~tr, #HP by TR
         data=rawdata, #set the dataset
@@ -67,7 +72,7 @@ boxplot(mpg~tr, #MPG by TR
         names=c("Automatic","Manual")) #change xlab value to character
 ```
 
-**The box plot shows a significant change between the automatic and manual gears between the various variables.
+**The box plot shows a significant change between the automatic and manual gears between three variables. The automatic cars have higher HP and WT. And the manual cars have the higher MPG.
 **
 
  &nbsp;
@@ -77,19 +82,57 @@ boxplot(mpg~tr, #MPG by TR
 t.test(mpg~tr, data=logdata)# the t-test above MPG is related to TR.
 ```
 
+**In fact, we can infer from the t-test that the MPG is related to the TR. According to Two Sample t-test, the p-value is less than 0.01, so we should reject the null hypothesis and conclude: The manual transmission car has the better fuel efficiency in miles per gallon than the automatic transmission car.
+However, this t-test cannot prove that the TR is the only significant variables for the MPG. We need to add more variables for regression to get more accurate results. In other words, the type of transmission may be linearly related to other variables, such as the weight of the car, so we need to make more regressions to ensure a better explanation of the change in the MPG.
+**
+
+ &nbsp;
+ 
 ##  question 1(c)
 
+**Through computing, it is easy to find: each of the variables has a statistically significant relationship with the MPG. Because the results are too much, so there is no result displayed here. Firstly, MPG is regressed with all variables to observe the effect of the overall regression.
+**
 ```{R question_1_c.1}
 rawdata_model<-lm(mpg~tr+hp+wt, data=rawdata) #rawdata linear model
 summary(rawdata_model)
 logdata_model<-lm(mpg~tr+hp+wt, data=logdata) #logdata linear model
 summary(logdata_model)
 ```
+**This two regression shows logdata has better R-squared and p-value than rawdata. This means logarithm of rawdata has better performance in regeression and logdata will be used as following.
+**
+
+ &nbsp;
+ 
+**
+From the regression, we can know a variable is not significant to the MPG. So using stepwise regression to distinguish significant variables.
+**
 ```{R question_1_c.2, message=FALSE, warning=FALSE,results = 'hide'}
 best_model<-step(logdata_model, direction="both")
 ```
 ```{R question_1_c.3}
 summary(best_model)
+```
+```{R question_1_c.4, echo=FALSE}
+cat("The final model is  \n                 MPG = ",
+    best_model$coefficients[1],
+    best_model$coefficients[2],"*HP",
+    best_model$coefficients[2],"*WT")
+```
+**According to the stepwise regression, the transmission type was moved out in this regression, and MPG was related to HP and WT. Therefore, we can not determine whether the type of transmission has a significant influence on MPG.
+**
+
+ &nbsp;
+ 
+##  question 1(d)
+```{R question_1_d}
 par(mfrow=c(2,2)) #put 4 graphes together
 plot(best_model)#plot 4 graphes as following. 
 ```
+
+**Residuals looks like normally distributed, independent, random and has no outliers. This means the result of regression is accepted.
+**
+
+ &nbsp;
+ 
+ **Conclution:After adding the HP and the WT, the gear transmission type disappears. So we are not sure if the gear transmission type has an significant effect on the MPG. According to the regression result, we can conclude that the MPG decreases as the HP rises and the WT rises.
+**
