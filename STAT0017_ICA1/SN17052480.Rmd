@@ -1,0 +1,111 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+
+<!-- saved from url=(0100)https://moodle-1819.ucl.ac.uk/pluginfile.php/1342515/mod_resource/content/7/stat0017ica1template.Rmd -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body>---
+title: "STAT0017 ICA 1 2018-19"
+author: "Student number: xxxxxxxx"
+date: "`r Sys.Date()`"
+output:
+  rmarkdown::pdf_document:
+    toc: true
+    toc_depth: 3
+    number_sections: true
+    fig_width: 6
+    fig_height: 4
+---
+
+```{r, include = FALSE}
+# Load the data (you will need to edit this to point to the correct directory
+# on your computer)
+load(file = "/Users/hongwei/Documents/GitHub/STAT/STAT0017_ICA1/wm.Rdata")
+load(file = "/Users/hongwei/Documents/GitHub/STAT/STAT0017_ICA1/pot.Rdata")
+# You will also need to load any R libraries that you want to use.
+# Some parts of the analyses are based on simulation.
+# We set a set a random number seed so that
+# 1. The numeric results on which you comments will not change each time you run
+#    your code (unless you change the order of the analyses)
+# 2. Your work is easier for me to mark.
+#### PLEASE DO NOT CHANGE THE FOLLOWING LINE OF CODE (KEEP THE SEED as 17) ####
+set.seed(17)
+```
+
+---
+# [This is a comment block that will not appear in your PDF file]
+# Add your text (perhaps with LaTeX code in it) and R code in the 
+# relevant sections below.
+# There is an example of an R code `chunk' in the Winter maxima (wm) section
+---
+
+# Extremal Types Example
+
+${}$\hspace*{\fill} [25]
+
+---
+# You could put LaTeX code into this section to give your answer to Part A.
+# You can only use basic LaTeX code (no extra packages).
+# If you don't do this then please don't delete the Extremal Types Example
+# heading above: just leave this section blank.
+---
+
+# Exploratory analysis
+
+## Winter maxima (wm)
+
+```{r}
+# Add R code here (and similarly elsewhere)
+```
+
+## Storm peaks (pot)
+
+## Comments
+
+${}$\hspace*{\fill} [10]
+
+# Extreme value (EV) modelling of $H_s$
+
+## GEV modelling of winter maxima
+
+### Maximum Likelihood-Based Inference
+
+### Comments
+
+### Bayesian Inference
+
+### Comments
+
+## Binomial-GP modelling of storm peaks
+
+### Threshold selection
+
+### Maximum Likelihood-Based Inference
+
+### Comments
+
+### Bayesian Inference
+
+### Comments
+
+${}$\hspace*{\fill} [25]
+
+## Reporting to your client
+
+${}$\hspace*{\fill} [15]
+
+# EV regression modelling of winter maximum $H_s$ on NAO
+
+## Build a GEV regression model
+
+${}$\hspace*{\fill} [15]
+
+## Inference for $H_s^{100}$
+
+${}$\hspace*{\fill} [10]
+
+<script type="text/x-mathjax-config">
+   MathJax.Hub.Config({  "HTML-CSS": { minScaleAdjust: 125, availableFonts: [] }  });
+</script>
+</body></html>
