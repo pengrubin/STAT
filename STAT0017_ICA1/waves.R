@@ -85,7 +85,7 @@ pjn.gpd.conf.ret.levels(ns.gp, m = 100, npy = ns.npy, conf = 0.95)
 
 ### Profile log-likelihood for the m-year return level ...
 
-pjn.gpd.prof(ns.gp, m = 100, xlow = 10.2, xup = 12.5, npy = ns.npy, conf = 0.95) 
+pjn.gpd.prof(ns.gp, m = 100, xlow = 50, xup = 70, npy = ns.npy, conf = 0.95) 
 
 #=============================================================================#
 #                   A Bayesian approach, using revdbayes                      #
