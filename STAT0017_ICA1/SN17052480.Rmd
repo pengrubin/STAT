@@ -22,8 +22,8 @@ output:
 # Load the data (you will need to edit this to point to the correct directory
 # on your computer)
 setwd("/Users/hongwei/Documents/GitHub/STAT/STAT0017_ICA1")
-raw_wm <- load("wm.Rdata")
-raw_pot <- load("pot.Rdata")
+load("wm.Rdata")
+load("pot.Rdata")
 # You will also need to load any R libraries that you want to use.
 library("evd")
 library("evdbayes")
@@ -66,6 +66,25 @@ ${}$\hspace*{\fill} [25]
 
 ```{r}
 # Add R code here (and similarly elsewhere)
+plot(wm$waterYear,wm$Hs,bty="l",pch=20,xlab="year",ylab="wave height (in metres)")
+#(wm$Hs~wm$meanNAO) 
+plot(wm$meanNAO,wm$Hs,bty="l",pch=20,xlab="year",ylab="the mean of NAO")
+abline(lm(wm$Hs~wm$meanNAO), col="red") # regression line (wm$Hs~wm$meanNAO) 
+lines(lowess(wm$Hs~wm$meanNAO), col="blue") # lowess line (wm$Hs~wm$meanNAO)
+#(wm$Hs~wm$maxNAO)
+plot(wm$maxNAO,wm$Hs,bty="l",pch=20,xlab="year",ylab="the max of NAO")
+abline(lm(wm$Hs~wm$maxNAO), col="red") # regression line (wm$Hs~wm$maxNAO)
+lines(lowess(wm$Hs~wm$maxNAO), col="blue") # lowess line (wm$Hs~wm$maxNAO)
+#(wm$Hs~wm$meanA0)
+plot(wm$meanA0,wm$Hs,bty="l",pch=20,xlab="year",ylab="the mean of AO")
+abline(lm(wm$Hs~wm$meanA0), col="red") # regression line (wm$Hs~wm$meanA0)
+lines(lowess(wm$Hs~wm$meanA0), col="blue") # lowess line (wm$Hs~wm$meanA0)
+#(wm$Hs~wm$maxAO)
+plot(wm$maxAO,wm$Hs,bty="l",pch=20,xlab="year",ylab="the max of AO")
+abline(lm(wm$Hs~wm$maxAO), col="red") # regression line (wm$Hs~wm$maxAO)
+lines(lowess(wm$Hs~wm$maxAO), col="blue") # lowess line (wm$Hs~wm$maxAO)
+
+
 ```
 
 ## Storm peaks (pot)

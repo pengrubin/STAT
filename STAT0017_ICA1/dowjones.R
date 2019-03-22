@@ -94,3 +94,4 @@ npars <- c(np1,np2,np3,np4)
 cbind(nllhs,npars)
 
 pp.diag(fit.mu) # diagnostic plots
+

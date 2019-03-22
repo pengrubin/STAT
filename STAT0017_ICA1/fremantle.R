@@ -69,3 +69,4 @@ std.errors(evd_fit2)
 vcov(evd_fit2)
 confint(evd_fit2)
 plot(evd_fit2)
+
