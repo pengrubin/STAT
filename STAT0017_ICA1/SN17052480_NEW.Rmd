@@ -62,6 +62,14 @@ $$l( \phi ) = l(\mu , \sigma, \xi)=log L(\mu , \sigma, \xi)=log \prod_{i=1}^m g(
 setwd("/Users/hongwei/Documents/GitHub/STAT/STAT0017_ICA1")
 raw_wm <- load("wm.Rdata")
 raw_pot <- load("pot.Rdata")
+library("evd")
+library("evdbayes")
+library("ismev")
+library("revdbayes")
+library("threshr")
+library("bayesplot")
+library("coda")
+source("/Users/hongwei/Documents/GitHub/STAT/STAT0017_ICA1/pjnfunctions.R")
 ```
 
 

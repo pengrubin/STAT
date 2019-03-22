@@ -47,10 +47,10 @@ library(ismev)
 #-----------------------------------------------------------------------------#
 
 ?gpd.fit
-
+data(rain)
 # Fit the GP model to excesses of threshold u
 # Don't forget npy !
-ns.gp <- ?
+ns.gp <- gpd.fit(rain, 10)
 
 ns.gp$mle
 ns.gp$se
@@ -77,7 +77,7 @@ pjn.gpd.conf(ns.gp, conf = 0.95)
 ?gpd.profxi
 
 # PJN's version of ismev::gpd.profxi (CI limits added to plots)
-pjn.gpd.profxi(ns.gp, xlow = ?, xup = ?, conf = 0.95)          
+pjn.gpd.profxi(ns.gp, xlow = 0, xup = 0.2, conf = 0.95)          
 
 ### Symmetric 100*conf% confidence intervals for the m-year return level ...
 
