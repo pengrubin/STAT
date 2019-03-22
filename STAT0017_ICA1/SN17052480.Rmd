@@ -88,6 +88,9 @@ lines(lowess(wm$Hs~wm$maxAO), col="blue") # lowess line (wm$Hs~wm$maxAO)
 ```
 
 ## Storm peaks (pot)
+```{r}
+plot(pot$date,pot$Hs,bty="l",pch=20,xlab="date",ylab="wave height (in metres)")
+```
 
 ## Comments
 
