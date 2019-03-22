@@ -1,0 +1,79 @@
+---
+title: "SN17052480"
+author: "Hongwei Peng"
+date: "21/03/2019"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+# Part A
+## Question 1 (a)
+From the question we can see:
+$$ F(x)= P(X \leq x)= \begin{cases} 1-e^{1/x}, & \text {for $x < 0$ .} \\ 1, & \text{for $x \geq 0$ .} \end{cases} \tag {1}$$
+$$ M_n=max \lbrace x_1,...,x_n \rbrace $$ 
+Hazard Function:
+\begin{align}
+h(x) & =\frac{1-F(x)}{f(x)} \\
+  & = \frac{e^{1/x}}{e^{1/x} \times (-x^{-2})} \\
+  & =-x^{2}
+\end{align} 
+Derivative of h(x):
+$h^{'}= -2x$
+
+\begin{align}
+\lim_{x \to x^F} h^{'}(x) \to \xi \\
+Let\ \xi = -2M_n \\
+We\ can\ see:\  x \sim GEV(0,1,-2M_n)
+\end{align} 
+
+From the slides we have:
+$$\begin{cases} 1-F(b_n)=1/n \\ a_n=h(b_n) \end{cases}$$
+solve it we have: 
+$$\begin{cases} b_n=- \frac{1}{log(n)} \\ a_n=- \frac{1}{{log^2(n)}} \end{cases}$$
+
+## Question 1 (b)
+When $\xi < 0$ the GEV distribution has light upper tail with the finite upper limit which is  $\mu - \sigma / \xi$. 
+  
+Let $\mu - \sigma / \xi = 0$ then this distribution with a finite upper end point of 0  has an upper end point of infinity.
+
+## Question 1 (c)
+We assume $A = \{ x: 0< F(x)<1 \}$ , and $x^*=sup_{x \in A} A$. 
+  
+Here F(x) can be any function including the question's function(1).
+    
+For $\forall x, x<x^*$, we have $Pr(M_n \leq x)=F^n(x) \to 0, as \  n \to \infty$.
+ 
+For $\forall x, x \geq x^*$, we have $Pr(M_n \leq x)=F^n(x) \to 1 , as \ n \to \infty$.
+  
+This is mean whatever x or F(x), $M_n = 0 or 1$ when $n \to \infty$. 
+  
+The $M_n$ is Degenerate distribution, which is useless. 
+  
+That is why we need fit a GEV model.
+
+## Question 1 (d)
+The log-likelihood:
+$$l( \phi ) = l(\mu , \sigma, \xi)=log L(\mu , \sigma, \xi)=log \prod_{i=1}^m g(z_i;\mu , \sigma, \xi)$$
+  
+# Part B
+## Task 1
+```{r}
+setwd("/Users/hongwei/Documents/GitHub/STAT/STAT0017_ICA1")
+raw_wm <- load("wm.Rdata")
+raw_pot <- load("pot.Rdata")
+```
+
+
+
+## Task 2
+
+## Task 3.1
+
+## Task 3.2
+
+## Task 3.3
+
+## Task 4.1
+
+## Task 4.2

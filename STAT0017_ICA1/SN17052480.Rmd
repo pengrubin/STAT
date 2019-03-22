@@ -21,9 +21,18 @@ output:
 ```{r, include = FALSE}
 # Load the data (you will need to edit this to point to the correct directory
 # on your computer)
-load(file = "/Users/hongwei/Documents/GitHub/STAT/STAT0017_ICA1/wm.Rdata")
-load(file = "/Users/hongwei/Documents/GitHub/STAT/STAT0017_ICA1/pot.Rdata")
+setwd("/Users/hongwei/Documents/GitHub/STAT/STAT0017_ICA1")
+raw_wm <- load("wm.Rdata")
+raw_pot <- load("pot.Rdata")
 # You will also need to load any R libraries that you want to use.
+library("evd")
+library("evdbayes")
+library("ismev")
+library("revdbayes")
+library("threshr")
+library("bayesplot")
+library("coda")
+source("/Users/hongwei/Documents/GitHub/STAT/STAT0017_ICA1/pjnfunctions.R")
 # Some parts of the analyses are based on simulation.
 # We set a set a random number seed so that
 # 1. The numeric results on which you comments will not change each time you run
@@ -98,7 +107,7 @@ ${}$\hspace*{\fill} [15]
 # EV regression modelling of winter maximum $H_s$ on NAO
 
 ## Build a GEV regression model
-
+test123
 ${}$\hspace*{\fill} [15]
 
 ## Inference for $H_s^{100}$
