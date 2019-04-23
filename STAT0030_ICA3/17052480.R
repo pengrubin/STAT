@@ -1,13 +1,13 @@
-IWLS <- function(y,startval) {
-  if(is.null(y)) {
+IWLS <- function(y,X,startval) {
+  if(is.null(y)) 
     stop("Data cannot be NULL")   #Step 0:  check Y is Null
-  }else{
-    if(!(y==sapply(y, round)&&y>0))#        int and positive or not
-      stop("Data should be integer and positive.")
-  }
+  if(!(y==sapply(y, round)&&y>0)) #        int and positive or not
+    stop("Data should be integer and positive.")
+  
   
   n <- length(y)                  #          For dimensioning
-  X <- as.matrix(rep(1,n))        # Step 1:  assemble the matrix X
+  if (is.null(X))
+    X <- as.matrix(rep(1,n))      # Step 1:  assemble the matrix X if there is no X
   betahat <- startval             # Step 2:  initial value
   U <- 10                         #          Define U 
   iter <- 0                       #          Initialise iteration count
@@ -22,14 +22,15 @@ IWLS <- function(y,startval) {
     XWz <- XW%*%z                 #          X'Wz and U
     U <- XW%*%(z-eta)             #          U is the score vector
     D <-                          #          the residual sum of squares 
-      2*n*mu[1]-2*sum(y)+2*y%*%log(y/mu)
+      2*n*mu[1]-2*sum(y)+
+      2*y%*%log(y/mu)
     cat(paste("Iteration",iter,   #          Output current values to
               " Estimate",        #          screen (rounded to a
               round(betahat,6),   #          sensible number of decimal
               " Score",           #          places)
               round(U,8),
               " Deviance",
-              D,"\n"))   #
+              D,"\n"))   
     betahat <- XWX%*%XWz          # Step 8:  update betahat, and go back
     iter <- iter + 1              #          if necessary
   }
@@ -40,7 +41,8 @@ IWLS <- function(y,startval) {
                S.E.=beta.se,      #          data frame, and return
                T=betahat/beta.se) #
   mle.table  
-  summary(glm(y ~ 1, family = poisson(link="log")))
 }
 
-IWLS(storm.data$Storms,c(1,2))
+X <- storm.data[,c(3,4)]
+X[is.na(X)] <- 0
+IWLS(storm.data$Storms,X)
