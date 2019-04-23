@@ -54,4 +54,7 @@ storm.data <- read.table("/Users/hongwei/Documents/GitHub/STAT/STAT0030_ICA3/nst
 
 #Produce a plot showing the number of storms in each year (i.e. a line graph with Year on the x-axis and Storms on the y-axis)
 plot(storm.data$Year,storm.data$Storms,type= "l")
-hist(storm.data$V1)
+
+#Calculate the mean and variance of Storms.
+mean(storm.data$Storms)
+var(storm.data$Storms)
