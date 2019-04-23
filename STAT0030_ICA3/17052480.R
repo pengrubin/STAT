@@ -21,7 +21,8 @@ IWLS <- function(y,startval) {
     XWX <- solve(XW%*%X)          # Step 7:  calculation of [X'WX]^-1,
     XWz <- XW%*%z                 #          X'Wz and U
     U <- XW%*%(z-eta)             #          U is the score vector
-    D <- 2*n*mu[1]-2*sum(y)+2*y%*%log(y/mu)
+    D <-                          #          the residual sum of squares 
+      2*n*mu[1]-2*sum(y)+2*y%*%log(y/mu)
     cat(paste("Iteration",iter,   #          Output current values to
               " Estimate",        #          screen (rounded to a
               round(betahat,6),   #          sensible number of decimal
@@ -38,7 +39,8 @@ IWLS <- function(y,startval) {
     data.frame(Estimate=betahat,  # Step 11: assemble results into a 
                S.E.=beta.se,      #          data frame, and return
                T=betahat/beta.se) #
-  mle.table    
+  mle.table  
+  summary(glm(y ~ 1, family = poisson(link="log")))
 }
 
-IWLS(storm.data$Storms,1)
+IWLS(storm.data$Storms,c(1,2))
