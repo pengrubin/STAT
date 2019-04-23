@@ -15,10 +15,10 @@ IWLS <- function(y,X="default",startval="default") {
   X <- cbind(as.matrix(rep(1,n)),X)# Step 1:  cbind the Constant term
   }
   #######Check_Startval#######
-  if (startval=="default") {
+  if (startval=="default") {       #give the better default startval
     startval=if(rawX=="default") {1} else {as.vector(lm(y ~  rawX)$coefficients)}
   } else {
-    if (length(startval)!=dim(X)[2])
+    if (length(startval)!=dim(X)[2])#check startval has the same dim
       stop("startval should be the same number as column of X.")
   }
     
@@ -38,8 +38,8 @@ IWLS <- function(y,X="default",startval="default") {
     XWz <- XW%*%z                 #X'Wz and U
     U <- XW%*%(z-eta)             #U is the score vector
     D <-                          #the residual sum of squares 
-      2*n*mu[1]-2*sum(y)+
-      2*y%*%log(y/mu)
+      2*n*(mu[1]-1)-2*sum(y)+
+      2*y%*%log(y/(mu-1))
     cat(paste("Iteration",iter,   #Output current values to
               " Estimate",        #screen (rounded to a
               round(betahat,6),   #ensible number of decimal
@@ -52,7 +52,7 @@ IWLS <- function(y,X="default",startval="default") {
   }
   phi <- 1                        #not strictly necessary here
   beta.se <- sqrt(diag(XWX))      #calculate standard errors
- cat("the mle of the beta is")
+ cat("the mle of the beta is \n")
    mle.table <-
     data.frame(Estimate=betahat,  #assemble results into a 
                S.E.=beta.se,      #data frame, and return
@@ -60,9 +60,4 @@ IWLS <- function(y,X="default",startval="default") {
   mle.table  
 }
 
-X <- storm.data[,c(3,4)]
-X[is.na(X)] <- 0
-X <- as.matrix(X)
-IWLS(storm.data$Storms,X,c(1,2,3))
-IWLS(storm.data$Storms,X)
-IWLS(storm.data$Storms)
+
