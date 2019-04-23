@@ -78,11 +78,14 @@ IWLS <- function(y,startval) {
     XWX <- solve(XW%*%X)          # Step 7:  calculation of [X'WX]^-1,
     XWz <- XW%*%z                 #          X'Wz and U
     U <- XW%*%(z-eta)
+    D <- 2*n*mu[1]-2*sum(y)+2*y%*%log(y/mu)
     cat(paste("Iteration",iter,   #          Output current values to
               " Estimate",        #          screen (rounded to a
               round(betahat,6),   #          sensible number of decimal
               " Score",           #          places)
-              round(U,8),"\n"))   #
+              round(U,8),
+              " Deviance",
+               D,"\n"))   #
     betahat <- XWX%*%XWz          # Step 8:  update betahat, and go back
     iter <- iter + 1              #          if necessary
   }
@@ -98,3 +101,4 @@ IWLS <- function(y,startval) {
 IWLS(storm.data$Storms,1)
 
 summary(glm(Storms ~ 1, family = poisson(link="log"),data=storm.data))
+
