@@ -58,3 +58,33 @@ plot(storm.data$Year,storm.data$Storms,type= "l")
 #Calculate the mean and variance of Storms.
 mean(storm.data$Storms)
 var(storm.data$Storms)
+
+#
+# Define a grid of values for beta, and allocate some storage
+# for the log-likelihood
+#
+beta <- seq(3,3.6,0.01)
+logl.beta <- vector("numeric",length(beta))
+#
+# Evaluate the log-likelihood, score and information functions
+# for each value of beta. We can’t easily avoid a loop for the
+# log-likelihood, but the other 2 functions can each be
+# evaluated in a single vector operation (which is more efficient)
+#
+for (i in 1:length(beta)) {
+  logl.beta[i] <- sum(log(dpois(storm.data$Storms,exp(beta[i]))))
+}
+n <- length(storm.data$Storms)
+ysum <- sum(storm.data$Storms)
+u.beta <- DEFINE THE SCORE FUNCTION HERE (FORMULA IS GIVEN ABOVE)
+i.beta <- DEFINE THE INFORMATION FUNCTION HERE (       "       )
+                                                       #
+                                                       # Set up a graphics screen with space for 3 plots, and plot.
+                                                       # Prepare to be impressed with the axis labels!
+                                                       #
+                                                       par(mfrow=c(3,1))
+                                                       plot(beta,logl.beta,type="l",xlab=expression(beta),
+                                                       ylab=expression(paste("ln L",(beta))),
+                                                       main="Log-likelihood for tropical storm data")
+                                                       ADD YOUR OWN CODE TO PLOT THE SCORE (u.beta), ALSO SHOWING THE LINE U=0
+                                                       (abline(0,0) WILL DO THIS). THEN PLOT THE INFORMATION (i.beta).
