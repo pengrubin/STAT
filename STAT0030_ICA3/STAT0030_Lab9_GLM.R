@@ -39,3 +39,7 @@ log(fitted(storm.model1))
 #Predicting future values
 newnino.data <- data.frame(N3.m09=-0.226)
 predict(storm.model1,newdata=newnino.data,se.fit=TRUE)
+
+#2.3 Model comparison Chi
+anova(storm.model1,test="Chi")
+
