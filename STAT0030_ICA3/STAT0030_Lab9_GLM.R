@@ -14,3 +14,7 @@ storm.model1 <-glm(Storms ~ N3.m09,family=poisson(link="log"),data=storm.data)
 summary(storm.model1)
 #see the correlation be- tween the estimated coefficients
 summary(storm.model1,correlation=TRUE)
+
+#Pearson residuals
+storm.model1$residuals
+resid(storm.model1)
