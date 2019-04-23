@@ -49,4 +49,9 @@ IWLS <- function(y,startval) {
   mle.table               
 }
 
-storm.data <- read.table("/Users/hongwei/Documents/GitHub/STAT/STAT0030_ICA3/nstorms.dat")
+#Use read.table to read the data into R
+storm.data <- read.table("/Users/hongwei/Documents/GitHub/STAT/STAT0030_ICA3/nstorms.dat",header = T)
+
+#Produce a plot showing the number of storms in each year (i.e. a line graph with Year on the x-axis and Storms on the y-axis)
+plot(storm.data$V1,storm.data$V2)
+hist(storm.data$V1)
