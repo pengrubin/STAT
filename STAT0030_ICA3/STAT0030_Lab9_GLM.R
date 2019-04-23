@@ -5,3 +5,6 @@ nino.data <- read.table("/Users/hongwei/Documents/GitHub/STAT/STAT0030_ICA3/STAT
 #By adding 1 to the years in nino.data frame before merging, we match the storm data.
 nino.data$Year <- nino.data$Year + 1
 storm.data <- merge(storm.data,nino.data)
+
+#scatterplot
+plot(storm.data$Storms,storm.data$N3.m09)
