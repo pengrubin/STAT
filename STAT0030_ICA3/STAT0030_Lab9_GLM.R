@@ -8,3 +8,7 @@ storm.data <- merge(storm.data,nino.data)
 
 #scatterplot
 plot(storm.data$Storms,storm.data$N3.m09)
+
+#storm.model1
+storm.model1 <-glm(Storms ~ N3.m09,family=poisson(link="log"),data=storm.data)
+summary(storm.model1)
