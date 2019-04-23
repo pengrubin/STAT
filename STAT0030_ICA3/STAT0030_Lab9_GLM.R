@@ -43,3 +43,11 @@ predict(storm.model1,newdata=newnino.data,se.fit=TRUE)
 #2.3 Model comparison Chi
 anova(storm.model1,test="Chi")
 
+#storm.model2
+storm.model2 <- glm(Storms ~ N3.m09 + N3.m10, family=poisson(link="log"),data=storm.data)
+summary(storm.model2)
+anova(storm.model1,storm.model2,test="Chi")
+anova(storm.model2,test="Chi")
+
+#3 Models for binary data
+my.glm <- glm(y/n ~ x1 + x2,family=binomial,weights=n,data=mydataframe)
