@@ -76,15 +76,15 @@ for (i in 1:length(beta)) {
 }
 n <- length(storm.data$Storms)
 ysum <- sum(storm.data$Storms)
-u.beta <- DEFINE THE SCORE FUNCTION HERE (FORMULA IS GIVEN ABOVE)
-i.beta <- DEFINE THE INFORMATION FUNCTION HERE (       "       )
-                                                       #
-                                                       # Set up a graphics screen with space for 3 plots, and plot.
-                                                       # Prepare to be impressed with the axis labels!
-                                                       #
-                                                       par(mfrow=c(3,1))
-                                                       plot(beta,logl.beta,type="l",xlab=expression(beta),
-                                                       ylab=expression(paste("ln L",(beta))),
-                                                       main="Log-likelihood for tropical storm data")
-                                                       ADD YOUR OWN CODE TO PLOT THE SCORE (u.beta), ALSO SHOWING THE LINE U=0
-                                                       (abline(0,0) WILL DO THIS). THEN PLOT THE INFORMATION (i.beta).
+u.beta <- ysum-n*exp(beta)
+i.beta <- n*exp(beta)
+#
+# Set up a graphics screen with space for 3 plots, and plot.
+# Prepare to be impressed with the axis labels!
+#
+par(mfrow=c(3,1))
+plot(beta,logl.beta,type="l",xlab=expression(beta),
+     ylab=expression(paste("ln L",(beta))),
+     main="Log-likelihood for tropical storm data")
+ADD YOUR OWN CODE TO PLOT THE SCORE (u.beta), ALSO SHOWING THE LINE U=0
+(abline(0,0) WILL DO THIS). THEN PLOT THE INFORMATION (i.beta).
