@@ -96,3 +96,5 @@ IWLS <- function(y,startval) {
 }
 
 IWLS(storm.data$Storms,1)
+
+summary(glm(Storms ~ 1, family = poisson(link="log"),data=storm.data))
