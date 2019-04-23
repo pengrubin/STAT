@@ -23,19 +23,19 @@ resid(storm.model1)
 resid(storm.model1,type="response")
 mu <- fitted(storm.model1)
 storm.data$Storms - mu
-
 #Pearson residuals
 (storm.data$Storms-mu)/sqrt(mu)
 resid(storm.model1,type="pearson")
-
 #Deviance residuals
 sum(resid(storm.model1)^2)
 storm.model1$deviance
-
 #Working residuals
 par(mfrow=c(2,2))
 plot(storm.model1)
-
 #1
 predict(storm.model1)
 log(fitted(storm.model1))
+
+#Predicting future values
+newnino.data <- data.frame(N3.m09=-0.226)
+predict(storm.model1,newdata=newnino.data,se.fit=TRUE)
