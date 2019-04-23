@@ -1,12 +1,19 @@
-IWLS <- function(y,X,startval) {
+IWLS <- function(y,X=1,startval=1) {
+  #######Check_y#######
   if(is.null(y)) 
-    stop("Data cannot be NULL")   #Step 0:  check Y is Null
+    stop("Data Y cannot be NULL")   #Step 0:  check Y is Null
   if(!(y==sapply(y, round)&&y>0)) #        int and positive or not
-    stop("Data should be integer and positive.")
-  
-  
+    stop("Data Y should be integer and positive.")
+  #######check_X#######
   n <- length(y)                  #          For dimensioning
-  X <- cbind(as.matrix(rep(1,n)),X)    # Step 1:  assemble the matrix X
+  if(X==1) {
+    X <- as.matrix(rep(1,n))      #          assemble the matrix X
+  } else {
+  if(dim(X)[1]!=length(y))        #          check X has the same dim as Y
+    stop("Data X should be the same raw as Y.")
+  X <- cbind(as.matrix(rep(1,n)),X)# Step 1:  cbind the Constant term
+  }
+  #######IWLS#######
   betahat <- startval             # Step 2:  initial value
   U <- 10                         #          Define U 
   iter <- 0                       #          Initialise iteration count
@@ -45,4 +52,5 @@ IWLS <- function(y,X,startval) {
 X <- storm.data[,c(3,4)]
 X[is.na(X)] <- 0
 X <- as.matrix(X)
-IWLS(storm.data$Storms,X,c(1,2))
+IWLS(storm.data$Storms,X,c(1,2,3))
+
