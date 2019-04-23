@@ -6,8 +6,7 @@ IWLS <- function(y,X,startval) {
   
   
   n <- length(y)                  #          For dimensioning
-  if (is.null(X))
-    X <- as.matrix(rep(1,n))      # Step 1:  assemble the matrix X if there is no X
+  X <- cbind(as.matrix(rep(1,n)),X)    # Step 1:  assemble the matrix X
   betahat <- startval             # Step 2:  initial value
   U <- 10                         #          Define U 
   iter <- 0                       #          Initialise iteration count
@@ -45,4 +44,5 @@ IWLS <- function(y,X,startval) {
 
 X <- storm.data[,c(3,4)]
 X[is.na(X)] <- 0
-IWLS(storm.data$Storms,X)
+X <- as.matrix(X)
+IWLS(storm.data$Storms,X,c(1,2))
