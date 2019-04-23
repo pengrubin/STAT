@@ -27,3 +27,7 @@ storm.data$Storms - mu
 #Pearson residuals
 (storm.data$Storms-mu)/sqrt(mu)
 resid(storm.model1,type="pearson")
+
+#Deviance residuals
+sum(resid(storm.model1)^2)
+storm.model1$deviance
