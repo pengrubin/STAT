@@ -18,3 +18,8 @@ summary(storm.model1,correlation=TRUE)
 #Residuals, fitted values and diagnostics
 storm.model1$residuals
 resid(storm.model1)
+
+#Response residuals
+resid(storm.model1,type="response")
+mu <- fitted(storm.model1)
+storm.data$Storms - mu
