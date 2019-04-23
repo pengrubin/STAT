@@ -35,3 +35,7 @@ storm.model1$deviance
 #Working residuals
 par(mfrow=c(2,2))
 plot(storm.model1)
+
+#1
+predict(storm.model1)
+log(fitted(storm.model1))
