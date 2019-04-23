@@ -15,6 +15,6 @@ summary(storm.model1)
 #see the correlation be- tween the estimated coefficients
 summary(storm.model1,correlation=TRUE)
 
-#Pearson residuals
+#Residuals, fitted values and diagnostics
 storm.model1$residuals
 resid(storm.model1)
