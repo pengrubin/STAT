@@ -48,3 +48,5 @@ IWLS <- function(y,startval) {
                T=betahat/beta.se) #
   mle.table               
 }
+
+storm.data <- read.table("/Users/hongwei/Documents/GitHub/STAT/STAT0030_ICA3/nstorms.dat")
