@@ -23,3 +23,7 @@ resid(storm.model1)
 resid(storm.model1,type="response")
 mu <- fitted(storm.model1)
 storm.data$Storms - mu
+
+#Pearson residuals
+(storm.data$Storms-mu)/sqrt(mu)
+resid(storm.model1,type="pearson")
