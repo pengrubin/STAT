@@ -31,3 +31,7 @@ resid(storm.model1,type="pearson")
 #Deviance residuals
 sum(resid(storm.model1)^2)
 storm.model1$deviance
+
+#Working residuals
+par(mfrow=c(2,2))
+plot(storm.model1)
