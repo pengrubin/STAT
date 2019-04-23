@@ -86,5 +86,10 @@ par(mfrow=c(3,1))
 plot(beta,logl.beta,type="l",xlab=expression(beta),
      ylab=expression(paste("ln L",(beta))),
      main="Log-likelihood for tropical storm data")
-ADD YOUR OWN CODE TO PLOT THE SCORE (u.beta), ALSO SHOWING THE LINE U=0
-(abline(0,0) WILL DO THIS). THEN PLOT THE INFORMATION (i.beta).
+plot(beta,u.beta,type="l",xlab=expression(beta),
+     ylab=expression(paste("U",(beta))),
+     main="Score function for tropical storm data")
+abline(h=0,lwd=2,col="grey")
+plot(beta,i.beta,type="l",xlab=expression(beta),
+     ylab=expression(paste("I",(beta))),
+     main="Information function for tropical storm data")
