@@ -56,8 +56,7 @@ IWLS <- function(y,X="default",startval="default") {
    mle.table <-
     data.frame(Estimate=betahat,  #assemble results into a 
                S.E.=beta.se,      #data frame, and return
-               T=betahat/beta.se) #
+               T=betahat/beta.se,
+               P=2*pt(-abs(betahat/beta.se),df=dim(X)[2])) #
   mle.table  
 }
-
-
