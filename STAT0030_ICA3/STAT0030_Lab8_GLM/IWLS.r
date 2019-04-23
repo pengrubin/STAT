@@ -1,5 +1,5 @@
 #Use read.table to read the data into R
-storm.data <- read.table("/Users/hongwei/Documents/GitHub/STAT/STAT0030_ICA3/nstorms.dat",header = T)
+storm.data <- read.table("/Users/hongwei/Documents/GitHub/STAT/STAT0030_ICA3/STAT0030_Lab8_GLM/nstorms.dat",header = T)
 
 #Produce a plot showing the number of storms in each year (i.e. a line graph with Year on the x-axis and Storms on the y-axis)
 plot(storm.data$Year,storm.data$Storms,type= "l")
