@@ -94,3 +94,5 @@ IWLS <- function(y,startval) {
                T=betahat/beta.se) #
   mle.table               
 }
+
+IWLS(storm.data$Storms,1)
