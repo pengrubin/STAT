@@ -246,16 +246,12 @@ loglike_fun <- function(x1, x2, mu1, mu2, sigma1, sigma2, rho)
 {         
   par1<-par[1]
   par2<-par[2]
-  
+  rho <-par[3]
   n=length(u1)
-  vec=matrix(data=0,nrow=n,ncol=1)
-  
-  vec=dnorm(u1, mean = par1, sd = par2)  
-  
-  sumlik=-sum(dmvnorm(cbind(x1,x2), c(0,0), matrix(c(1, rho, rho, 1), ncol=2), log=T));
+  sumlik=-sum(dmvnorm(cbind(u[,1],u[,2]), c(par1,par2), matrix(c(1, rho, rho, 1), ncol=2), log=T))
   
   # Output
-  cat("Normal log-likelihood ->",sprintf("%4.4f",- sumlik),"\n")
+  cat("log-likelihood ->",sprintf("%4.4f",- sumlik),"\n")
   
   return(sumlik)
 }
@@ -263,10 +259,10 @@ loglike_fun <- function(x1, x2, mu1, mu2, sigma1, sigma2, rho)
 ```
 
 ```{r}
-fit <- BiCopEst(u1,u2,family=1,method="mle",se=TRUE) 
-BiCopPDF(u1, u2, family=1,par = fit$par,par2 = fit$par2) 
+library("CDVine")
+fit <- BiCopEst(u[,1],u[,2],family=1,method="mle",se=TRUE)
+#BiCopPDF(u1, u2, family=1,par = fit$par,par2 = fit$par2) 
 #the resulting estimate with the parameter value estimated using function BiCopEst.
 ```
 
 
-#(d)
