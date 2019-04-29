@@ -29,3 +29,4 @@ model_3 = BiCopSelect(h1$hfunc2,h2$hfunc2,familyset=c(1:10,13,14,16,23,24,26))
 
 
 ###########
+

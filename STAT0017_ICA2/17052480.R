@@ -133,17 +133,110 @@ ADtest3$p.value
 
 
 
-# Fit copula
-u=cbind(u1,u2)
-plot(u)
-BiCopEst(u[,2],u[,1],family=1,method="mle",se=TRUE) 
-BiCopSelect(u[,1],u[,2],familyset=NA)
+u=cbind(u1,u2,u3)
+cor(u[,1:3],method = c("kendall"))
+
+u1u2u3=cbind(u[,1],u[,2],u[,3])
+vinemodel=CDVineCopSelect(u1u2u3,type=2,familyset=c(1:10,13,14,23,24))
+vinemodel
+
+N=2000
+u1u2u3_sim=CDVineSim(N, family=vinemodel$family, vinemodel$par,  vinemodel$par2, type=2)
+cor(u1u2u3_sim,method = c("kendall"))
+cor(u1u2u3,method = c("kendall"))
+vinemodel_sim=CDVineCopSelect(u1u2u3_sim,type=2,familyset=c(1:10,13,14,23,24))
+vinemodel_sim
+
+# Vine selection "manually"
+model_1 = BiCopSelect(u[,2],u[,1],familyset=c(1:10,13,14,16,23,24,26))
+model_1
+model_2 = BiCopSelect(u[,2],u[,3],familyset=c(1:10,13,14,16,23,24,26))
+model_2
+h1 = BiCopHfunc(u[,2],u[,3],model_1$family,model_1$par,model_1$par2)
+h2 = BiCopHfunc(u[,1],u[,3],model_2$family,model_2$par,model_2$par2)
+model_3 = BiCopSelect(h1$hfunc2,h2$hfunc2,familyset=c(1:10,13,14,16,23,24,26))
 
 
-# Gausian copula rho and tau
-f1 <- function (x) 2/pi*asin(x) -0.5
-f <- function (x) 2/pi*asin(x)
-c=uniroot(f1, c(0, 1), tol = 0.00001)
-ro=c$root
-f(ro)
+###########
 
+### Compute Value-at-Risk using MC method based on copulas
+u1=BiCopSim(2000, model_1$family, model_1$par, par2=model_1$par2)
+x <- qnorm(u1)
+u2=BiCopSim(2000, model_2$family, model_2$par, par2=model_2$par2)
+y <- qnorm(u2)
+u3=BiCopSim(2000, model_3$family, model_3$par, par2=model_3$par2)
+z <- qnorm(u3)
+
+
+cor(x[,1],x[,2])
+cor(y[,1],y[,2])
+cor(z[,1],z[,2])
+
+
+zz=data.frame(x)
+rownames(zz)<-NULL
+colnames(zz)<-c("x1", "y1")
+p1=ggplot(zz, aes(x1,  y1)) + geom_density2d(colour="blue")+
+  geom_point(size=0.4)+guides(alpha=FALSE)+
+  geom_point(data=subset(zz, !x1>-2 & !y1>-2), colour="red", size=3)+
+  theme_minimal()+
+  theme(panel.border = element_rect(colour = "black", fill=NA, size=0.5),text=element_text(size=14))+ 
+  geom_vline(xintercept = -2, linetype="dashed", color = "#339933", size=1)+ 
+  geom_hline(yintercept = -2, linetype="dashed", color = "#339933", size=1)+  
+  scale_x_continuous(limits = c(-4,4), expand = c(0, 0)) +
+  scale_y_continuous(limits = c(-4,4), expand = c(0, 0)) +
+  annotate("rect", xmin = c(-4), xmax = c(-2),
+           ymin = -4, ymax = -2,
+           alpha = 0.2, fill = c("green")) 
+p1
+
+zz=data.frame(y)
+rownames(zz)<-NULL
+colnames(zz)<-c("x2", "y2")
+p2=ggplot(zz, aes(x2,  y2)) + geom_density2d(colour="blue")+
+  geom_point(size=0.4)+guides(alpha=FALSE)+
+  geom_point(data=subset(zz, !x2>-2 & !y2>-2), colour="red", size=3)+
+  theme_minimal()+
+  theme(panel.border = element_rect(colour = "black", fill=NA, size=0.5),text=element_text(size=14))+ 
+  geom_vline(xintercept = -2, linetype="dashed", color = "#339933", size=1)+ 
+  geom_hline(yintercept = -2, linetype="dashed", color = "#339933", size=1)+  
+  scale_x_continuous(limits = c(-4,4), expand = c(0, 0)) +
+  scale_y_continuous(limits = c(-4,4), expand = c(0, 0)) +
+  annotate("rect", xmin = c(-4), xmax = c(-2),
+           ymin = -4, ymax = -2,
+           alpha = 0.2, fill = c("green")) 
+p2
+zz=data.frame(z)
+rownames(zz)<-NULL
+colnames(zz)<-c("x3", "y3")
+p3=ggplot(zz, aes(x3,  y3)) + geom_density2d(colour="blue")+
+  geom_point(size=0.4)+guides(alpha=FALSE)+
+  geom_point(data=subset(zz, !x3>-2 & !y3>-2), colour="red", size=3)+
+  theme_minimal()+
+  theme(panel.border = element_rect(colour = "black", fill=NA, size=0.5),text=element_text(size=14))+ 
+  geom_vline(xintercept = -2, linetype="dashed", color = "#339933", size=1)+ 
+  geom_hline(yintercept = -2, linetype="dashed", color = "#339933", size=1)+  
+  scale_x_continuous(limits = c(-4,4), expand = c(0, 0)) +
+  scale_y_continuous(limits = c(-4,4), expand = c(0, 0)) +
+  annotate("rect", xmin = c(-4), xmax = c(-2),
+           ymin = -4, ymax = -2,
+           alpha = 0.2, fill = c("green")) 
+p3
+
+
+
+grid.arrange(p1,p2,p3, ncol=2)    
+
+var=matrix(0,3,2)
+
+retport1=log(1+((exp(x[,1])-1)*0.5+(exp(x[,2])-1)*0.5))
+var[1,]=quantile(retport1,c(0.01,0.05))
+
+retport2=log(1+((exp(y[,1])-1)*0.5+(exp(y[,2])-1)*0.5))
+var[2,]=quantile(retport2,c(0.01,0.05))
+
+retport3=log(1+((exp(z[,1])-1)*0.5+(exp(z[,2])-1)*0.5))
+var[3,]=quantile(retport3,c(0.01,0.05))
+
+### VaR for portfolio returns generated using different coplas
+var
