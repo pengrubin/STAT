@@ -1,6 +1,6 @@
 ---
 title: 'STAT0017 ICA2'
-author: "Hongwei Peng"
+author: "SN:17052480"
 date: "25/04/2019"
 output: pdf_document
 ---
