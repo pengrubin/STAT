@@ -132,7 +132,7 @@ ADtest3$p.value
 
 
 
-
+#u=cbind(ret1,ret2,ret3)
 u=cbind(u1,u2,u3)
 cor(u[,1:3],method = c("kendall"))
 
@@ -240,3 +240,4 @@ var[3,]=quantile(retport3,c(0.01,0.05))
 
 ### VaR for portfolio returns generated using different coplas
 var
+
