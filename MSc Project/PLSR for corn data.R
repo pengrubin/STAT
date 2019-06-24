@@ -47,14 +47,14 @@ coef(lm(yy~0+x))*b
 
 
 
-pls1<-plsr(propvals[,1]~m5data,validation="LOO",jackknife=TRUE,method="widekernelpls")
+pls1<-plsr(propvals[,1]~m5data,10,validation="LOO",jackknife=TRUE,method="widekernelpls")
 summary(pls1,what="all")
 
 ## 偏最小二乘回归
 library(lars)
 library(pls)
 
-ap = plsr(propvals[,1]~m5data, 64, validation = "CV")
+ap = plsr(propvals[,1]~m5data, 10, validation = "CV")
 # CV准则下，不同评价指标
 validationplot(ap)
 # 不同准则
