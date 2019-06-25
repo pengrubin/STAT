@@ -9,7 +9,7 @@ mp6data <- rawdata$mp6spec$data
 propvals <- rawdata$propvals$data
 
 corn_PLS=function(n){                                #n is the number of calibration
-  NV <- 10                                                  #number of variables 
+  NV <- 10                                           #number of variables 
   sample <- sample(1:80)                             #set random order; the begin of reset order
   DF <- data.frame(NIR = I(m5data),                  #input data
                    y=propvals[,1])
@@ -25,14 +25,17 @@ corn_PLS=function(n){                                #n is the number of calibra
   RMSEP <- sqrt(sum((predict-DF[!DF$train,]$y)^2)/(80-n))
   #print(RMSEP)                                      #check point
   #plot(R2(corn.pls))                                #check point
-  return(cbind(RMSECV,RMSEP))
+  return(cbind(RMSECV,RMSEP))                        #return 1x2matrix
 }
 #corn_PLS(n)
-n <- as.matrix(rep(20:70,10))                         #the number of calibration
-PlsResult <- apply(n,1,corn_PLS)
-PlotData <- as.data.frame(cbind(n,t(PlsResult)))
+n <- as.matrix(rep(20:70,10))                        #the number of calibration, rep(a:b,c): from a to b and repeat c. 
+PlsResult <- apply(n,1,corn_PLS)                     #loop
+PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
 par(mfrow=c(1,2))
-boxplot(V2~V1,data=PlotData)
-boxplot(V3~V1,data=PlotData)
+boxplot(V2~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSECV",main="PLS")
+boxplot(V3~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSEP",main="PLS")
 PlotData
 
+boxplot(V1~V2*V3, data=PlotData, notch=TRUE, 
+        col=(c("gold","darkgreen")),
+        main="PLS", xlab="Number of Calibration", ylab="RMSECV and RMSEP")
