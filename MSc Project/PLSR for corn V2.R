@@ -27,5 +27,8 @@ corn_PLS=function(n){                                #n is the number of calibra
   #plot(R2(corn.pls))                                #check point
   return(cbind(RMSECV,RMSEP))
 }
- corn_PLS(n)
-repeat
+corn_PLS(n)
+PlotData <- data.frame(calibration <- rep(20:70,10)
+)
+test <- as.matrix(rep(20:70,10))
+apply(test,1,corn_PLS)
