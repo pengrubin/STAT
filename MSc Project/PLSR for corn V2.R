@@ -35,6 +35,7 @@ par(mfrow=c(1,2))
 boxplot(V2~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSECV",main="PLS")
 boxplot(V3~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSEP",main="PLS")
 PlotData
+apply(PlotData,2,mean)
 
 boxplot(V1~V2*V3, data=PlotData, notch=TRUE, 
         col=(c("gold","darkgreen")),
