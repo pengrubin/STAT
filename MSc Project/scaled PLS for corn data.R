@@ -9,7 +9,7 @@ mp6data <- rawdata$mp6spec$data
 propvals <- scale(rawdata$propvals$data)
 
 corn_PLS=function(n){                                #n is the number of calibration
-  NV <- 6                                           #number of variables 
+  NV <- 10                                           #number of variables 
   sample <- sample(1:80)                             #set random order; the begin of reset order
   DF <- data.frame(NIR = I(m5data),                  #input data
                    y=propvals[,1])
