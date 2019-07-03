@@ -3,7 +3,7 @@ library(pls)
 library(lars)
 library(ggplot2)
 rawdata <- readMat("/Users/hongwei/Downloads/corn.mat")
-m5data <- rawdata$m5spec$data
+m5data <- scale(rawdata$m5spec$data)
 mp5data <- rawdata$mp5spec$data
 mp6data <- rawdata$mp6spec$data
 propvals <- scale(rawdata$propvals$data)
