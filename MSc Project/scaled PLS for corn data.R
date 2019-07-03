@@ -3,10 +3,10 @@ library(pls)
 library(lars)
 library(ggplot2)
 rawdata <- readMat("/Users/hongwei/Downloads/corn.mat")
-m5data <- scale(rawdata$m5spec$data)
-mp5data <- rawdata$mp5spec$data
-mp6data <- rawdata$mp6spec$data
-propvals <- scale(rawdata$propvals$data)
+m5data <-  apply(rawdata$m5spec$data,2,scale)
+mp5data <-  apply(rawdata$mp5spec$data,2,scale)
+mp6data <-  apply(rawdata$mp6spec$data,2,scale) 
+propvals <- apply(rawdata$propvals$data,2,scale)
 
 corn_PLS=function(n){                                #n is the number of calibration
   NV <- 10                                           #number of variables 
