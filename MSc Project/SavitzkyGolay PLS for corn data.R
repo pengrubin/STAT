@@ -4,7 +4,7 @@ library(lars)
 library(ggplot2)
 library("MALDIquant")
 rawdata <- readMat("/Users/hongwei/Downloads/corn.mat")
-m5data <-  t(apply(rawdata$m5spec$data,1,function(x) {MALDIquant:::.savitzkyGolay(x,halfWindowSize=21, polynomialOrder=2)}))
+m5data <-  t(apply(rawdata$m5spec$data,1,function(x) {MALDIquant:::.savitzkyGolay(x,halfWindowSize=10, polynomialOrder=2)}))
 mp5data <- t(apply(rawdata$mp5spec$data,1,function(x) {MALDIquant:::.savitzkyGolay(x,halfWindowSize=21, polynomialOrder=2)}))
 mp6data <- t(apply(rawdata$mp6spec$data,1,function(x) {MALDIquant:::.savitzkyGolay(x,halfWindowSize=21, polynomialOrder=2)}) )
 propvals <- rawdata$propvals$data
@@ -13,7 +13,7 @@ corn_PLS=function(n){                                #n is the number of calibra
   NV <- 6                                           #number of variables 
   sample <- sample(1:80)                             #set random order; the begin of reset order
   DF <- data.frame(NIR = I(m5data),                  #input data
-                   y=propvals[,1])
+                   y=propvals[,4])
   class(DF$NIR) <- "matrix"                          # just to be certain, it was "AsIs"
   #str(DF)                                           #check point
   DF$train <- rep(FALSE, 80)
