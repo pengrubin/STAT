@@ -36,3 +36,4 @@ boxplot(V2~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSECV",main="PL
 boxplot(V3~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSEP",main="PLS after scaled")
 apply(PlotData,2,mean)
 
+
