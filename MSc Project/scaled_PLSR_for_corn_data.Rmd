@@ -35,12 +35,12 @@ corn_PLS=function(n){                                #n is the number of calibra
   return(cbind(RMSECV,RMSEP))                        #return 1x2matrix
 }
 #corn_PLS(n)
-n <- as.matrix(rep(20:70,10))                        #the number of calibration, rep(a:b,c): from a to b and repeat c. 
+n <- as.matrix(rep(20:70,200))                        #the number of calibration, rep(a:b,c): from a to b and repeat c. 
 PlsResult <- apply(n,1,corn_PLS)                     #loop
 PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
 par(mfrow=c(1,2))
-boxplot(V2~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSECV",main="PLS 1~m5data Loop=10 scaled")
-boxplot(V3~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSEP",main="PLS 1~m5data Loop=10 scaled")
+boxplot(V2~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSECV",main="PLS 1~m5data Loop=200 scaled")
+boxplot(V3~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSEP",main="PLS 1~m5data Loop=200 scaled")
 apply(PlotData,2,mean)
 ```
 
@@ -75,12 +75,12 @@ corn_PLS=function(n){                                #n is the number of calibra
   return(cbind(RMSECV,RMSEP))                        #return 1x2matrix
 }
 #corn_PLS(n)
-n <- as.matrix(rep(20:70,10))                        #the number of calibration, rep(a:b,c): from a to b and repeat c. 
+n <- as.matrix(rep(20:70,200))                        #the number of calibration, rep(a:b,c): from a to b and repeat c. 
 PlsResult <- apply(n,1,corn_PLS)                     #loop
 PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
 par(mfrow=c(1,2))
-boxplot(V2~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSECV",main="PLS 2~m5data Loop=10 scaled")
-boxplot(V3~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSEP",main="PLS 2~m5data Loop=10 scaled")
+boxplot(V2~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSECV",main="PLS 2~m5data Loop=200 scaled")
+boxplot(V3~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSEP",main="PLS 2~m5data Loop=200 scaled")
 apply(PlotData,2,mean)
 ```
 
@@ -115,12 +115,12 @@ corn_PLS=function(n){                                #n is the number of calibra
   return(cbind(RMSECV,RMSEP))                        #return 1x2matrix
 }
 #corn_PLS(n)
-n <- as.matrix(rep(20:70,10))                        #the number of calibration, rep(a:b,c): from a to b and repeat c. 
+n <- as.matrix(rep(20:70,200))                        #the number of calibration, rep(a:b,c): from a to b and repeat c. 
 PlsResult <- apply(n,1,corn_PLS)                     #loop
 PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
 par(mfrow=c(1,2))
-boxplot(V2~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSECV",main="PLS 3~m5data Loop=10 scaled")
-boxplot(V3~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSEP",main="PLS 3~m5data Loop=10 scaled")
+boxplot(V2~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSECV",main="PLS 3~m5data Loop=200 scaled")
+boxplot(V3~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSEP",main="PLS 3~m5data Loop=200 scaled")
 apply(PlotData,2,mean)
 ```
 
@@ -155,12 +155,12 @@ corn_PLS=function(n){                                #n is the number of calibra
   return(cbind(RMSECV,RMSEP))                        #return 1x2matrix
 }
 #corn_PLS(n)
-n <- as.matrix(rep(20:70,10))                        #the number of calibration, rep(a:b,c): from a to b and repeat c. 
+n <- as.matrix(rep(20:70,200))                        #the number of calibration, rep(a:b,c): from a to b and repeat c. 
 PlsResult <- apply(n,1,corn_PLS)                     #loop
 PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
 par(mfrow=c(1,2))
-boxplot(V2~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSECV",main="PLS 4~m5data Loop=10 scaled")
-boxplot(V3~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSEP",main="PLS 4~m5data Loop=10 scaled")
+boxplot(V2~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSECV",main="PLS 4~m5data Loop=200 scaled")
+boxplot(V3~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSEP",main="PLS 4~m5data Loop=200 scaled")
 apply(PlotData,2,mean)
 ```
 
@@ -198,12 +198,12 @@ corn_PLS=function(n){                                #n is the number of calibra
   return(cbind(RMSECV,RMSEP))                        #return 1x2matrix
 }
 #corn_PLS(n)
-n <- as.matrix(rep(20:70,10))                        #the number of calibration, rep(a:b,c): from a to b and repeat c. 
+n <- as.matrix(rep(20:70,200))                        #the number of calibration, rep(a:b,c): from a to b and repeat c. 
 PlsResult <- apply(n,1,corn_PLS)                     #loop
 PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
 par(mfrow=c(1,2))
-boxplot(V2~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSECV",main="PLS 1~mp5data Loop=10 scaled")
-boxplot(V3~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSEP",main="PLS 1~mp5data Loop=10 scaled")
+boxplot(V2~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSECV",main="PLS 1~mp5data Loop=200 scaled")
+boxplot(V3~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSEP",main="PLS 1~mp5data Loop=200 scaled")
 apply(PlotData,2,mean)
 ```
 
@@ -238,12 +238,12 @@ corn_PLS=function(n){                                #n is the number of calibra
   return(cbind(RMSECV,RMSEP))                        #return 1x2matrix
 }
 #corn_PLS(n)
-n <- as.matrix(rep(20:70,10))                        #the number of calibration, rep(a:b,c): from a to b and repeat c. 
+n <- as.matrix(rep(20:70,200))                        #the number of calibration, rep(a:b,c): from a to b and repeat c. 
 PlsResult <- apply(n,1,corn_PLS)                     #loop
 PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
 par(mfrow=c(1,2))
-boxplot(V2~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSECV",main="PLS 2~mp5data Loop=10 scaled")
-boxplot(V3~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSEP",main="PLS 2~mp5data Loop=10 scaled")
+boxplot(V2~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSECV",main="PLS 2~mp5data Loop=200 scaled")
+boxplot(V3~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSEP",main="PLS 2~mp5data Loop=200 scaled")
 apply(PlotData,2,mean)
 ```
 
@@ -278,12 +278,12 @@ corn_PLS=function(n){                                #n is the number of calibra
   return(cbind(RMSECV,RMSEP))                        #return 1x2matrix
 }
 #corn_PLS(n)
-n <- as.matrix(rep(20:70,10))                        #the number of calibration, rep(a:b,c): from a to b and repeat c. 
+n <- as.matrix(rep(20:70,200))                        #the number of calibration, rep(a:b,c): from a to b and repeat c. 
 PlsResult <- apply(n,1,corn_PLS)                     #loop
 PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
 par(mfrow=c(1,2))
-boxplot(V2~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSECV",main="PLS 3~mp5data Loop=10 scaled")
-boxplot(V3~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSEP",main="PLS 3~mp5data Loop=10 scaled")
+boxplot(V2~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSECV",main="PLS 3~mp5data Loop=200 scaled")
+boxplot(V3~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSEP",main="PLS 3~mp5data Loop=200 scaled")
 apply(PlotData,2,mean)
 ```
 
@@ -318,12 +318,12 @@ corn_PLS=function(n){                                #n is the number of calibra
   return(cbind(RMSECV,RMSEP))                        #return 1x2matrix
 }
 #corn_PLS(n)
-n <- as.matrix(rep(20:70,10))                        #the number of calibration, rep(a:b,c): from a to b and repeat c. 
+n <- as.matrix(rep(20:70,200))                        #the number of calibration, rep(a:b,c): from a to b and repeat c. 
 PlsResult <- apply(n,1,corn_PLS)                     #loop
 PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
 par(mfrow=c(1,2))
-boxplot(V2~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSECV",main="PLS 4~mp5data Loop=10 scaled")
-boxplot(V3~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSEP",main="PLS 4~mp5data Loop=10 scaled")
+boxplot(V2~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSECV",main="PLS 4~mp5data Loop=200 scaled")
+boxplot(V3~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSEP",main="PLS 4~mp5data Loop=200 scaled")
 apply(PlotData,2,mean)
 ```
 
@@ -363,12 +363,12 @@ corn_PLS=function(n){                                #n is the number of calibra
   return(cbind(RMSECV,RMSEP))                        #return 1x2matrix
 }
 #corn_PLS(n)
-n <- as.matrix(rep(20:70,10))                        #the number of calibration, rep(a:b,c): from a to b and repeat c. 
+n <- as.matrix(rep(20:70,200))                        #the number of calibration, rep(a:b,c): from a to b and repeat c. 
 PlsResult <- apply(n,1,corn_PLS)                     #loop
 PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
 par(mfrow=c(1,2))
-boxplot(V2~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSECV",main="PLS 1~mp6data Loop=10 scaled")
-boxplot(V3~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSEP",main="PLS 1~mp6data Loop=10 scaled")
+boxplot(V2~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSECV",main="PLS 1~mp6data Loop=200 scaled")
+boxplot(V3~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSEP",main="PLS 1~mp6data Loop=200 scaled")
 apply(PlotData,2,mean)
 ```
 
@@ -403,12 +403,12 @@ corn_PLS=function(n){                                #n is the number of calibra
   return(cbind(RMSECV,RMSEP))                        #return 1x2matrix
 }
 #corn_PLS(n)
-n <- as.matrix(rep(20:70,10))                        #the number of calibration, rep(a:b,c): from a to b and repeat c. 
+n <- as.matrix(rep(20:70,200))                        #the number of calibration, rep(a:b,c): from a to b and repeat c. 
 PlsResult <- apply(n,1,corn_PLS)                     #loop
 PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
 par(mfrow=c(1,2))
-boxplot(V2~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSECV",main="PLS 2~mp6data Loop=10 scaled")
-boxplot(V3~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSEP",main="PLS 2~mp6data Loop=10 scaled")
+boxplot(V2~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSECV",main="PLS 2~mp6data Loop=200 scaled")
+boxplot(V3~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSEP",main="PLS 2~mp6data Loop=200 scaled")
 apply(PlotData,2,mean)
 ```
 
@@ -443,12 +443,12 @@ corn_PLS=function(n){                                #n is the number of calibra
   return(cbind(RMSECV,RMSEP))                        #return 1x2matrix
 }
 #corn_PLS(n)
-n <- as.matrix(rep(20:70,10))                        #the number of calibration, rep(a:b,c): from a to b and repeat c. 
+n <- as.matrix(rep(20:70,200))                        #the number of calibration, rep(a:b,c): from a to b and repeat c. 
 PlsResult <- apply(n,1,corn_PLS)                     #loop
 PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
 par(mfrow=c(1,2))
-boxplot(V2~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSECV",main="PLS 3~mp6data Loop=10 scaled")
-boxplot(V3~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSEP",main="PLS 3~mp6data Loop=10 scaled")
+boxplot(V2~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSECV",main="PLS 3~mp6data Loop=200 scaled")
+boxplot(V3~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSEP",main="PLS 3~mp6data Loop=200 scaled")
 apply(PlotData,2,mean)
 ```
 
@@ -483,11 +483,11 @@ corn_PLS=function(n){                                #n is the number of calibra
   return(cbind(RMSECV,RMSEP))                        #return 1x2matrix
 }
 #corn_PLS(n)
-n <- as.matrix(rep(20:70,10))                        #the number of calibration, rep(a:b,c): from a to b and repeat c. 
+n <- as.matrix(rep(20:70,200))                        #the number of calibration, rep(a:b,c): from a to b and repeat c. 
 PlsResult <- apply(n,1,corn_PLS)                     #loop
 PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
 par(mfrow=c(1,2))
-boxplot(V2~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSECV",main="PLS 4~mp6data Loop=10 scaled")
-boxplot(V3~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSEP",main="PLS 4~mp6data Loop=10 scaled")
+boxplot(V2~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSECV",main="PLS 4~mp6data Loop=200 scaled")
+boxplot(V3~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSEP",main="PLS 4~mp6data Loop=200 scaled")
 apply(PlotData,2,mean)
 ```
