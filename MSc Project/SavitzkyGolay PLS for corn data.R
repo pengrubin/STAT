@@ -5,13 +5,17 @@ library(ggplot2)
 library("MALDIquant")
 library(prospectr)
 rawdata <- readMat("/Users/hongwei/Downloads/corn.mat")
-m5data <-  t(apply(rawdata$m5spec$data,1,function(x) {MALDIquant:::.savitzkyGolay(x,halfWindowSize=10, polynomialOrder=2)}))
-mp5data <- t(apply(rawdata$mp5spec$data,1,function(x) {MALDIquant:::.savitzkyGolay(x,halfWindowSize=21, polynomialOrder=2)}))
-mp6data <- t(apply(rawdata$mp6spec$data,1,function(x) {MALDIquant:::.savitzkyGolay(x,halfWindowSize=21, polynomialOrder=2)}) )
+#m5data <-  t(apply(rawdata$m5spec$data,1,function(x) {MALDIquant:::.savitzkyGolay(x,halfWindowSize=10, polynomialOrder=2)}))
+#mp5data <- t(apply(rawdata$mp5spec$data,1,function(x) {MALDIquant:::.savitzkyGolay(x,halfWindowSize=21, polynomialOrder=2)}))
+#mp6data <- t(apply(rawdata$mp6spec$data,1,function(x) {MALDIquant:::.savitzkyGolay(x,halfWindowSize=21, polynomialOrder=2)}) )
+m5data <-  t(apply(rawdata$m5spec$data,1,function(x) {savitzkyGolay(x,1,2,21)}))
+mp5data <- t(apply(rawdata$mp5spec$data,1,function(x) {savitzkyGolay(x,1,2,21)}))
+mp6data <- t(apply(rawdata$mp6spec$data,1,function(x) {savitzkyGolay(x,1,2,21)}) )
+
 propvals <- rawdata$propvals$data
 
 corn_PLS=function(n){                                #n is the number of calibration
-  NV <- 6                                           #number of variables 
+  NV <- 5                                           #number of variables 
   sample <- sample(1:80)                             #set random order; the begin of reset order
   DF <- data.frame(NIR = I(m5data),                  #input data
                    y=propvals[,4])
@@ -40,17 +44,4 @@ PlotDataMean <- apply(PlotData,2,mean)
 PlotDataSd <- apply(PlotData,2,sd)
 cat(PlotDataMean[3]-PlotDataSd[3],PlotDataMean[3],PlotDataMean[3]+PlotDataSd[3])
 
-
-
-data(NIRsoil)
-spc <- 1/10^NIRsoil$spc # conversion to reflectance
-opar <- par(no.readonly = TRUE)
-par(mfrow=c(2,1),mar=c(4,4,2,2))
-# plot of the 10 first spectra
-matplot(as.numeric(colnames(spc)),t(spc[1:10,]),type='l',xlab='',ylab='Reflectance')
-mtext('Raw spectra')
-sg <- savitzkyGolay(X = spc,1,3,11,delta.wav=2)
-matplot(as.numeric(colnames(sg)),t(sg[1:10,]),type='l',xlab='Wavelength /nm',ylab='1st derivative')
-mtext('1st derivative spectra')
-par(opar)
 
