@@ -19,8 +19,8 @@ system.time({
     
     NV <- 10                                           #number of variables 
     sample <- sample(1:80)                             #set random order; the begin of reset order
-    DF <- data.frame(NIR = I(mp6data),                  #input data
-                     y=propvals[,3])
+    DF <- data.frame(NIR = I(m5data),                  #input data
+                     y=propvals[,1])
     class(DF$NIR) <- "matrix"                          # just to be certain, it was "AsIs"
     #str(DF)                                           #check point
     DF$train <- rep(FALSE, 80)
