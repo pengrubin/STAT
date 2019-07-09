@@ -19,8 +19,8 @@ system.time({
     
     NV <- 10                                           #number of variables 
     sample <- sample(1:80)                             #set random order; the begin of reset order
-    DF <- data.frame(NIR = I(m5data),                  #input data
-                     y=propvals[,4])
+    DF <- data.frame(NIR = I(mp6data),                  #input data
+                     y=propvals[,3])
     class(DF$NIR) <- "matrix"                          # just to be certain, it was "AsIs"
     #str(DF)                                           #check point
     DF$train <- rep(FALSE, 80)
@@ -41,11 +41,11 @@ system.time({
   PlsResult <- parSapply(cl,n,corn_PLS)                #optimizated loop
   PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
   par(mfrow=c(1,2))
-  boxplot(V2~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSECV",main="PLS")
-  boxplot(V3~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSEP",main="PLS")
+  #boxplot(V2~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSECV",main="PLS")
+  #boxplot(V3~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSEP",main="PLS")
   PlotDataMean <- apply(PlotData,2,mean)
   PlotDataSd <- apply(PlotData,2,sd)
-  cat(PlotDataMean[2]-PlotDataSd[2],PlotDataMean[2],PlotDataMean[2]+PlotDataSd[2])
-  cat(PlotDataMean[3]-PlotDataSd[3],PlotDataMean[3],PlotDataMean[3]+PlotDataSd[3])
+  #cat(PlotDataMean[2]-PlotDataSd[2],PlotDataMean[2],PlotDataMean[2]+PlotDataSd[2],"\n")
+  cat(PlotDataMean[3]-PlotDataSd[3],PlotDataMean[3],PlotDataMean[3]+PlotDataSd[3],"\n")
 })
 stopCluster(cl)
