@@ -1102,10 +1102,10 @@ system.time({
   PlsResult <- parSapply(cl,n,corn_PLS)               #optimizated loop
   PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
   par(mfrow=c(1,2))
-  boxplot(V2~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSECV",main="PLS after scaled")
-  boxplot(V3~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSEP",main="PLS after scaled")
-  #PlotDataMean <- apply(PlotData,2,mean)
-  #PlotDataSd <- apply(PlotData,2,sd)
+  #boxplot(V2~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSECV",main="PLS after scaled")
+  #boxplot(V3~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSEP",main="PLS after scaled")
+  PlotDataMean <- apply(PlotData,2,mean)
+  PlotDataSd <- apply(PlotData,2,sd)
   cat(PlotDataMean[3]-PlotDataSd[3],PlotDataMean[3],PlotDataMean[3]+PlotDataSd[3],'\n')
 })
 stopCluster(cl)
@@ -1169,10 +1169,10 @@ system.time({
   PlsResult <- parSapply(cl,n,corn_PLS)               #optimizated loop
   PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
   par(mfrow=c(1,2))
-  boxplot(V2~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSECV",main="PLS after scaled")
-  boxplot(V3~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSEP",main="PLS after scaled")
-  #PlotDataMean <- apply(PlotData,2,mean)
-  #PlotDataSd <- apply(PlotData,2,sd)
+  #boxplot(V2~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSECV",main="PLS after scaled")
+  #boxplot(V3~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSEP",main="PLS after scaled")
+  PlotDataMean <- apply(PlotData,2,mean)
+  PlotDataSd <- apply(PlotData,2,sd)
   cat(PlotDataMean[3]-PlotDataSd[3],PlotDataMean[3],PlotDataMean[3]+PlotDataSd[3],'\n')
 })
 stopCluster(cl)
@@ -1236,10 +1236,10 @@ system.time({
   PlsResult <- parSapply(cl,n,corn_PLS)               #optimizated loop
   PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
   par(mfrow=c(1,2))
-  boxplot(V2~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSECV",main="PLS after scaled")
-  boxplot(V3~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSEP",main="PLS after scaled")
-  #PlotDataMean <- apply(PlotData,2,mean)
-  #PlotDataSd <- apply(PlotData,2,sd)
+  #boxplot(V2~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSECV",main="PLS after scaled")
+  #boxplot(V3~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSEP",main="PLS after scaled")
+  PlotDataMean <- apply(PlotData,2,mean)
+  PlotDataSd <- apply(PlotData,2,sd)
   cat(PlotDataMean[3]-PlotDataSd[3],PlotDataMean[3],PlotDataMean[3]+PlotDataSd[3],'\n')
 })
 stopCluster(cl)
