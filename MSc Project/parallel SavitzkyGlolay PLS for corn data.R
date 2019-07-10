@@ -27,7 +27,7 @@ system.time({
     NV <- 5                                            #number of variables 
     sample <- sample(1:80)                             #set random order; the begin of reset order
     DF <- data.frame(NIR = I(m5data),                  #input data
-                     y=propvals[,4])
+                     y=propvals[,1])
     class(DF$NIR) <- "matrix"                          # just to be certain, it was "AsIs"
     #str(DF)                                           #check point
     DF$train <- rep(FALSE, 80)
@@ -50,8 +50,8 @@ system.time({
   par(mfrow=c(1,2))
   boxplot(V2~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSECV",main="PLS after scaled")
   boxplot(V3~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSEP",main="PLS after scaled")
-  PlotDataMean <- apply(PlotData,2,mean)
-  PlotDataSd <- apply(PlotData,2,sd)
+  #PlotDataMean <- apply(PlotData,2,mean)
+  #PlotDataSd <- apply(PlotData,2,sd)
   cat(PlotDataMean[3]-PlotDataSd[3],PlotDataMean[3],PlotDataMean[3]+PlotDataSd[3],'\n')
 })
 stopCluster(cl)

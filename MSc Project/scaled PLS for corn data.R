@@ -28,7 +28,7 @@ corn_PLS=function(n){                                #n is the number of calibra
   return(cbind(RMSECV,RMSEP))                        #return 1x2matrix
 }
 #corn_PLS(n)
-n <- as.matrix(rep(20:70,10))                        #the number of calibration, rep(a:b,c): from a to b and repeat c. 
+n <- as.matrix(rep(40,10))                        #the number of calibration, rep(a:b,c): from a to b and repeat c. 
 PlsResult <- apply(n,1,corn_PLS)                     #loop
 PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
 par(mfrow=c(1,2))

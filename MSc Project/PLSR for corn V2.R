@@ -28,7 +28,7 @@ corn_PLS=function(n){                                #n is the number of calibra
   return(cbind(RMSECV,RMSEP))                        #return 1x2matrix
 }
 #corn_PLS(n)
-n <- as.matrix(rep(20:70,10))                        #the number of calibration, rep(a:b,c): from a to b and repeat c. 
+n <- as.matrix(rep(40,10))                        #the number of calibration, rep(a:b,c): from a to b and repeat c. 
 PlsResult <- apply(n,1,corn_PLS)                     #loop
 PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
 par(mfrow=c(1,2))
@@ -36,7 +36,3 @@ boxplot(V2~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSECV",main="PL
 boxplot(V3~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSEP",main="PLS")
 PlotData
 apply(PlotData,2,mean)
-
-boxplot(V1~V2*V3, data=PlotData, notch=TRUE, 
-        col=(c("gold","darkgreen")),
-        main="PLS", xlab="Number of Calibration", ylab="RMSECV and RMSEP")
