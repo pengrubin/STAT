@@ -602,7 +602,8 @@ system.time({
     m5data <-  apply(rawdata$m5spec$data,2,scale)
     mp5data <-  apply(rawdata$mp5spec$data,2,scale)
     mp6data <-  apply(rawdata$mp6spec$data,2,scale) 
-    propvals <- apply(rawdata$propvals$data,2,scale)
+    #propvals <- apply(rawdata$propvals$data,2,scale)
+    propvals <- rawdata$propvals$data
     NV <- 12                                           #number of variables 
     sample <- sample(1:80)                             #set random order; the begin of reset order
     DF <- data.frame(NIR = I(m5data),                  #input data

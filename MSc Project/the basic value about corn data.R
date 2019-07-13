@@ -7,8 +7,16 @@ mp6data <- rawdata$mp6spec$data
 propvals <- rawdata$propvals$data
 plot(apply(m5data,2,mean))
 plot(apply(m5data,2,sd))
-plot(apply(mp5data,2,sd))
-plot(apply(mp6data,2,sd))
+apply(propvals,2,sd)
+
+#scaled
+rawdata <- readMat("/Users/hongwei/Downloads/corn.mat")
+m5data <-  apply(rawdata$m5spec$data,2,scale)
+mp5data <-  apply(rawdata$mp5spec$data,2,scale)
+mp6data <-  apply(rawdata$mp6spec$data,2,scale) 
+propvals <- apply(rawdata$propvals$data,2,scale)
+plot(apply(m5data,2,mean))
+plot(apply(m5data,2,sd))
 apply(propvals,2,sd)
 
 #savitzkyGolay
