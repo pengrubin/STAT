@@ -2,7 +2,9 @@
 title: "number_of_component"
 author: "Hongwei Peng"
 date: "19/07/2019"
-output: pdf_document
+output:
+  html_document:
+    df_print: paged
 ---
 
 #1~m5 60-20
@@ -45,7 +47,7 @@ system.time({
     return(cbind(RMSECV,RMSEP))                        #return 1x2matrix
   }
   #corn_PLS(n)
-  n <- as.matrix(rep(6:50,100))                           #the number of calibration, rep(a:b,c): from a to b and repeat c. 
+  n <- as.matrix(rep(6:50,20))                           #the number of calibration, rep(a:b,c): from a to b and repeat c. 
   #PlsResult <- apply(n,1,corn_PLS)                     #loop
   PlsResult <- parSapply(cl,n,corn_PLS)                #optimizated loop
   PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
@@ -100,7 +102,7 @@ system.time({
     return(cbind(RMSECV,RMSEP))                        #return 1x2matrix
   }
   #corn_PLS(n)
-  n <- as.matrix(rep(6:50,100))                           #the number of calibration, rep(a:b,c): from a to b and repeat c. 
+  n <- as.matrix(rep(6:50,20))                           #the number of calibration, rep(a:b,c): from a to b and repeat c. 
   #PlsResult <- apply(n,1,corn_PLS)                     #loop
   PlsResult <- parSapply(cl,n,corn_PLS)                #optimizated loop
   PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
@@ -155,7 +157,7 @@ system.time({
     return(cbind(RMSECV,RMSEP))                        #return 1x2matrix
   }
   #corn_PLS(n)
-  n <- as.matrix(rep(6:50,100))                           #the number of calibration, rep(a:b,c): from a to b and repeat c. 
+  n <- as.matrix(rep(6:50,20))                           #the number of calibration, rep(a:b,c): from a to b and repeat c. 
   #PlsResult <- apply(n,1,corn_PLS)                     #loop
   PlsResult <- parSapply(cl,n,corn_PLS)                #optimizated loop
   PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
@@ -210,7 +212,7 @@ system.time({
     return(cbind(RMSECV,RMSEP))                        #return 1x2matrix
   }
   #corn_PLS(n)
-  n <- as.matrix(rep(6:50,100))                           #the number of calibration, rep(a:b,c): from a to b and repeat c. 
+  n <- as.matrix(rep(6:50,20))                           #the number of calibration, rep(a:b,c): from a to b and repeat c. 
   #PlsResult <- apply(n,1,corn_PLS)                     #loop
   PlsResult <- parSapply(cl,n,corn_PLS)                #optimizated loop
   PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
@@ -265,7 +267,7 @@ system.time({
     return(cbind(RMSECV,RMSEP))                        #return 1x2matrix
   }
   #corn_PLS(n)
-  n <- as.matrix(rep(6:50,100))                           #the number of calibration, rep(a:b,c): from a to b and repeat c. 
+  n <- as.matrix(rep(1:50,20))                           #the number of calibration, rep(a:b,c): from a to b and repeat c. 
   #PlsResult <- apply(n,1,corn_PLS)                     #loop
   PlsResult <- parSapply(cl,n,corn_PLS)                #optimizated loop
   PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
@@ -320,7 +322,7 @@ system.time({
     return(cbind(RMSECV,RMSEP))                        #return 1x2matrix
   }
   #corn_PLS(n)
-  n <- as.matrix(rep(6:50,100))                           #the number of calibration, rep(a:b,c): from a to b and repeat c. 
+  n <- as.matrix(rep(1:50,20))                           #the number of calibration, rep(a:b,c): from a to b and repeat c. 
   #PlsResult <- apply(n,1,corn_PLS)                     #loop
   PlsResult <- parSapply(cl,n,corn_PLS)                #optimizated loop
   PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
@@ -375,7 +377,7 @@ system.time({
     return(cbind(RMSECV,RMSEP))                        #return 1x2matrix
   }
   #corn_PLS(n)
-  n <- as.matrix(rep(6:50,100))                           #the number of calibration, rep(a:b,c): from a to b and repeat c. 
+  n <- as.matrix(rep(1:50,20))                           #the number of calibration, rep(a:b,c): from a to b and repeat c. 
   #PlsResult <- apply(n,1,corn_PLS)                     #loop
   PlsResult <- parSapply(cl,n,corn_PLS)                #optimizated loop
   PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
@@ -430,7 +432,7 @@ system.time({
     return(cbind(RMSECV,RMSEP))                        #return 1x2matrix
   }
   #corn_PLS(n)
-  n <- as.matrix(rep(6:50,100))                           #the number of calibration, rep(a:b,c): from a to b and repeat c. 
+  n <- as.matrix(rep(1:50,20))                           #the number of calibration, rep(a:b,c): from a to b and repeat c. 
   #PlsResult <- apply(n,1,corn_PLS)                     #loop
   PlsResult <- parSapply(cl,n,corn_PLS)                #optimizated loop
   PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
@@ -485,7 +487,7 @@ system.time({
     return(cbind(RMSECV,RMSEP))                        #return 1x2matrix
   }
   #corn_PLS(n)
-  n <- as.matrix(rep(6:50,100))                           #the number of calibration, rep(a:b,c): from a to b and repeat c. 
+  n <- as.matrix(rep(1:50,20))                           #the number of calibration, rep(a:b,c): from a to b and repeat c. 
   #PlsResult <- apply(n,1,corn_PLS)                     #loop
   PlsResult <- parSapply(cl,n,corn_PLS)                #optimizated loop
   PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
@@ -540,7 +542,7 @@ system.time({
     return(cbind(RMSECV,RMSEP))                        #return 1x2matrix
   }
   #corn_PLS(n)
-  n <- as.matrix(rep(6:50,100))                           #the number of calibration, rep(a:b,c): from a to b and repeat c. 
+  n <- as.matrix(rep(1:50,20))                           #the number of calibration, rep(a:b,c): from a to b and repeat c. 
   #PlsResult <- apply(n,1,corn_PLS)                     #loop
   PlsResult <- parSapply(cl,n,corn_PLS)                #optimizated loop
   PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
@@ -595,7 +597,7 @@ system.time({
     return(cbind(RMSECV,RMSEP))                        #return 1x2matrix
   }
   #corn_PLS(n)
-  n <- as.matrix(rep(6:50,100))                           #the number of calibration, rep(a:b,c): from a to b and repeat c. 
+  n <- as.matrix(rep(1:50,20))                           #the number of calibration, rep(a:b,c): from a to b and repeat c. 
   #PlsResult <- apply(n,1,corn_PLS)                     #loop
   PlsResult <- parSapply(cl,n,corn_PLS)                #optimizated loop
   PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
@@ -650,7 +652,7 @@ system.time({
     return(cbind(RMSECV,RMSEP))                        #return 1x2matrix
   }
   #corn_PLS(n)
-  n <- as.matrix(rep(6:50,100))                           #the number of calibration, rep(a:b,c): from a to b and repeat c. 
+  n <- as.matrix(rep(1:50,20))                           #the number of calibration, rep(a:b,c): from a to b and repeat c. 
   #PlsResult <- apply(n,1,corn_PLS)                     #loop
   PlsResult <- parSapply(cl,n,corn_PLS)                #optimizated loop
   PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
