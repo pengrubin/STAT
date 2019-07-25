@@ -14,10 +14,10 @@ system.time({
     mp5data <-  apply(rawdata$mp5spec$data,2,scale)
     mp6data <-  apply(rawdata$mp6spec$data,2,scale) 
     propvals <- apply(rawdata$propvals$data,2,scale)
-    NV <- 10                                           #number of variables 
+    NV <- 8                                           #number of variables 
     sample <- sample(1:80)                             #set random order; the begin of reset order
-    DF <- data.frame(NIR = I(m5data),                  #input data
-                     y=propvals[,2])
+    DF <- data.frame(NIR = I(mp5data),                  #input data
+                     y=propvals[,3])
     class(DF$NIR) <- "matrix"                          # just to be certain, it was "AsIs"
     #str(DF)                                           #check point
     DF$train <- rep(FALSE, 80)
