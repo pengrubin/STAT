@@ -1,0 +1,164 @@
+\documentclass[a4paper,12pt,titlepage]{article} % [papersize,fontsize,add title page]{document type}
+
+% This LaTeX file can be turned straight into a pdf by "PDFTeXify" in WinEdit, or
+% by any LaTeX --> PDF command in another LaTeX editor
+%
+% Because figure files are PDF, LaTeX --> DVI does not work
+
+% usepackage{.} reads in additional LaTeX packages
+\usepackage[pdftex]{graphicx}       % to include graphs
+\usepackage{natbib}                % A BibTeX style file for references.
+\usepackage{amssymb,amsmath}        % for maths symbols and equation numbering
+\usepackage{array,tabularx,calc}
+
+\newenvironment{conditions}[1][where:]
+{%
+	#1\tabularx{\textwidth-\widthof{#1}}[t]{
+		>{$}l<{$} @{${}={}$} X@{}
+	}%
+}
+{\endtabularx\\[\belowdisplayskip]}
+
+% set up title page
+\title{The NIR Corn Data Set}
+\author{Hongwei PENG \vspace{2cm} \\
+	Supervisor : Prof Tom Fearn \vspace{2cm} \\
+	Department of Statistical Science \\
+	University College London}
+\date{\today} % \today gives today's date. ... or put in the date you want
+
+% set page size and margins
+\setlength{\textwidth}{17cm}
+\setlength{\textheight}{26cm}
+\setlength{\oddsidemargin}{-0.5cm}
+\setlength{\evensidemargin}{-0.5cm}
+\setlength{\topmargin}{-25mm}
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0.3cm}
+
+\let\leq=\leqslant   % for nice-looking inequality signs
+\let\geq=\geqslant
+
+\numberwithin{equation}{section}  % equation numbers like (section#.equation#)
+
+\linespread{1}     % 1: single-spacing, 2: double-spacing, 1.5: 1.5-spacing etc
+
+\begin{document}   % start of document
+	\maketitle         % create title etc
+	\tableofcontents   % create table of contents
+	\newpage           % start a new page
+	
+	The most readily available high-dimensional NIR spectroscopic data is called corn data. There are many algorithms for analysing corn data in many publications. These algorithms will often claim that their new algorithm has a better performs. So the purpose of this dissertation is to search for as many different papers as possible, and write a critical overall to find the most efficient measure that can evaluate whether the model performs well and quantify the improvements mentioned in the paper.
+	
+	\section{Introduction}             % start a new section called `Introduction'
+	\label{sec:intro}                  % create label for this section
+	
+	\section{Literature reviews}
+	\label{sec:liter}
+	
+	\section{Datasets}
+	\label{sec:data}
+	
+	\section{Methodology}
+	\label{sec:method}
+	
+	\subsection{Model Evaluation}
+	\label{sec:eva}
+	According to the corn data literature, there are several measures that can be used to evaluate the performance of the model.
+	
+	1, Root Mean Square Error for Calibration samples (RMSEC) is proposed by \citet{2yun2014strategy}.
+	
+	2, RMSECV is mentioned by many papers \citep{8ji2015using}. And there are two cross-validation methods. One is leave one out cross-validation (LOOCV), mentioned by \citet{6zheng2015pretreating}. The other is K-fold cross-validation, there are the 3-fold cross-validation \citep{3galvao2007cross}, 10-fold cross-validation \citep{8ji2015using} and so on. The calculation method of RMSECV is as follows:
+	\begin{equation}
+		RMSECV=\sqrt{\frac{1}{n}\sum_{i=1}^{n} (y_i-\hat y_i)^2} 
+	\end{equation}
+	\begin{conditions}
+		n     &  the number of samples\\
+		y_i     &   the experimental value of the i-th sample\\   
+		\hat y_i &  the predicted value of the i-th sample by cross-validation which  includes removing the set of i-th sample from the calibration set, building a model with the remaining samples, and applying the model to i-th sample
+	\end{conditions}
+	
+	3, The Root Mean Square Error of Prediction (RMSEP) is mentioned by \citet{1su2006partial}. This is a generally accepted method of evaluating models. This approach requires the determination of appropriate cross-validation sets and prediction sets before building PLS model. For example, 60 samples of corn data are used for a cross-validation and the remaining 20 samples are used as predictions \citep{1su2006partial}. Then the cross-validation data is used for modelling, determining the parameters for regression model, such as PLS. After that, the model is applied to the predictive data to calculate the Root Mean Square Error of Prediction (RMSEP). The RMSEP calculation formula is:
+	
+	\begin{equation}
+RMSEP=\sqrt{\frac{1}{m}\sum_{i=1}^{m} (y_i-\hat y_i)^2}
+	\end{equation}
+	
+	\begin{conditions}
+		m     &  the number of prediction sets\\
+		y_i     &  the experimental value of the i-th sample in the prediction set \\   
+		\hat y_i &  the prediction value of model for the i-th sample
+	\end{conditions}
+	
+	
+	4, There are few papers mentioned that $R^2$ is used to measure the model \citep{tatavarti2005assessment}. But this method is also flawed. In some situations, not enough calculation accuracy of the computer will cause the value of $R^2$ to be equal to 1. For example, \citet{deng2016bootstrapping} has this problem and the $R^2$ in PLS model fitting  moisture is equl to 0.9959, but for the CARS, GA-PLS and BOSS model, $R^2$ are all equal to $1.0000 \pm 0.0000$. Hence we can see it hard to distinguish the different between models. So this will not be a good indicator of evaluation.
+	
+	\subsection{Pre-treatment}
+	\label{sec:treat}
+	The papers use different pre-treatments of the data, and the results of the model will be very different. For example, 7th paper and 8th paper also use M5 to predict the first constituent, and the results are very different. Through the different literatures, the common pretreatment of corn data has the following four types:
+	
+	1. Nothing to deal with, such as 1st paper.
+	
+	2. Scale the data, such as 4th paper.
+	
+	3. SavitzkyGolay filter processing on the data, such as 3rd paper.
+	
+	4. Delete the outliers, such as 8th paper.
+	
+	\subsection{Sample splitting}
+	\label{splitting}
+	The number of samples selected and the method of sample selection will also have an impact on the results of models. The methods of selecting samples are as follows:
+	
+	1. A completely random sample \citep{1su2006partial}.
+	
+	2. Choosing the samples by the SPXY method \citep{3galvao2007cross}.
+	
+	3. Use the Kennard-Stone (K-S) algorithm, such as 8th paper  in the third form.
+	
+	4. Directly divide the raw data into the first half and the second half, the first half is cross-validation sets, and the second half is prediction set. For example 4th paper.
+	
+	The second and third methods will result in the prediction level data being very close to the data of the cross-check set, which may increase the accuracy of the prediction and reduce the prediction difficulty, so these two methods are not used here. Because in the actual problem, the performance of the algorithm looks better when the two sample sets are too similar, which is not what we want. The last method relies on the sorting of the original data, so the next step is to take a random sampling method to simulate the sample. The selection of the quantity refers to the 5th and 6th documents, so the sample size of 20~70 will be selected to build the model, and the rest will be predicted.
+	
+	\subsection{Cross-validation}
+	\label{cross-validation}
+	
+	\subsection{PLS algorithm}
+	\label{PLS_al}
+	
+	\subsection{Parallel computing}
+	\label{parallel}
+	
+	\subsection{Myriad}
+	\label{myriad}
+	
+	
+	\section{Result and discussion}
+	\label{sec:result}
+	
+	\subsection{Loop times}
+	
+	\subsection{Number of Samples}
+	
+	\subsection{Number of Components}
+	
+	\subsection{Pre-treatment}
+	
+	\subsection{Cross-Validation}
+	
+	\subsection{Compare with papers}
+	
+	\section{Conclusions}
+	\label{sec:conclution}
+	
+	
+	
+	
+	
+	
+	\section{Conclusion}
+	
+	\addcontentsline{toc}{section}{References} % to add references to table of contents
+	\bibliography{hongwei_pls_MSc}                     % read references from example.bib
+	\bibliographystyle{chicago}            % file to determine the style of references
+	
+\end{document} 

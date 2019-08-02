@@ -1,0 +1,59 @@
+\begin{thebibliography}{}
+
+\bibitem[\protect\citeauthoryear{Deng, Yun, Cao, Yin, Wang, Lu, Luo, and
+  Liang}{Deng et~al.}{2016}]{deng2016bootstrapping}
+Deng, B.-C., Y.-H. Yun, D.-S. Cao, Y.-L. Yin, W.-T. Wang, H.-M. Lu, Q.-Y. Luo,
+  and Y.-Z. Liang (2016).
+\newblock A bootstrapping soft shrinkage approach for variable selection in
+  chemical modeling.
+\newblock {\em Analytica chimica acta\/}~{\em 908}, 63--74.
+
+\bibitem[\protect\citeauthoryear{Galv{\~a}o, Ara{\'u}jo, Silva, Jos{\'e},
+  Soares, and Paiva}{Galv{\~a}o et~al.}{2007}]{3galvao2007cross}
+Galv{\~a}o, R. K.~H., M.~C.~U. Ara{\'u}jo, E.~C. Silva, G.~E. Jos{\'e},
+  S.~F.~C. Soares, and H.~M. Paiva (2007).
+\newblock Cross-validation for the selection of spectral variables using the
+  successive projections algorithm.
+\newblock {\em Journal of the Brazilian Chemical Society\/}~{\em 18\/}(8),
+  1580--1584.
+
+\bibitem[\protect\citeauthoryear{Ji, Huang, Yang, Wu, Chen, and Yuan}{Ji
+  et~al.}{2015}]{8ji2015using}
+Ji, G., G.~Huang, Z.~Yang, X.~Wu, X.~Chen, and M.~Yuan (2015).
+\newblock Using consensus interval partial least square in near infrared
+  spectra analysis.
+\newblock {\em Chemometrics and Intelligent Laboratory Systems\/}~{\em 144},
+  56--62.
+
+\bibitem[\protect\citeauthoryear{Su, Tong, Shi, Shao, and Cai}{Su
+  et~al.}{2006}]{1su2006partial}
+Su, Z., W.~Tong, L.~Shi, X.~Shao, and W.~Cai (2006).
+\newblock A partial least squares-based consensus regression method for the
+  analysis of near-infrared complex spectral data of plant samples.
+\newblock {\em Analytical letters\/}~{\em 39\/}(9), 2073--2083.
+
+\bibitem[\protect\citeauthoryear{Tatavarti, Fahmy, Wu, Hussain, Marnane,
+  Bensley, Hollenbeck, and Hoag}{Tatavarti
+  et~al.}{2005}]{tatavarti2005assessment}
+Tatavarti, A.~S., R.~Fahmy, H.~Wu, A.~S. Hussain, W.~Marnane, D.~Bensley,
+  G.~Hollenbeck, and S.~W. Hoag (2005).
+\newblock Assessment of nir spectroscopy for nondestructive analysis of
+  physical and chemical attributes of sulfamethazine bolus dosage forms.
+\newblock {\em aaps Pharmscitech\/}~{\em 6\/}(1), E91--E99.
+
+\bibitem[\protect\citeauthoryear{Yun, Wang, Tan, Liang, Li, Cao, Lu, and
+  Xu}{Yun et~al.}{2014}]{2yun2014strategy}
+Yun, Y.-H., W.-T. Wang, M.-L. Tan, Y.-Z. Liang, H.-D. Li, D.-S. Cao, H.-M. Lu,
+  and Q.-S. Xu (2014).
+\newblock A strategy that iteratively retains informative variables for
+  selecting optimal variable subset in multivariate calibration.
+\newblock {\em Analytica chimica acta\/}~{\em 807}, 36--43.
+
+\bibitem[\protect\citeauthoryear{Zheng, Zhang, Tong, Yao, and Du}{Zheng
+  et~al.}{2015}]{6zheng2015pretreating}
+Zheng, K.-Y., X.~Zhang, P.-J. Tong, Y.~Yao, and Y.-P. Du (2015).
+\newblock Pretreating near infrared spectra with fractional order
+  savitzky--golay differentiation (fosgd).
+\newblock {\em Chinese Chemical Letters\/}~{\em 26\/}(3), 293--296.
+
+\end{thebibliography}
