@@ -8,6 +8,21 @@ Deng, B.-C., Y.-H. Yun, D.-S. Cao, Y.-L. Yin, W.-T. Wang, H.-M. Lu, Q.-Y. Luo,
   chemical modeling.
 \newblock {\em Analytica chimica acta\/}~{\em 908}, 63--74.
 
+\bibitem[\protect\citeauthoryear{Ergon}{Ergon}{2006}]{4ergon2006reduced}
+Ergon, R. (2006).
+\newblock Reduced pcr/plsr models by subspace projections.
+\newblock {\em Chemometrics and intelligent laboratory systems\/}~{\em
+  81\/}(1), 68--73.
+
+\bibitem[\protect\citeauthoryear{Galvao, Araujo, Fragoso, Silva, Jose, Soares,
+  and Paiva}{Galvao et~al.}{2008}]{7galvao2008variable}
+Galvao, R. K.~H., M.~C.~U. Araujo, W.~D. Fragoso, E.~C. Silva, G.~E. Jose,
+  S.~F.~C. Soares, and H.~M. Paiva (2008).
+\newblock A variable elimination method to improve the parsimony of mlr models
+  using the successive projections algorithm.
+\newblock {\em Chemometrics and intelligent laboratory systems\/}~{\em
+  92\/}(1), 83--91.
+
 \bibitem[\protect\citeauthoryear{Galv{\~a}o, Ara{\'u}jo, Silva, Jos{\'e},
   Soares, and Paiva}{Galv{\~a}o et~al.}{2007}]{3galvao2007cross}
 Galv{\~a}o, R. K.~H., M.~C.~U. Ara{\'u}jo, E.~C. Silva, G.~E. Jos{\'e},
@@ -41,6 +56,14 @@ Tatavarti, A.~S., R.~Fahmy, H.~Wu, A.~S. Hussain, W.~Marnane, D.~Bensley,
   physical and chemical attributes of sulfamethazine bolus dosage forms.
 \newblock {\em aaps Pharmscitech\/}~{\em 6\/}(1), E91--E99.
 
+\bibitem[\protect\citeauthoryear{Wold, Ruhe, Wold, and Dunn}{Wold
+  et~al.}{1984}]{wold1984collinearity}
+Wold, S., A.~Ruhe, H.~Wold, and W.~Dunn, III (1984).
+\newblock The collinearity problem in linear regression. the partial least
+  squares (pls) approach to generalized inverses.
+\newblock {\em SIAM Journal on Scientific and Statistical Computing\/}~{\em
+  5\/}(3), 735--743.
+
 \bibitem[\protect\citeauthoryear{Yun, Wang, Tan, Liang, Li, Cao, Lu, and
   Xu}{Yun et~al.}{2014}]{2yun2014strategy}
 Yun, Y.-H., W.-T. Wang, M.-L. Tan, Y.-Z. Liang, H.-D. Li, D.-S. Cao, H.-M. Lu,
@@ -48,6 +71,21 @@ Yun, Y.-H., W.-T. Wang, M.-L. Tan, Y.-Z. Liang, H.-D. Li, D.-S. Cao, H.-M. Lu,
 \newblock A strategy that iteratively retains informative variables for
   selecting optimal variable subset in multivariate calibration.
 \newblock {\em Analytica chimica acta\/}~{\em 807}, 36--43.
+
+\bibitem[\protect\citeauthoryear{Zhao, Wu, Zhang, Shi, Ma, and Qiao}{Zhao
+  et~al.}{2015}]{zhao2015optimization}
+Zhao, N., Z.-s. Wu, Q.~Zhang, X.-y. Shi, Q.~Ma, and Y.-j. Qiao (2015).
+\newblock Optimization of parameter selection for partial least squares model
+  development.
+\newblock {\em Scientific reports\/}~{\em 5}, 11647.
+
+\bibitem[\protect\citeauthoryear{Zheng, Li, Wang, Geng, Cao, Sui, Wang, and
+  Du}{Zheng et~al.}{2012}]{5zheng2012stability}
+Zheng, K., Q.~Li, J.~Wang, J.~Geng, P.~Cao, T.~Sui, X.~Wang, and Y.~Du (2012).
+\newblock Stability competitive adaptive reweighted sampling (scars) and its
+  applications to multivariate calibration of nir spectra.
+\newblock {\em Chemometrics and Intelligent Laboratory Systems\/}~{\em 112},
+  48--54.
 
 \bibitem[\protect\citeauthoryear{Zheng, Zhang, Tong, Yao, and Du}{Zheng
   et~al.}{2015}]{6zheng2015pretreating}

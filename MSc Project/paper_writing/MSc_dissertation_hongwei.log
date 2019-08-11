@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.2.10)  4 AUG 2019 22:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.2.10)  8 AUG 2019 09:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -258,38 +258,45 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \openout3 = `MSc_dissertation_hongwei.toc'.
 
  [1]
-Underfull \hbox (badness 10000) in paragraph at lines 74--80
+Underfull \hbox (badness 10000) in paragraph at lines 75--81
 
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 88--92
+Underfull \hbox (badness 10000) in paragraph at lines 89--93
 
  []
 
-[3] (./MSc_dissertation_hongwei.bbl [4]) [5] (./MSc_dissertation_hongwei.aux) )
- 
+[3]
+<cross-validation.png, id=23, 542.025pt x 541.02126pt>
+File: cross-validation.png Graphic file (type png)
+<use cross-validation.png>
+Package pdftex.def Info: cross-validation.png  used on input line 128.
+(pdftex.def)             Requested size: 241.84842pt x 241.40173pt.
+ [4 <./cross-validation.png>] (./MSc_dissertation_hongwei.bbl [5] [6])
+[7] (./MSc_dissertation_hongwei.aux) ) 
 Here is how much of TeX's memory you used:
- 2889 strings out of 492649
- 38262 string characters out of 6129622
- 105750 words of memory out of 5000000
- 6728 multiletter control sequences out of 15000+600000
+ 2917 strings out of 492649
+ 38943 string characters out of 6129622
+ 106133 words of memory out of 5000000
+ 6754 multiletter control sequences out of 15000+600000
  12750 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,10n,27p,738b,214s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><
-/usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></
-usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></u
-sr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr
-/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/l
-ocal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/loc
-al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/
-texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/t
-exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on MSc_dissertation_hongwei.pdf (6 pages, 111230 bytes).
+ 41i,10n,27p,1361b,242s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2018/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2018/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmti12.pfb>
+Output written on MSc_dissertation_hongwei.pdf (8 pages, 153843 bytes).
 PDF statistics:
- 59 PDF objects out of 1000 (max. 8388607)
- 41 compressed objects within 1 object stream
+ 68 PDF objects out of 1000 (max. 8388607)
+ 47 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

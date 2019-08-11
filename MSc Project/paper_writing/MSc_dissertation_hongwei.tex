@@ -69,6 +69,7 @@
 	1, Root Mean Square Error for Calibration samples (RMSEC) is proposed by \citet{2yun2014strategy}.
 	
 	2, RMSECV is mentioned by many papers \citep{8ji2015using}. And there are two cross-validation methods. One is leave one out cross-validation (LOOCV), mentioned by \citet{6zheng2015pretreating}. The other is K-fold cross-validation, there are the 3-fold cross-validation \citep{3galvao2007cross}, 10-fold cross-validation \citep{8ji2015using} and so on. The calculation method of RMSECV is as follows:
+	
 	\begin{equation}
 		RMSECV=\sqrt{\frac{1}{n}\sum_{i=1}^{n} (y_i-\hat y_i)^2} 
 	\end{equation}
@@ -95,15 +96,15 @@ RMSEP=\sqrt{\frac{1}{m}\sum_{i=1}^{m} (y_i-\hat y_i)^2}
 	
 	\subsection{Pre-treatment}
 	\label{sec:treat}
-	The papers use different pre-treatments of the data, and the results of the model will be very different. For example, 7th paper and 8th paper also use M5 to predict the first constituent, and the results are very different. Through the different literatures, the common pretreatment of corn data has the following four types:
+	The papers use different pre-treatments of the data, and the results of the model will be very different. For example, \citet{7galvao2008variable} and \citet{8ji2015using} both use M5 to predict the first constituent, and the results are very different. Through the different literatures, the common pretreatment of corn data has the following four types:
 	
-	1. Nothing to deal with, such as 1st paper.
+	1. Nothing to deal with \citep{1su2006partial}.
 	
-	2. Scale the data, such as 4th paper.
+	2. Scale the data \citep{4ergon2006reduced}.
 	
-	3. SavitzkyGolay filter processing on the data, such as 3rd paper.
+	3. SavitzkyGolay filter processing on the data \citep{3galvao2007cross}.
 	
-	4. Delete the outliers, such as 8th paper.
+	4. Delete the outliers \citep{8ji2015using}.
 	
 	\subsection{Sample splitting}
 	\label{splitting}
@@ -111,24 +112,48 @@ RMSEP=\sqrt{\frac{1}{m}\sum_{i=1}^{m} (y_i-\hat y_i)^2}
 	
 	1. A completely random sample \citep{1su2006partial}.
 	
-	2. Choosing the samples by the SPXY method \citep{3galvao2007cross}.
+	2. Choosing the samples by SPXY method \citep{3galvao2007cross}.
 	
-	3. Use the Kennard-Stone (K-S) algorithm, such as 8th paper  in the third form.
+	3. Use the Kennard-Stone (K-S) algorithm \citep{zhao2015optimization}.
 	
-	4. Directly divide the raw data into the first half and the second half, the first half is cross-validation sets, and the second half is prediction set. For example 4th paper.
+	4. Directly divide the raw data into the first half and the second half, the first half is cross-validation sets, and the second half is prediction set \citep{4ergon2006reduced}.
 	
-	The second and third methods will result in the prediction level data being very close to the data of the cross-check set, which may increase the accuracy of the prediction and reduce the prediction difficulty, so these two methods are not used here. Because in the actual problem, the performance of the algorithm looks better when the two sample sets are too similar, which is not what we want. The last method relies on the sorting of the original data, so the next step is to take a random sampling method to simulate the sample. The selection of the quantity refers to the 5th and 6th documents, so the sample size of 20~70 will be selected to build the model, and the rest will be predicted.
+	The second and third methods will result in the prediction level data being very close to the data of the cross-validation set, which may increase the accuracy of the prediction and reduce the prediction difficulty, so these two methods are not used here. Because in the actual problem, the performance of the algorithm looks better when the two sample sets are too similar, which is not what we want. The last method relies on the sorting of the original data, so the next step is to take a random sampling method to simulate the sample. The selection of samples refers to \citet{5zheng2012stability} and \citet{6zheng2015pretreating}, so the sample size of 20 $\sim$ 70 will be selected as calibration to build the model, and the rest will selected as prediction.
 	
 	\subsection{Cross-validation}
 	\label{cross-validation}
+	The cross-validation is to divide the data into n groups. One of group is selected as the prediction set, and the remaining n-1 groups are used as the training set, and testing n times. Finally, the average of results of all tests was taken as the cross-validation result. If the selected n is the same as the size of sample, then this method is called leave one out method (LOO), otherwise it is called the k-fold cross-validation. Cross-validation not only improves the reliability of models, but also allows the model to avoid falling into local optimal solutions. Figure \ref{fig:cross-validation} shows the flow of the cross-validation.
+	\begin{figure}[h]    % start of figure environment
+		\centering           % put the graph(s) in the centre of the page (horizontally)
+		\includegraphics[width=8.5cm, angle=0]{cross-validation.png}  % width changes size
+	    \vspace*{-0.25cm}    % manual adjustment of vertical spacing
+		\caption{The flow of the cross-validation}          % a meaningful caption
+		\label{fig:cross-validation}               % label for the figure
+	\end{figure}                        % end of figure environment
+	
+	The choice between LOO and k-fold cross-validation is determined according to the number of samples. When the sample size is small, the LOO is preferred. When the sample size is too large, the k-fold cross-test is preferred. There is an additional reminder here that the difference between LOO and the k-fold cross-validation is not just a difference in computing time. More, when the sample size is too large, LOO may cause over-fitting problems, and the k-fold cross-validation can not only save computational power, but also avoid the over-fitting problem in here. Chapter \ref{sec:Cross-Validation} will discuss the difference.
 	
 	\subsection{PLS algorithm}
 	\label{PLS_al}
+	The partial least squares regression (PLS) is a multi-regression technique proposed by \citet{wold1984collinearity}, and it is also the most common statistical method in the research of near-infrared spectroscopy. Partial least squares regression is similar to principal components analysis (PCA) and is also a factor analysis method. In the modelling  process, it is first necessary to decompose the matrix of spectrum and then extract a few principal components (these variables are called latent variables in PLS) to represent most of the information of original spectrum. Because the spectral data is high-dimensional, the number of independent variables is more than the number of samples, thus it cannot meet the basic assumption of least squares method. Therefore, it is necessary to extracting the data to some components, and then make the regression. Compared with PCA, PLS not only considers the dimensionality reduction of the independent variables, but also maximizes the covariance between the components and target variables. In this way, the covariance between the extracted components and the target vector will be the maximum. From this point, PLS is the improvement and further development of PCA, and the results in many applications also prove that PLS has better performance than PCA.
+	
+	The process of partial least squares regression is as follows:
+	
+	The PLS model needs to perform principal component decomposition on the spectral data matrix and the target vector when it is established.
+	
+	\begin{equation}
+	X=TP^T+E 
+	\end{equation}
+	\begin{equation}
+	Y=UQ^T+F
+	\end{equation}
+	Where T and P are the scoring matrix and the load matrix of the spectral matrix X, respectively. U and Q are the scoring matrix and the load matrix of the detection target vector Y, respectively. E and F are residual matrices of the spectral matrix X and the detection target vector Y, respectively, and T and U can perform linear regression as follows:
+	
 	
 	\subsection{Parallel computing}
 	\label{parallel}
 	
-	\subsection{Myriad}
+	\subsection{High performance computing system}
 	\label{myriad}
 	
 	
@@ -136,17 +161,17 @@ RMSEP=\sqrt{\frac{1}{m}\sum_{i=1}^{m} (y_i-\hat y_i)^2}
 	\label{sec:result}
 	
 	\subsection{Loop times}
-	
+	\label{sec:Loop times}
 	\subsection{Number of Samples}
-	
+	\label{sec:Number of Samples}
 	\subsection{Number of Components}
-	
+	\label{sec:Number of Components}
 	\subsection{Pre-treatment}
-	
+	\label{sec:Pre-treatment}
 	\subsection{Cross-Validation}
-	
+	\label{sec:Cross-Validation}
 	\subsection{Compare with papers}
-	
+	\label{sec:Compare with papers}
 	\section{Conclusions}
 	\label{sec:conclution}
 	

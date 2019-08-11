@@ -7,15 +7,15 @@
 \contentsline {subsection}{\numberline {4.3}Sample splitting}{3}
 \contentsline {subsection}{\numberline {4.4}Cross-validation}{4}
 \contentsline {subsection}{\numberline {4.5}PLS algorithm}{4}
-\contentsline {subsection}{\numberline {4.6}Parallel computing}{4}
-\contentsline {subsection}{\numberline {4.7}Myriad}{4}
-\contentsline {section}{\numberline {5}Result and discussion}{4}
-\contentsline {subsection}{\numberline {5.1}Loop times}{4}
-\contentsline {subsection}{\numberline {5.2}Number of Samples}{4}
-\contentsline {subsection}{\numberline {5.3}Number of Components}{4}
-\contentsline {subsection}{\numberline {5.4}Pre-treatment}{4}
-\contentsline {subsection}{\numberline {5.5}Cross-Validation}{4}
-\contentsline {subsection}{\numberline {5.6}Compare with papers}{4}
-\contentsline {section}{\numberline {6}Conclusions}{4}
-\contentsline {section}{\numberline {7}Conclusion}{4}
-\contentsline {section}{References}{4}
+\contentsline {subsection}{\numberline {4.6}Parallel computing}{6}
+\contentsline {subsection}{\numberline {4.7}High performance computing system}{6}
+\contentsline {section}{\numberline {5}Result and discussion}{6}
+\contentsline {subsection}{\numberline {5.1}Loop times}{6}
+\contentsline {subsection}{\numberline {5.2}Number of Samples}{6}
+\contentsline {subsection}{\numberline {5.3}Number of Components}{6}
+\contentsline {subsection}{\numberline {5.4}Pre-treatment}{6}
+\contentsline {subsection}{\numberline {5.5}Cross-Validation}{6}
+\contentsline {subsection}{\numberline {5.6}Compare with papers}{6}
+\contentsline {section}{\numberline {6}Conclusions}{6}
+\contentsline {section}{\numberline {7}Conclusion}{6}
+\contentsline {section}{References}{6}

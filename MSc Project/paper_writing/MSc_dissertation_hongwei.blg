@@ -3,44 +3,44 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: MSc_dissertation_hongwei.aux
 The style file: chicago.bst
 Database file #1: hongwei_pls_MSc.bib
-You've used 7 entries,
+You've used 12 entries,
             2861 wiz_defined-function locations,
-            665 strings with 6978 characters,
-and the built_in function-call counts, 7425 in all, are:
-= -- 514
-> -- 852
+            697 strings with 8234 characters,
+and the built_in function-call counts, 12053 in all, are:
+= -- 845
+> -- 1343
 < -- 0
-+ -- 282
-- -- 276
-* -- 846
-:= -- 1393
-add.period$ -- 21
-call.type$ -- 7
-change.case$ -- 81
-chr.to.int$ -- 7
-cite$ -- 7
-duplicate$ -- 123
-empty$ -- 304
-format.name$ -- 304
-if$ -- 1345
++ -- 442
+- -- 436
+* -- 1352
+:= -- 2260
+add.period$ -- 36
+call.type$ -- 12
+change.case$ -- 132
+chr.to.int$ -- 12
+cite$ -- 12
+duplicate$ -- 211
+empty$ -- 514
+format.name$ -- 480
+if$ -- 2184
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 7
-newline$ -- 38
-num.names$ -- 70
-pop$ -- 60
+missing$ -- 12
+newline$ -- 63
+num.names$ -- 120
+pop$ -- 96
 preamble$ -- 1
-purify$ -- 123
+purify$ -- 204
 quote$ -- 0
-skip$ -- 120
+skip$ -- 205
 stack$ -- 0
-substring$ -- 315
-swap$ -- 39
+substring$ -- 516
+swap$ -- 67
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 140
+type$ -- 240
 warning$ -- 0
-while$ -- 56
+while$ -- 99
 width$ -- 0
-write$ -- 93
+write$ -- 158
