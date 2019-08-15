@@ -10,6 +10,9 @@
 \usepackage{natbib}                % A BibTeX style file for references.
 \usepackage{amssymb,amsmath}        % for maths symbols and equation numbering
 \usepackage{array,tabularx,calc}
+\usepackage{multirow} % create the tables
+\usepackage{lscape} %put table lscape
+\usepackage{pdflscape} %put pages lscape
 
 \newenvironment{conditions}[1][where:]
 {%
@@ -148,7 +151,7 @@ RMSEP=\sqrt{\frac{1}{m}\sum_{i=1}^{m} (y_i-\hat y_i)^2}
 	Y=UQ^T+F
 	\end{equation}
 	Where T and P are the scoring matrix and the load matrix of the spectral matrix X, respectively. U and Q are the scoring matrix and the load matrix of the detection target vector Y, respectively. E and F are residual matrices of the spectral matrix X and the detection target vector Y, respectively, and T and U can perform linear regression as follows:
-	
+	......
 	
 	\subsection{Parallel computing}
 	\label{parallel}
@@ -162,16 +165,77 @@ RMSEP=\sqrt{\frac{1}{m}\sum_{i=1}^{m} (y_i-\hat y_i)^2}
 	
 	\subsection{Loop times}
 	\label{sec:Loop times}
+	\begin{figure}[h]    % start of figure environment
+		\centering           % put the graph(s) in the centre of the page (horizontally)
+		\includegraphics[width=15.5cm, angle=0]{no_loop_time500.pdf}  % width changes size
+		\vspace*{-0.25cm}    % manual adjustment of vertical spacing
+		\caption{RMSECV and RMSEP under different loop times}          % a meaningful caption
+		\label{fig:looptimes}               % label for the figure
+	\end{figure}                        % end of figure environment
+	
 	\subsection{Number of Samples}
 	\label{sec:Number of Samples}
+	
 	\subsection{Number of Components}
 	\label{sec:Number of Components}
+	
 	\subsection{Pre-treatment}
 	\label{sec:Pre-treatment}
+	
 	\subsection{Cross-Validation}
 	\label{sec:Cross-Validation}
+	
 	\subsection{Compare with papers}
 	\label{sec:Compare with papers}
+	
+	\begin{landscape}
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+\begin{table}[]
+	\begin{tabular}{llllllllllll}
+		\hline
+		\multirow{2}{*}{Paper} & \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Data\\ set\end{tabular}} & \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Calibration\\ set\end{tabular}} & \multirow{2}{*}{Pre-treatment}                                           & \multicolumn{2}{c}{Moisture}    & \multicolumn{2}{c}{Oil}         & \multicolumn{2}{c}{Protein}   & \multicolumn{2}{c}{Starch}    \\ \cline{5-12} 
+		&                                                                     &                                                                            &                                                                          & RMSECV         & RMSEP          & RMSECV         & RMSEP          & RMSECV        & RMSEP         & RMSECV        & RMSEP         \\ \hline
+		1                      & mp6                                                                 & 60                                                                         & None                                                                     &                & 0.1446034(10)  &                & 0.09225961(10) &               & 0.1400926(10) &               & 0.3436289(10) \\
+		2                      & m5                                                                  & 64 5-fold                                                                  & None                                                                     & 0.01488358(10) & 0.02113168(10) &                &                &               &               &               &               \\
+		3                      & m5                                                                  & 60                                                                         & SavitzkyGolay                                                            &                & 0.05628462(5)  &                & 0.03163213(12) &               & 0.1085697(6)  &               & 0.2371506(6)  \\
+		4                      & m5                                                                  & 40                                                                         & Scale                                                                    &                & 0.05862355(12) &                & 0.3891674(14)  &               & 0.3554446(8)  &               & 0.3878001(9)  \\
+		4                      & mp5                                                                 & 40                                                                         & Scale                                                                    &                & 0.4194983(12)  &                & 0.7190886(17)  &               & 0.3731878(8)  &               & 0.4980389(9)  \\
+		5                      & mp5                                                                 & 40                                                                         & Scale                                                                    &                & 0.4023674(10)  &                &                &               &               &               &               \\
+		6                      & m5                                                                  & 64 5-fold                                                                  & \begin{tabular}[c]{@{}l@{}}savitzkyGolay\\ filler=(0,2,13)\end{tabular}  &                &                & 0.08331678(7)  & 0.07401861(7)  &               &               & 0.3322749(7)  & 0.2890035(7)  \\
+		6                      & m5                                                                  & 64 5-fold                                                                  & \begin{tabular}[c]{@{}l@{}}savitzkyGolay\\ filler=(1,2,13)\end{tabular}  &                &                & 0.06403154(7)  & 0.05660701(7)  &               &               & 0.2426438(7)  & 0.2287837(7)  \\
+		6                      & m5                                                                  & 64 5-fold                                                                  & \begin{tabular}[c]{@{}l@{}}savitzkyGolay \\ filler=(2,2,13)\end{tabular} &                &                & 0.04751603(7)  & 0.03468245(7)  &               &               & 0.3216974(7)  & 0.3037632(7)  \\
+		7                      & m5                                                                  & 60                                                                         & \begin{tabular}[c]{@{}l@{}}savitzkyGolay \\ filler=(1,2,21)\end{tabular} &                & 0.04043771(6)  &                & 0.04937681(10) &               & 0.1021954(7)  &               & 0.2630782(5)  \\
+		8                      & m5                                                                  & 52                                                                         & Delete 75 , 77                                                           & 0.02177367(10) & 0.0197695(10)  & 0.06621319(10) & 0.05955603(10) & 0.1194857(10) & 0.1123115(10) & 0.2937006(10) & 0.2723313(10)
+	\end{tabular}
+\end{table}
+\end{landscape}
+
+	\begin{landscape}
+\begin{table}[]
+	\begin{tabular}{lllllllll}
+		\hline
+		Paper & \begin{tabular}[c]{@{}l@{}}Data\\ set\end{tabular} & \begin{tabular}[c]{@{}l@{}}Calibration\\ set\end{tabular} & Pre-treatment                                                            & \begin{tabular}[c]{@{}l@{}}RMSECV/\\ RMSEP\end{tabular} & Moisture       & Oil            & Protein       & Starch        \\ \hline
+		1     & mp6                                                & 60                                                        & None                                                                     & RMSEP                                                   & 0.1446034(10)  & 0.09225961(10) & 0.1400926(10) & 0.3436289(10) \\
+		2     & m5                                                 & 64 5-fold                                                 & None                                                                     & RMSECV                                                  & 0.01488358(10) &                &               &               \\
+		2     & m5                                                 & 64 5-fold                                                 & None                                                                     & RMSEP                                                   & 0.02113168(10) &                &               &               \\
+		3     & m5                                                 & 60                                                        & SavitzkyGolay                                                            & RMSEP                                                   & 0.05628462(5)  & 0.03163213(12) & 0.1085697(6)  & 0.2371506(6)  \\
+		4     & m5                                                 & 40                                                        & Scale                                                                    & RMSEP                                                   & 0.05862355(12) & 0.3891674(14)  & 0.3554446(8)  & 0.3878001(9)  \\
+		4     & mp5                                                & 40                                                        & Scale                                                                    & RMSEP                                                   & 0.4194983(12)  & 0.7190886(17)  & 0.3731878(8)  & 0.4980389(9)  \\
+		5     & mp5                                                & 40                                                        & Scale                                                                    & RMSEP                                                   & 0.4023674(10)  &                &               &               \\
+		6     & m5                                                 & 64 5-fold                                                 & \begin{tabular}[c]{@{}l@{}}savitzkyGolay\\ filler=(0,2,13)\end{tabular}  & RMSECV                                                  &                & 0.08331678(7)  &               & 0.3322749(7)  \\
+		6     & m5                                                 & 64 5-fold                                                 & \begin{tabular}[c]{@{}l@{}}savitzkyGolay\\ filler=(0,2,13)\end{tabular}  & RMSEP                                                   &                & 0.07401861(7)  &               & 0.2890035(7)  \\
+		6     & m5                                                 & 64 5-fold                                                 & \begin{tabular}[c]{@{}l@{}}savitzkyGolay\\ filler=(1,2,13)\end{tabular}  & RMSECV                                                  &                & 0.06403154(7)  &               & 0.2426438(7)  \\
+		6     & m5                                                 & 64 5-fold                                                 & \begin{tabular}[c]{@{}l@{}}savitzkyGolay\\ filler=(1,2,13)\end{tabular}  & RMSEP                                                   &                & 0.05660701(7)  &               & 0.2287837(7)  \\
+		6     & m5                                                 & 64 5-fold                                                 & \begin{tabular}[c]{@{}l@{}}savitzkyGolay \\ filler=(2,2,13)\end{tabular} & RMSECV                                                  &                & 0.04751603(7)  &               & 0.3216974(7)  \\
+		6     & m5                                                 & 64 5-fold                                                 & \begin{tabular}[c]{@{}l@{}}savitzkyGolay\\ filler=(2,2,13)\end{tabular}  & RMSEP                                                   &                & 0.03468245(7)  &               & 0.3037632(7)  \\
+		7     & m5                                                 & 60                                                        & \begin{tabular}[c]{@{}l@{}}savitzkyGolay \\ filler=(1,2,21)\end{tabular} & RMSECV                                                  & 0.04043771(6)  & 0.04937681(10) & 0.1021954(7)  & 0.2630782(5)  \\
+		8     & m5                                                 & 52                                                        & Delete 75 , 77                                                           & RMSECV                                                  & 0.02177367(10) & 0.06621319(10) & 0.1194857(10) & 0.2937006(10) \\
+		8     & m5                                                 & 52                                                        & Delete 75 , 77                                                           & RMSEP                                                   & 0.0197695(10)  & 0.05955603(10) & 0.1123115(10) & 0.2723313(10)
+	\end{tabular}
+\end{table}
+\end{landscape}
+
 	\section{Conclusions}
 	\label{sec:conclution}
 	
@@ -180,7 +244,7 @@ RMSEP=\sqrt{\frac{1}{m}\sum_{i=1}^{m} (y_i-\hat y_i)^2}
 	
 	
 	
-	\section{Conclusion}
+
 	
 	\addcontentsline{toc}{section}{References} % to add references to table of contents
 	\bibliography{hongwei_pls_MSc}                     % read references from example.bib
