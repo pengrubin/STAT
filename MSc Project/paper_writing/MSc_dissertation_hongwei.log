@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.2.10)  20 AUG 2019 10:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.2.10)  20 AUG 2019 23:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -318,48 +318,68 @@ LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 203.
 
 
-Overfull \hbox (126.74205pt too wide) in paragraph at lines 204--216
+Overfull \hbox (29.72069pt too wide) in paragraph at lines 204--216
+[][] 
+ []
+
+[8]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 227.
+
+
+Overfull \hbox (26.34325pt too wide) in paragraph at lines 228--241
 [][] 
  []
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 223.
+               Default added (so using `tbp') on input line 248.
 
 
-Overfull \hbox (29.6071pt too wide) in paragraph at lines 224--237
+Overfull \hbox (53.6071pt too wide) in paragraph at lines 249--265
 [][] 
  []
 
+[9
+
+
+
+] [10]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 245.
+               Default added (so using `tbp') on input line 276.
 
 
-Overfull \hbox (23.73216pt too wide) in paragraph at lines 246--260
+Overfull \hbox (20.4683pt too wide) in paragraph at lines 277--291
 [][] 
  []
 
-[8
+[11
 
-] [9]
 
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 270.
-
+]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 290.
+               Default added (so using `tbp') on input line 301.
+
+[12
 
 
-Overfull \hbox (6.10735pt too wide) in paragraph at lines 291--305
+]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 323.
+
+
+Overfull \hbox (2.84349pt too wide) in paragraph at lines 324--338
 [][] 
  []
 
-[10
+[13
 
 
-] [11] (./MSc_dissertation_hongwei.bbl) [12
+] (./MSc_dissertation_hongwei.bbl) [14
 
 ] (./MSc_dissertation_hongwei.aux)
 
@@ -367,10 +387,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3027 strings out of 492649
- 41047 string characters out of 6129622
- 119483 words of memory out of 5000000
- 6848 multiletter control sequences out of 15000+600000
+ 3028 strings out of 492649
+ 41058 string characters out of 6129622
+ 119484 words of memory out of 5000000
+ 6849 multiletter control sequences out of 15000+600000
  12750 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,16n,27p,1361b,284s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -383,10 +403,10 @@ sr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
 ocal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loca
 l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
 /texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on MSc_dissertation_hongwei.pdf (13 pages, 199905 bytes).
+Output written on MSc_dissertation_hongwei.pdf (15 pages, 201603 bytes).
 PDF statistics:
- 97 PDF objects out of 1000 (max. 8388607)
- 67 compressed objects within 1 object stream
+ 103 PDF objects out of 1000 (max. 8388607)
+ 71 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
