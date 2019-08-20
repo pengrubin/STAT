@@ -225,44 +225,24 @@ Table \ref{tab:moisture} is the regression for moisture.
 % Please add the following required packages to your document preamble:
 % \usepackage{multirow}
 \begin{table}[]
-	\begin{tabular}{llllllllllllll}
-		\cline{1-11}
-		\multicolumn{1}{c}{\multirow{2}{*}{Paper}} & \multicolumn{1}{c}{\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Data\\ set\end{tabular}}} & \multicolumn{1}{c}{\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Pre-\\ treatment\end{tabular}}} & \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Calibration\\ set\end{tabular}} & \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Number of\\ components\end{tabular}} & \multicolumn{2}{c}{Moisture} & \multicolumn{2}{c}{PLS in papers} & \multicolumn{2}{c}{Developed method} &  &  &  \\ \cline{6-11}
-		\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  &  & RMSECV & RMSEP & RMSECV & RMSEP & RMSECV & RMSEP &  &  &  \\ \cline{1-11}
-		1 & mp6 & None & 60(LOO) & 10 &  & 0.148(0.0213) &  & 0.159 &  & 0.139 &  &  &  \\
-		2 & m5 & None & 64(5-fold) & 10 & 0.0152(0.000739) & 0.0202(0.00319) & 0.0149 & 0.0201 & 0.00026 & 0.00035 &  &  &  \\
-		3 & m5 & Scale & 40(LOO) & 12 &  & 0.0231(0.00443) &  & 0.3506 &  & 0.3485 &  &  &  \\
-		3 & mp5 & Scale & 40(LOO) & 12 &  & 0.159(0.0178) &  & 0.3506 &  & 0.3485 &  &  &  \\
-		4 & mp5 & Scale & 40(LOO) & 10 &  & 0.405(0.0467) &  & 0.357 &  & 0.265 &  &  &  \\
-		5 & m5 & SG(1,2,13) & 60(3-fold) & 5 &  & 0.0547(0.00942) &  & 0.040 &  & 0.012 &  &  &  \\
-		6 & m5 & SG(1,2,21) & 60(LOO) & 6 &  & 0.0396(0.00625) &  & 0.045 &  & 0.019 &  &  &  \\
-		8 & m5 & Delete 75 , 77 & 52(LOO) & 10 & 0.0221(0.0018) & 0.0194(0.00298) & 0.0124 & 0.0157 & 0.0047 & 0.0056 &  &  & 
-	\end{tabular}
+	\begin{tabular}{llllllllllllllll}
+	\cline{1-13}
+	\multicolumn{1}{c}{\multirow{2}{*}{Paper}} & \multicolumn{1}{c}{\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Data\\ set\end{tabular}}} & \multicolumn{1}{c}{\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Pre-\\ treatment\end{tabular}}} & \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Calibration\\ set\end{tabular}} & \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Number of\\ Components\end{tabular}} & \multicolumn{2}{c}{Moisture} &  & \multicolumn{2}{c}{PLS in papers} &  & \multicolumn{2}{c}{Developed method} &  &  &  \\ \cline{6-7} \cline{9-10} \cline{12-13}
+	\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  &  & RMSECV & RMSEP &  & RMSECV & RMSEP &  & RMSECV & RMSEP &  &  &  \\ \cline{1-13}
+	1 & mp6 & None & 60(LOO) & 10 &  & 0.148(0.0213) &  &  & 0.159 &  &  & 0.139 &  &  &  \\
+	2 & m5 & None & 64(5-fold) & 10 & 0.0152(0.000739) & 0.0202(0.00319) &  & 0.0149 & 0.0201 &  & 0.00026 & 0.00035 &  &  &  \\
+	3 & m5 & Scale & 40(LOO) & 12 &  & 0.0231(0.00443) &  &  & 0.3506 &  &  & 0.3485 &  &  &  \\
+	3 & mp5 & Scale & 40(LOO) & 12 &  & 0.159(0.0178) &  &  & 0.3506 &  &  & 0.3485 &  &  &  \\
+	4 & mp5 & Scale & 40(LOO) & 10 &  & 0.405(0.0467) &  &  & 0.357 &  &  & 0.265 &  &  &  \\
+	5 & m5 & SG(1,2,13) & 60(3-fold) & 5 &  & 0.0547(0.00942) &  &  & 0.040 &  &  & 0.012 &  &  &  \\
+	6 & m5 & SG(1,2,21) & 60(LOO) & 6 &  & 0.0396(0.00625) &  &  & 0.045 &  &  & 0.019 &  &  &  \\
+	8 & m5 & Delete 75 , 77 & 52(LOO) & 10 & 0.0221(0.0018) & 0.0194(0.00298) &  & 0.0124 & 0.0157 &  & 0.0047 & 0.0056 &  &  & 
+\end{tabular}
 
 \caption{regression of moisture.The values in parentheses corresponds to the cross-validation type in calibration set and standard deviation in moisture.}
 \label{tab:moisture}
 \end{table}
 
-% Please add the following required packages to your document preamble:
-% \usepackage{multirow}
-\begin{table}[]
-	\begin{tabular}{llllllllllllllll}
-		\cline{1-13}
-		\multicolumn{1}{c}{\multirow{2}{*}{Paper}} & \multicolumn{1}{c}{\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Data\\ set\end{tabular}}} & \multicolumn{1}{c}{\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Pre-\\ treatment\end{tabular}}} & \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Calibration\\ set\end{tabular}} & \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Number of\\ Components\end{tabular}} & \multicolumn{2}{c}{Moisture} &  & \multicolumn{2}{c}{PLS in papers} &  & \multicolumn{2}{c}{Developed method} &  &  &  \\ \cline{6-7} \cline{9-10} \cline{12-13}
-		\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  &  & RMSECV & RMSEP &  & RMSECV & RMSEP &  & RMSECV & RMSEP &  &  &  \\ \cline{1-13}
-		1 & mp6 & None & 60(LOO) & 10 &  & 0.148(0.0213) &  &  & 0.159 &  &  & 0.139 &  &  &  \\
-		2 & m5 & None & 64(5-fold) & 10 & 0.0152(0.000739) & 0.0202(0.00319) &  & 0.0149 & 0.0201 &  & 0.00026 & 0.00035 &  &  &  \\
-		3 & m5 & Scale & 40(LOO) & 12 &  & 0.0231(0.00443) &  &  & 0.3506 &  &  & 0.3485 &  &  &  \\
-		3 & mp5 & Scale & 40(LOO) & 12 &  & 0.159(0.0178) &  &  & 0.3506 &  &  & 0.3485 &  &  &  \\
-		4 & mp5 & Scale & 40(LOO) & 10 &  & 0.405(0.0467) &  &  & 0.357 &  &  & 0.265 &  &  &  \\
-		5 & m5 & SG(1,2,13) & 60(3-fold) & 5 &  & 0.0547(0.00942) &  &  & 0.040 &  &  & 0.012 &  &  &  \\
-		6 & m5 & SG(1,2,21) & 60(LOO) & 6 &  & 0.0396(0.00625) &  &  & 0.045 &  &  & 0.019 &  &  &  \\
-		7 & m5 & SG(0,2,13) & 64(5-fold) &  &  &  &  &  &  &  &  &  &  &  &  \\
-		7 & m5 & SG(1,2,13) & 64(5-fold) &  &  &  &  &  &  &  &  &  &  &  &  \\
-		7 & m5 & SG(2,2,13) & 64(5-fold) &  &  &  &  &  &  &  &  &  &  &  &  \\
-		8 & m5 & Delete 75 , 77 & 52(LOO) & 10 & 0.0221(0.0018) & 0.0194(0.00298) &  & 0.0124 & 0.0157 &  & 0.0047 & 0.0056 &  &  & 
-	\end{tabular}
-\end{table}
 
 
 
@@ -274,19 +254,20 @@ Table \ref{tab:oil} is the regression for Oil.
 % Please add the following required packages to your document preamble:
 % \usepackage{multirow}
 \begin{table}[]
-	\begin{tabular}{llllllllllllll}
-		\cline{1-11}
-		\multicolumn{1}{c}{\multirow{2}{*}{Paper}} & \multicolumn{1}{c}{\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Data\\ set\end{tabular}}} & \multicolumn{1}{c}{\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Pre-\\ treatment\end{tabular}}} & \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Calibration\\ set\end{tabular}} & \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Number of\\ components\end{tabular}} & \multicolumn{2}{c}{Oil} & \multicolumn{2}{c}{PLS in papers} & \multicolumn{2}{c}{Developed method} &  &  &  \\ \cline{6-11}
-		\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  &  & RMSECV & RMSEP & RMSECV & RMSEP & RMSECV & RMSEP &  &  &  \\ \cline{1-11}
-		1 & mp6 & None & 60(LOO) & 10 &  & 0.0991(0.0161) &  & 0.107 &  & 0.0948 &  &  &  \\
-		3 & m5 & Scale & 40(LOO) & 14 &  & 0.396(0.0665) &  & 0.6912 &  & 0.6902 &  &  &  \\
-		3 & mp5 & Scale & 40(LOO) & 14 &  & 0.694(0.095) &  & 0.6912 &  & 0.6902 &  &  &  \\
-		5 & m5 & SG(1,2,13) & 60(3-fold) & 12 &  & 0.0329(0.00672) &  & 0.029 &  & 0.022 &  &  &  \\
-		6 & m5 & SG(1,2,21) & 60(LOO) & 10 &  & 0.0505(0.0103) &  & 0.028 &  & 0.030 &  &  &  \\
-		7 & m5 & SG(0,2,13) & 64(5-fold) & 7 & 0.0827(0.00419) & 0.0716(0.0116) & 0.0729 & 0.0855 & 0.0363 & 0.0400 &  &  &  \\
-		7 & m5 & SG(1,2,13) & 64(5-fold) & 7 & 0.0639(0.00357) & 0.0548(0.012) & 0.0577 & 0.0682 & 0.0363 & 0.0400 &  &  &  \\
-		7 & m5 & SG(2,2,13) & 64(5-fold) & 7 & 0.0480(0.00312) & 0.0368 (0.0088) & 0.0370 & 0.0397 & 0.0363 & 0.0400 &  &  &  \\
-		8 & m5 & Delete 75 , 77 & 52(LOO) & 10 & 0.0651(0.00662) & 0.0604(0.00876) & 0.0613 & 0.0673 & 0.0483 & 0.0546 &  &  & 
+
+	\begin{tabular}{llllllllllllllll}
+		\cline{1-13}
+		\multicolumn{1}{c}{\multirow{2}{*}{Paper}} & \multicolumn{1}{c}{\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Data\\ set\end{tabular}}} & \multicolumn{1}{c}{\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Pre-\\ treatment\end{tabular}}} & \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Calibration\\ set\end{tabular}} & \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Number of\\ Components\end{tabular}} & \multicolumn{2}{c}{Oil} &  & \multicolumn{2}{c}{PLS in papers} &  & \multicolumn{2}{c}{Developed method} &  &  &  \\ \cline{6-7} \cline{9-10} \cline{12-13}
+		\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  &  & RMSECV & RMSEP &  & RMSECV & RMSEP &  & RMSECV & RMSEP &  &  &  \\ \cline{1-13}
+		1 & mp6 & None & 60(LOO) & 10 &  & 0.0991(0.0161) &  &  & 0.107 &  &  & 0.0948 &  &  &  \\
+		3 & m5 & Scale & 40(LOO) & 14 &  & 0.396(0.0665) &  &  & 0.6912 &  &  & 0.6902 &  &  &  \\
+		3 & mp5 & Scale & 40(LOO) & 14 &  & 0.694(0.095) &  &  & 0.6912 &  &  & 0.6902 &  &  &  \\
+		5 & m5 & SG(1,2,13) & 60(3-fold) & 12 &  & 0.0329(0.00672) &  &  & 0.029 &  &  & 0.022 &  &  &  \\
+		6 & m5 & SG(1,2,21) & 60(LOO) & 10 &  & 0.0505(0.0103) &  &  & 0.028 &  &  & 0.030 &  &  &  \\
+		7 & m5 & SG(0,2,13) & 64(5-fold) & 7 & 0.0827(0.00419) & 0.0716(0.0116) &  & 0.0729 & 0.0855 &  &  & 0.0400 &  &  &  \\
+		7 & m5 & SG(1,2,13) & 64(5-fold) & 7 & 0.0639(0.00357) & 0.0548(0.012) &  & 0.0577 & 0.0682 &  & 0.0363 & 0.0400 &  &  &  \\
+		7 & m5 & SG(2,2,13) & 64(5-fold) & 7 & 0.0480(0.00312) & 0.0368 (0.0088) &  & 0.0370 & 0.0397 &  & 0.0363 & 0.0400 &  &  &  \\
+		8 & m5 & Delete 75 , 77 & 52(LOO) & 10 & 0.0651(0.00662) & 0.0604(0.00876) &  & 0.0613 & 0.0673 &  & 0.0483 & 0.0546 &  &  & 
 	\end{tabular}
 
 \caption{regression of oil. The values in parentheses corresponds to the cross-validation type in calibration set and standard deviation in moisture.}
@@ -299,17 +280,18 @@ Table \ref{tab:protein} is the regression for protein.
 % Please add the following required packages to your document preamble:
 % \usepackage{multirow}
 \begin{table}[]
-	\begin{tabular}{llllllllllllll}
-		\cline{1-11}
-		\multicolumn{1}{c}{\multirow{2}{*}{Paper}} & \multicolumn{1}{c}{\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Data\\ set\end{tabular}}} & \multicolumn{1}{c}{\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Pre-\\ treatment\end{tabular}}} & \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Calibration\\ set\end{tabular}} & \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Number of\\ components\end{tabular}} & \multicolumn{2}{c}{Protein} & \multicolumn{2}{c}{PLS in papers} & \multicolumn{2}{c}{Developed method} &  &  &  \\ \cline{6-11}
-		\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  &  & RMSECV & RMSEP & RMSECV & RMSEP & RMSECV & RMSEP &  &  &  \\ \cline{1-11}
-		1 & mp6 & None & 60(LOO) & 10 &  & 0.141(0.0203) &  & 0.150 &  & 0.145 &  &  &  \\
-		3 & m5 & Scale & 40(LOO) & 8 &  & 0.349(0.051) &  & 0.4466 &  & 0.4349 &  &  &  \\
-		3 & mp5 & Scale & 40(LOO) & 8 &  & 0.37(0.0485) &  & 0.4466 &  & 0.4349 &  &  &  \\
-		5 & m5 & SG(1,2,13) & 60(3-fold) & 6 &  & 0.107(0.0195) &  & 0.119 &  & 0.040 &  &  &  \\
-		6 & m5 & SG(1,2,21) & 60(LOO) & 7 &  & 0.102(0.0186) &  & 0.110 &  & 0.033 &  &  &  \\
-		8 & m5 & Delete 75 , 77 & 52(LOO) & 13 & 0.119(0.0155) & 0.11(0.0169) & 0.1080 & 0.1353 & 0.0429 & 0.0846 &  &  & 
+	\begin{tabular}{llllllllllllllll}
+		\cline{1-13}
+		\multicolumn{1}{c}{\multirow{2}{*}{Paper}} & \multicolumn{1}{c}{\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Data\\ set\end{tabular}}} & \multicolumn{1}{c}{\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Pre-\\ treatment\end{tabular}}} & \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Calibration\\ set\end{tabular}} & \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Number of\\ Components\end{tabular}} & \multicolumn{2}{c}{Protein} &  & \multicolumn{2}{c}{PLS in papers} &  & \multicolumn{2}{c}{Developed method} &  &  &  \\ \cline{6-7} \cline{9-10} \cline{12-13}
+		\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  &  & RMSECV & RMSEP &  & RMSECV & RMSEP &  & RMSECV & RMSEP &  &  &  \\ \cline{1-13}
+		1 & mp6 & None & 60(LOO) & 10 &  & 0.141(0.0203) &  &  & 0.150 &  &  & 0.145 &  &  &  \\
+		3 & m5 & Scale & 40(LOO) & 8 &  & 0.349(0.051) &  &  & 0.4466 &  &  & 0.4349 &  &  &  \\
+		3 & mp5 & Scale & 40(LOO) & 8 &  & 0.37(0.0485) &  &  & 0.4466 &  &  & 0.4349 &  &  &  \\
+		5 & m5 & SG(1,2,13) & 60(3-fold) & 6 &  & 0.107(0.0195) &  &  & 0.119 &  &  & 0.040 &  &  &  \\
+		6 & m5 & SG(1,2,21) & 60(LOO) & 7 &  & 0.102(0.0186) &  &  & 0.110 &  &  & 0.033 &  &  &  \\
+		8 & m5 & Delete 75 , 77 & 52(LOO) & 13 & 0.119 ( 0.0155 ) & 0.11(0.0169) &  & 0.1080 & 0.1353 &  & 0.0429 & 0.0846 &  &  & 
 	\end{tabular}
+
 \caption{regression of protein. The values in parentheses corresponds to the cross-validation type in calibration set and standard deviation in moisture.}
 \label{tab:protein}
 \end{table}
@@ -321,20 +303,21 @@ Table \ref{tab:starch} is the regression for starch.
 % Please add the following required packages to your document preamble:
 % \usepackage{multirow}
 \begin{table}[]
-	\begin{tabular}{llllllllllllll}
-		\cline{1-11}
-		\multicolumn{1}{c}{\multirow{2}{*}{Paper}} & \multicolumn{1}{c}{\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Data\\ set\end{tabular}}} & \multicolumn{1}{c}{\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Pre-\\ treatment\end{tabular}}} & \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Calibration\\ set\end{tabular}} & \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Number of\\ components\end{tabular}} & \multicolumn{2}{c}{Starch} & \multicolumn{2}{c}{PLS in papers} & \multicolumn{2}{c}{Developed method} &  &  &  \\ \cline{6-11}
-		\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  &  & RMSECV & RMSEP & RMSECV & RMSEP & RMSECV & RMSEP &  &  &  \\ \cline{1-11}
-%		1 & mp6 & None & 60(LOO) & 10 &  & 0.35(0.056) &  & 0.370 &  & 0.358 &  &  &  \\
-		3 & m5 & Scale & 40(LOO) & 9 &  & 0.393(0.0736) &  & 0.5010 &  & 0.4443 &  &  &  \\
-		3 & mp5 & Scale & 40(LOO) & 9 &  & 0.513(0.0779) &  & 0.5010 &  & 0.4443 &  &  &  \\
-		5 & m5 & SG(1,2,13) & 60(3-fold) & 6 &  & 0.239(0.0449) &  & 0.196 &  & 0.100 &  &  &  \\
-		6 & m5 & SG(1,2,21) & 60(LOO) & 5 &  & 0.258(0.0453) &  & 0.228 &  & 0.101 &  &  &  \\
-		7 & m5 & SG(0,2,13) & 64(5-fold) & 8 & 0.333(0.0226) & 0.283(0.0624) & 0.312 & 0.214 & 0.240 & 0.219 &  &  &  \\
-		7 & m5 & SG(1,2,13) & 64(5-fold) & 8 & 0.2412(0.0171) & 0.221(0.049) & 0.248 & 0.221 & 0.240 & 0.219 &  &  &  \\
-		7 & m5 & SG(2,2,13) & 64(5-fold) & 8 & 0.318(0.0252) & 0.302(0.061) & 0.347 & 0.228 & 0.240 & 0.219 &  &  &  \\
-		8 & m5 & Delete 75 , 77 & 52(LOO) & 10 & 0.292(0.0312) & 0.282(0.043) & 0.2579 & 0.2356 & 0.1137 & 0.1188 &  &  & 
+	\begin{tabular}{llllllllllllllll}
+		\cline{1-13}
+		\multicolumn{1}{c}{\multirow{2}{*}{Paper}} & \multicolumn{1}{c}{\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Data\\ set\end{tabular}}} & \multicolumn{1}{c}{\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Pre-\\ treatment\end{tabular}}} & \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Calibration\\ set\end{tabular}} & \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Number of\\ Components\end{tabular}} & \multicolumn{2}{c}{Starch} &  & \multicolumn{2}{c}{PLS in papers} &  & \multicolumn{2}{c}{Developed method} &  &  &  \\ \cline{6-7} \cline{9-10} \cline{12-13}
+		\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  &  & RMSECV & RMSEP &  & RMSECV & RMSEP &  & RMSECV & RMSEP &  &  &  \\ \cline{1-13}
+		1 & mp6 & None & 60(LOO) & 10 &  & 0.35(0.056) &  &  & 0.370 &  &  & 0.358 &  &  &  \\
+		3 & m5 & Scale & 40(LOO) & 9 &  & 0.393(0.0736) &  &  & 0.5010 &  &  & 0.4443 &  &  &  \\
+		3 & mp5 & Scale & 40(LOO) & 9 &  & 0.513(0.0779) &  &  & 0.5010 &  &  & 0.4443 &  &  &  \\
+		5 & m5 & SG(1,2,13) & 60(3-fold) & 6 &  & 0.239(0.0449) &  &  & 0.196 &  &  & 0.100 &  &  &  \\
+		6 & m5 & SG(1,2,21) & 60(LOO) & 5 &  & 0.258(0.0453) &  &  & 0.228 &  &  & 0.101 &  &  &  \\
+		7 & m5 & SG(0,2,13) & 64(5-fold) & 8 & 0.333(0.0226) & 0.283(0.0624) &  & 0.312 & 0.214 &  & 0.240 & 0.219 &  &  &  \\
+		7 & m5 & SG(1,2,13) & 64(5-fold) & 8 & 0.2412(0.0171) & 0.221(0.049) &  & 0.248 & 0.221 &  & 0.240 & 0.219 &  &  &  \\
+		7 & m5 & SG(2,2,13) & 64(5-fold) & 8 & 0.318(0.0252) & 0.302(0.061) &  & 0.347 & 0.228 &  & 0.240 & 0.219 &  &  &  \\
+		8 & m5 & Delete 75 , 77 & 52(LOO) & 10 & 0.292(0.0312) & 0.282(0.043) &  & 0.2579 & 0.2356 &  & 0.1137 & 0.1188 &  &  & 
 	\end{tabular}
+
 \caption{regression of starch. The values in parentheses corresponds to the cross-validation type in calibration set and standard deviation in moisture.}
 \label{tab:starch}
 \end{table}
