@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.2.10)  21 AUG 2019 02:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.2.10)  22 AUG 2019 22:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -179,7 +179,7 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 ))
 (./MSc_dissertation_hongwei.aux
 
-LaTeX Warning: Label `fig:looptimes' multiply defined.
+LaTeX Warning: Label `fig:sd_RMSECV_RMSEP' multiply defined.
 
 )
 \openout1 = `MSc_dissertation_hongwei.aux'.
@@ -294,55 +294,80 @@ File: cross-validation.png Graphic file (type png)
 Package pdftex.def Info: cross-validation.png  used on input line 131.
 (pdftex.def)             Requested size: 241.84842pt x 241.40173pt.
  [4 <./cross-validation.png>]
-<no_loop_time500.pdf, id=27, 614.295pt x 794.97pt>
-File: no_loop_time500.pdf Graphic file (type pdf)
-<use no_loop_time500.pdf>
-Package pdftex.def Info: no_loop_time500.pdf  used on input line 170.
-(pdftex.def)             Requested size: 441.01772pt x 570.72826pt.
+<boxplot_RMSECV_loop_times_500.pdf, id=27, 614.295pt x 794.97pt>
+File: boxplot_RMSECV_loop_times_500.pdf Graphic file (type pdf)
+<use boxplot_RMSECV_loop_times_500.pdf>
+Package pdftex.def Info: boxplot_RMSECV_loop_times_500.pdf  used on input line 
+172.
+(pdftex.def)             Requested size: 213.39566pt x 276.15726pt.
+<boxplot_RMSEP_loop_times_500.pdf, id=28, 614.295pt x 794.97pt>
+File: boxplot_RMSEP_loop_times_500.pdf Graphic file (type pdf)
+<use boxplot_RMSEP_loop_times_500.pdf>
+Package pdftex.def Info: boxplot_RMSEP_loop_times_500.pdf  used on input line 1
+73.
+(pdftex.def)             Requested size: 213.39566pt x 276.15726pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Number_of_loop_times_mp5-1.pdf, id=28, 614.295pt x 794.97pt>
-File: Number_of_loop_times_mp5-1.pdf Graphic file (type pdf)
-<use Number_of_loop_times_mp5-1.pdf>
-Package pdftex.def Info: Number_of_loop_times_mp5-1.pdf  used on input line 178
-.
-(pdftex.def)             Requested size: 241.84842pt x 312.9847pt.
+<sd_RMSECV_loop_times_500.pdf, id=29, 614.295pt x 794.97pt>
+File: sd_RMSECV_loop_times_500.pdf Graphic file (type pdf)
+<use sd_RMSECV_loop_times_500.pdf>
+Package pdftex.def Info: sd_RMSECV_loop_times_500.pdf  used on input line 181.
+(pdftex.def)             Requested size: 213.39566pt x 276.15726pt.
+<sd_RMSEP_loop_times_500.pdf, id=30, 614.295pt x 794.97pt>
+File: sd_RMSEP_loop_times_500.pdf Graphic file (type pdf)
+<use sd_RMSEP_loop_times_500.pdf>
+Package pdftex.def Info: sd_RMSEP_loop_times_500.pdf  used on input line 182.
+(pdftex.def)             Requested size: 213.39566pt x 276.15726pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[5] [6 <./no_loop_time500.pdf>] [7 <./Number_of_loop_times_mp5-1.pdf>]
+[5] [6 <./boxplot_RMSECV_loop_times_500.pdf> <./boxplot_RMSEP_loop_times_500.pd
+f> <./sd_RMSECV_loop_times_500.pdf> <./sd_RMSEP_loop_times_500.pdf>]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 203.
+               Default added (so using `tbp') on input line 207.
 
 
-Overfull \hbox (29.72069pt too wide) in paragraph at lines 204--216
+Overfull \hbox (29.72069pt too wide) in paragraph at lines 208--220
 [][] 
  []
 
-[8]
+[7]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 227.
+               Default added (so using `tbp') on input line 231.
 
 
-Overfull \hbox (53.6071pt too wide) in paragraph at lines 228--241
+Overfull \hbox (53.6071pt too wide) in paragraph at lines 232--245
 [][] 
  []
 
-[9
+[8
 
 
 
 ]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 256.
+               Default added (so using `tbp') on input line 260.
 
 
-Overfull \hbox (47.73216pt too wide) in paragraph at lines 258--272
+Overfull \hbox (47.73216pt too wide) in paragraph at lines 262--276
+[][] 
+ []
+
+[9
+
+
+]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 286.
+
+
+Overfull \hbox (35.98228pt too wide) in paragraph at lines 287--298
 [][] 
  []
 
@@ -352,30 +377,17 @@ Overfull \hbox (47.73216pt too wide) in paragraph at lines 258--272
 ]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 282.
+               Default added (so using `tbp') on input line 309.
 
 
-Overfull \hbox (35.98228pt too wide) in paragraph at lines 283--294
+Overfull \hbox (30.10735pt too wide) in paragraph at lines 310--324
 [][] 
  []
 
 [11
 
 
-]
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 305.
-
-
-Overfull \hbox (30.10735pt too wide) in paragraph at lines 306--320
-[][] 
- []
-
-[12
-
-
-] (./MSc_dissertation_hongwei.bbl) [13
+] (./MSc_dissertation_hongwei.bbl) [12
 
 ] (./MSc_dissertation_hongwei.aux)
 
@@ -383,10 +395,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3028 strings out of 492649
- 41058 string characters out of 6129622
- 111495 words of memory out of 5000000
- 6849 multiletter control sequences out of 15000+600000
+ 3038 strings out of 492649
+ 41505 string characters out of 6129622
+ 111484 words of memory out of 5000000
+ 6857 multiletter control sequences out of 15000+600000
  12750 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,16n,27p,1361b,284s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -399,10 +411,10 @@ sr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
 ocal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loca
 l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
 /texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on MSc_dissertation_hongwei.pdf (14 pages, 200903 bytes).
+Output written on MSc_dissertation_hongwei.pdf (13 pages, 209721 bytes).
 PDF statistics:
- 100 PDF objects out of 1000 (max. 8388607)
- 69 compressed objects within 1 object stream
+ 112 PDF objects out of 1000 (max. 8388607)
+ 78 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
