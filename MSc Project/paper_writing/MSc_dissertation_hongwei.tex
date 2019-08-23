@@ -138,7 +138,7 @@
 	
 	\subsection{PLS algorithm}
 	\label{PLS_al}
-	The partial least squares regression (PLS) is a multi-regression technique proposed by \citet{wold1984collinearity}, and it is also the most common statistical method in the research of near-infrared spectroscopy. Partial least squares regression is similar to principal components analysis (PCA) and is also a factor analysis method. In the modelling  process, it is first necessary to decompose the matrix of spectrum and then extract a few principal components (these variables are called latent variables in PLS) to represent most of the information of original spectrum. Because the spectral data is high-dimensional, the number of independent variables is more than the number of samples, thus it cannot meet the basic assumption of least squares method. Therefore, it is necessary to extracting the data to some components, and then make the regression. Compared with PCA, PLS not only considers the dimensionality reduction of the independent variables, but also maximizes the covariance between the components and target variables. In this way, the covariance between the extracted components and the target vector will be the maximum. From this point, PLS is the improvement and further development of PCA, and the results in many applications also prove that PLS has better performance than PCA.
+	The partial least squares regression (PLS) is a multi-regression technique proposed by \citet{wold1984collinearity}, and it is also the most common statistical method in the research of near-infrared spectroscopy (NIR). Partial least squares regression is similar to principal components analysis (PCA) and is also a factor analysis method. In the modelling  process, it is first necessary to decompose the matrix of spectrum and then extract a few principal components (these variables are called latent variables in PLS) to represent most of the information of original spectrum. Because the spectral data is high-dimensional, the number of independent variables is more than the number of samples, thus it cannot meet the basic assumption of least squares method (OLS). Therefore, it is necessary to extracting the data to some components, and then make the regression. Compared with PCA, PLS not only considers the dimensionality reduction of the independent variables, but also maximizes the covariance between principal components and target variables. In this way, the covariance between the extracted components and the target vector will be the maximum. According to this point, PLS is the improvement and further development of PCA, and the results in many applications also prove that PLS has better performance than PCA.
 	
 	The process of partial least squares regression is as follows:
 	
@@ -150,8 +150,34 @@
 	\begin{equation}
 	Y=UQ^T+F
 	\end{equation}
-	Where T and P are the scoring matrix and the load matrix of the spectral matrix X, respectively. U and Q are the scoring matrix and the load matrix of the detection target vector Y, respectively. E and F are residual matrices of the spectral matrix X and the detection target vector Y, respectively, and T and U can perform linear regression as follows:
-	......
+	
+	Where $T$ and $P$ are the scoring matrices and the loading matrices of the spectral matrix $X$, respectively. $U$ and $Q$ are the scoring matrices and the loading matrices of target vector $Y$. $E$ and $F$ are residual matrices of the spectral matrix $X$ and target vector $Y$, respectively, and $T$ and $U$ can perform linear regression as follows:
+	
+	\begin{equation}
+u_i=t_ib_i
+	\label{equ:ui} 
+\end{equation}
+
+	Here $t_i$ and $u_i$ are the first column data of $T$ and $U$, respectively.
+	
+	In the process of establishing partial least squares regression models, the spectral matrix $X$ and the target vector $Y$ are decomposed in an iterative manner. In each iteration, the principal components $t_i$ and $u_i$ of $T$ and $U$ can be obtained separately. Linear regression is performed on t and u by Equation (\ref{equ:ui}), and then the information explained by t and u is subtracted from the spectral matrix and the target vector, respectively, to obtain a residual matrix of the spectral matrix and the target vector. Finally, the residual matrix is brought into the previous iterative process again, which is the spectral matrix and the target vector in the next iteration matrix. This iterative process is terminated by constant iteration until the pre-variable of the specified target is obtained. The specific operation flow, pseudo code is as follows
+	1, initialize the score vector u=y
+	2, calculate the weight vector by formula:
+	
+	3,
+	
+	4. Calculate the spectral score vector.
+	
+	5. Calculate the load vector of the spectral matrix.
+	
+	6, calculate the detection target vector according to the spectral matrix score vector
+	
+	7,
+	
+	8. If the number of extracted money variables reaches the number required by the algorithm, the iteration is terminated, otherwise it returns to step 1 to continue the next iteration.
+	
+	When the above is the end of the code iteration process, the regression coefficients of the partial least squares regression model are calculated according to the equation.
+	Finally, the prediction model of its partial least squares regression model is as follows
 	
 	\subsection{Parallel computing}
 	\label{parallel}
