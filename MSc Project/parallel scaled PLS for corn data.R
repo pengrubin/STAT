@@ -14,10 +14,10 @@ system.time({
     mp5data <-  apply(rawdata$mp5spec$data,2,scale)
     mp6data <-  apply(rawdata$mp6spec$data,2,scale) 
     propvals <- apply(rawdata$propvals$data,2,scale)
-    NV <- 8                                           #number of variables 
+    NV <- 10                                           #number of variables 
     sample <- sample(1:80)                             #set random order; the begin of reset order
-    DF <- data.frame(NIR = I(mp5data),                  #input data
-                     y=propvals[,3])
+    DF <- data.frame(NIR = I(m5data),                  #input data
+                     y=propvals[,1])
     class(DF$NIR) <- "matrix"                          # just to be certain, it was "AsIs"
     #str(DF)                                           #check point
     DF$train <- rep(FALSE, 80)
@@ -33,7 +33,7 @@ system.time({
     return(cbind(RMSECV,RMSEP))                        #return 1x2matrix
   }
   #corn_PLS(n)
-  n <- as.matrix(rep(40,50))                        #the number of calibration, rep(a:b,c): from a to b and repeat c. 
+  n <- as.matrix(rep(40,100))                        #the number of calibration, rep(a:b,c): from a to b and repeat c. 
   #PlsResult <- apply(n,1,corn_PLS)                     #loop
   PlsResult <- parSapply(cl,n,corn_PLS)                #optimizated loop
   PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results

@@ -68,15 +68,15 @@
 	\section{Introduction}             % start a new section called `Introduction'
 	\label{sec:intro}                  % create label for this section
 	
-	Introduction
-	The near-infrared spectroscopy mainly reflects the frequency of the vibration of the hydrogen-containing group and the absorption of the frequency doubling at each level. Infrared spectroscopy combined with chemometric methods have been widely used for the detection of various plant samples. When the samples of plants are tested by near-infrared spectroscopy, this method is cheaper and faster than the traditional chemical method.
+	Near-infrared spectroscopy is one of the spectral methods. Infrared spectroscopy combined with chemometric methods has been widely used in medical diagnostics, pharmaceuticals, food and various plant samples \citep{1su2006partial}. When the samples of plants are tested by near-infrared spectroscopy, this method is cheaper and faster than the conventional detection by chemical inspection methods. Since each wavelength in the spectrum corresponds to a compound bond, it is easy to judge the compound contained in a single compound by infrared spectroscopy. But the infrared spectrum has a wide range data. This results in a complex structure of the spectrum, so in many cases it is not possible to assign specific wavelength to specific chemical components. Therefore, a statistics method is needed to establish a prediction model in which spectral information is associated with sample eigenvalue. Because spectral information belongs to high dimension data and has strong multicollinearity, choosing an appropriate regression method is very important for prediction models. Multivariate regression analysis, such as principal component analysis (PCA), partial least squares regression (PLSR) or artificial neural networks, are often chosen to predict the required chemical information. Among those methods, PLSR has many applications in spectral analysis, and it is a very effective statistic method. The PLSR can not only comprehensively take out significant spectral data but also eliminate spectral multicollinearity problems. The main idea of algorithm is the multivariate statistical methods which reduce the dimensions of data, highlight the components, and then regression.
 	
-	However, although the spectroscopy technique is more convenient, for some samples with similar properties, it is impossible to draw an identification conclusion through an intuitive method. Because the detected high-dimensional data can not be read directly. Therefore, a stoichiometric method is needed to establish a prediction model in which spectral information is associated with sample features. Because spectral information belongs to high latitude data and has strong collinearity, choosing the appropriate regression method is very important for predictive models. Among them, common spectral data modeling methods include partial least squares and principal component regression. Among them, partial minimization multiplication has many applications in spectral analysis, and it is a very effective chemometric method. The partial least squares method can not only comprehensively screen out significant spectral data but also eliminate spectral collinearity problems. The main idea of the algorithm is to simplify the data structure and highlight the main contradictory multivariate statistical methods.
+	The NIR spectroscopic data of corn is the most easily accessible high-dimensional public data set on the network. In recent years, many papers have analyzed corn data as an example. The most common algorithm for analyzing corn infrared spectral data is the PLSR. PLSR can effectively reduce the dimensionality of the infrared spectrum. This is one of the best ways at the moment. Therefore, a large part of the paper is based on the PLS method to improve the accuracy of the prediction. And this type of papers always claims that its method has better performance than PLS. Although this type of algorithm does show better performance from the results of the analysis, it should be noted that even the same corn NIR data set is analyzed. Different sampling methods, different principal component numbers, etc. will have an impact on the results. Most papers usually show that the new algorithm has smaller RMSECV and RMSEP than PLS. however only one regression result cannot judge the superiority of its model. And because some specific pre-processing, such as standardization, also makes a big difference in results.
 	
-	The infrared spectral data of corn is the most easily obtained high-dimensional infrared spectrum data on the network. In recent years, many papers have analyzed corn data as an example. The most common algorithm for analyzing corn infrared spectral data is the partial least squares method. The partial least squares method can effectively reduce the dimensionality of the infrared spectrum. This is one of the best ways at the moment. Therefore, a large part of the paper is based on the partial least squares method to improve the accuracy of the prediction. And this type of paper also claims that its method has better performance than partial least squares. E.g:   
+	So the main work of this dissertation is to write a critical overview by reading as much literature as possible about corn data. And to find the commonly used options in the partial least squares model, such as different pre-treatment methods, different component selection methods, different cross-validation methods, and so on. These may affect the performance of the partial least squares regression model.
+	And then to research the specific effects of each options on the partial least squares regression results based on corn data. This part usually uses the results of previous papers as a reference to ensure that the calculation process of dissertation is correct. 
+	Finally, my results compares with the results in the papers and proposes a new method to test whether the new algorithm has better performance than PLSR. 
 	
-	Although this type of algorithm does show better performance from the results of the data, even if you choose the same corn data for analysis, the method of selection, the number of principal components selected, and so on, some related variables will result in the results. Make an impact. Most papers usually show that the new algorithm has smaller rmsep and rmsep than partial least squares in a regression result. So the main research work of this paper is to write a rough critical document by reading as much literature as possible related to corn data. Then study how each variable affects the partial least squares regression based on corn data. Finally, compare the results in the paper and evaluate whether the new method has more outstanding performance.
-	
+	Of course, as part of dissertation, because there are too many dimensions to explore, and to ensure that the results are stable, it is necessary to perform a sufficient number of loop, which leads to a large amount of calculations in this dissertation. In order to solve the problem of computationly heavy, this dissertation first optimizes the code by modifying the program logic for parallel computing. Second, by submitting computing tasks to remote servers which is called the high performer computing system, a more stable computing environment and superior computer performance are achieved. Finally, because supercomputers have more cores than personal computers, parallel computing will play a bigger role on remote servers.
 	
 	\section{Literature reviews}
 	\label{sec:liter}
@@ -343,7 +343,7 @@
 	
 	\begin{figure}[h]    % start of figure environment
 	\centering           % put the graph(s) in the centre of the page (horizontally)
-	\includegraphics[width=14.5cm, angle=0]{R_cluster.png} % angle changes orientation
+	\includegraphics[width=14.5cm, angle=0]{"R_cluster".jpeg} % angle changes orientation
 	\vspace*{-0.25cm}    % manual adjustment of vertical spacing
 	\caption{R interactive operation interface under tmux shell}          % a meaningful caption
 	\label{fig:R_cluster}               % label for the figure
@@ -416,42 +416,138 @@ After completing the runscript, it can use "qsub" to submit this script into rem
 	\subsection{Number of samples}
 	\label{sec:Number of Samples}
 	
+	Selecting different sample sizes as a calibration set has two different types of effects on PLSR. The difference between the two different types of effects is mainly in prediction part, the RMSEP. 
 	
+	The first effect is that as the number of sample in calibration set increases, the prediction of the model will become better and better. The RMSEP of PLSR will become smaller and smaller. When the number of sample in calibration set reaches a certain limit, the prediction of PLSR will tend to be stable. That is to say, regardless of the number of sample in calibration set, the RMSEP will tend to be stable. 
+	
+	Figure \ref{fig:samples_1} is the PLSR of moisture on m5 which is the first type effect. As the sample size increases, its prediction will stabilize.
+	
+				\begin{figure}[h]    % start of figure environment
+		\centering           % put the graph(s) in the centre of the page (horizontally)
+		\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_calibration/unnamed-chunk-1-1".png}  % width changes size
+		\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_calibration/unnamed-chunk-1-2".png}  % width changes size
+		%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
+		\caption{The RMSECV and RMSEP from PLSR of moisture on m5 under different number of calibration set.}          % a meaningful caption
+		\label{fig:samples_1}               % label for the figure
+	\end{figure}                        % end of figure environment
+	
+	The effect of the second type is that as the number of sample in calibration set increases, the RMSEP will drop significantly. As the sample size continues to increase to a threshold, the RMSEP will be very slowly smaller, but its variance will become larger and larger. In other words, the prediction of models will become more and more unstable. Please note that this is similar to the model's over-fitting, but it is not. The specific impact is that when the sample size is too big, each new sample will bring more but limited information to models, so the overall RMSEP will slowly decline. But when the calibration set size is much more than the prediction set, two things will happen. One is that the sample from calibration set will surround the predictors. This means that when using regression model for prediction, since there are enough calibration points similar to the prediction points, which makes the prediction easy, there may be cases where the RMSEP is extremely low. Another situation is that the calibration points do not surround the prediction points. The prediction point interval will not match the calibration point interval. This will lead to deviations in models. This makes RMSEP bigger. An extreme case can be considered when there is only one predicted point if the point is an outlier. Then the predictions will get very bad.
+	
+	As we can see figure \ref{fig:sample_2}. The regression of the oil content on mp5 shows that this is second type effect. As the sample size increases, RMSEP will continue to decrease, but its variance will decrease first and then increase.
+	
+				\begin{figure}[h]    % start of figure environment
+		\centering           % put the graph(s) in the centre of the page (horizontally)
+		\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_calibration/unnamed-chunk-6-1".png}  % width changes size
+		\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_calibration/unnamed-chunk-6-2".png}  % width changes size
+		%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
+		\caption{The RMSECV and RMSEP from PLSR of oil on mp5 under different number of calibration set.}          % a meaningful caption
+		\label{fig:sample_2}               % label for the figure
+	\end{figure}                        % end of figure environment
+	
+	In order to research the specific impact of sample size on the PLS model. All corn data is used for regression.
+	First select one of the three spectrums as an independent variable $X$. Then select one of the four constituents as the dependent variable $Y$. Set the number of components to 10. Use the leave-one-out cross validation and calculate the RMSECV of the model. Then the model is used to predict the remaining prediction samples. The predicted error deviation is recorded as RMSEP. Observe the changes in RMSECV and RMSEP by changing the number of calibration set samples. Finally, different independent variables $X$ from three spectrums and different dependent variables $Y$ from four constituents are selected to continue the PLSR. The specific calculation results of the complete partial least squares model are detailed in appendix \ref{app:Number_of_samples}.
 	
 	\subsection{Number of components}
 	\label{sec:Number of Components}
 	
+	The number of components is the most important parameter in PLSR. A change in this parameter will result in a big change in PLSR. The number of components represents that several independent variables will be selected as regressions in PLSR. As the number of components increases, the regression performe of models should be getting better and better. However, when the number of components is too large and over the threshold, there will be a situation of overfitting. The model's RMSECV and RMSEP will be reduced to a minimum and then rise again, and the variance will gradually increase during the rise process.
+	
+	The figure \ref{fig:component_1} shows that the PLSR of starch content on mp5 under different number of components. From the figure \ref{fig:component_1} we can see that when the number of components exceeds 10, RMSECV and RMSEP will become larger and more unstable.
+	
+		\begin{figure}[h]    % start of figure environment
+		\centering           % put the graph(s) in the centre of the page (horizontally)
+		\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_components/unnamed-chunk-8-1".png}  % width changes size
+		\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_components/unnamed-chunk-8-2".png}  % width changes size
+		%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
+		\caption{The RMSECV and RMSEP from PLSR of starch on mp5 under different number of components. And 60 samples as calibration set take leave-one-out as cross validation.}          % a meaningful caption
+		\label{fig:component_1}               % label for the figure
+	\end{figure}                        % end of figure environment
+	
+	The reason for the deterioration of the regression model is that too many principal components include some irrelevant details as part of the model, so the prediction set will be poorly predicted. This is the significant over-fitting problem we often say.
+	
+	All the regression results on different components show in appendix \ref{app:Number_of_components}.
+	It is worth noting that when the independent variable $X$ selects the m5 spectrum, figures \ref{fig:components_1-1}, \ref{fig:components_2-1}, \ref{fig:components_3-1}, \ref{fig:components_4-1} show a trend that violates theory. As the number of components selected increases, the RMSECV and RMSEP  will continue to decrease and eventually stabilize. The reasons for this trend are not yet explained. So in the future this can be used as a research direction.
+	
 	\subsection{Pre-treatment}
 	\label{sec:Pre-treatment}
+	
+				\begin{figure}[h]    % start of figure environment
+		\centering           % put the graph(s) in the centre of the page (horizontally)
+		\includegraphics[width=7cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/figure/unnamed-chunk-1-1".png}  % width changes size
+		\includegraphics[width=7cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/figure/unnamed-chunk-2-1".png}  % width changes size
+		%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
+		\caption{The boxplot of RMSECV and RMSEP from 100 loop times PLSR of moisture and oil on m5 under different pre-treatment. "1" stand for none pre-treatment; "2" stand for scale $X$; "3" stand for savitzkyGolay filler with 1differentiation order, 2 polynomial order, 21 window size.And 40 samples as calibration set take leave-one-out as cross validation.}          % a meaningful caption
+		\label{fig:pretreatment-1}               % label for the figure
+	\end{figure}                        % end of figure environment
+	
+	\begin{figure}[h]    % start of figure environment
+		\centering           % put the graph(s) in the centre of the page (horizontally)
+		\includegraphics[width=7cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/figure/unnamed-chunk-3-1".png}  % width changes size
+		\includegraphics[width=7cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/figure/unnamed-chunk-4-1".png}  % width changes size
+		%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
+		\caption{The boxplot of RMSECV and RMSEP from 100 loop times PLSR of protein and starch on m5 under different pre-treatment. "1" stand for none pre-treatment; "2" stand for scale $X$; "3" stand for savitzkyGolay filler with 1differentiation order, 2 polynomial order, 21 window size.And 40 samples as calibration set take leave-one-out as cross validation.}          % a meaningful caption
+		\label{fig:pre-treatment-2}               % label for the figure
+	\end{figure}                        % end of figure environment
 	
 	\subsection{Cross-validation}
 	\label{sec:Cross-Validation}
 	
+		\begin{figure}[h]    % start of figure environment
+		\centering           % put the graph(s) in the centre of the page (horizontally)
+		\includegraphics[width=7cm, angle=0]{"LOO cross validation".pdf}  % width changes size
+		\includegraphics[width=7cm, angle=0]{"K-fold cross validation".pdf}  % width changes size
+		%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
+		\caption{RMSEP curves for the corn data under LOO cross-validation  and k-fold cross-validation}          % a meaningful caption
+		\label{fig:Cross-validation-1}               % label for the figure
+	\end{figure}                        % end of figure environment
+	
+	
 	\subsection{Compare with papers}
 	\label{sec:Compare with papers}
 	
+	The results of PLSR calculated in the previous were compared with the following eight papers. In most papers on corn data, PLSR is used as a reference algorithm. However, these PLSR results appearing in the paper only give RMSECV and RMSEP.  This has to question whether the new algorithm is really better than partial least squares regression, or the new algorithm is only one time that the regression result is better than PLSR.  Therefore, this dissertation uses the same parameters of PLSR as mentioned in other papers to repeat the experiments. The average and standard deviation of RMSECV and RMSEP were calculated by repeating 50 experiments every times. Then the calculated regression results are compared with the results of those papers.
+	This dissertation compares with the following eight papers. Because the title of papers is too long, each paper is numbered for discussion. The results of the numbering are shown as following.
 	
+	\begin{enumerate}
+		\item A Partial Least Squares‐Based Consensus Regression Method for the Analysis of Near‐Infrared Complex Spectral Data of Plant Samples \citep{1su2006partial}.
+		
+		\item A strategy that iteratively retains informative variables for selecting optimal variable subset in multivariate calibration \citep{2yun2014strategy}.
+		
+		\item Reduced PCR/PLSR models by subspace \citep{4ergon2006reduced}.
+		
+		\item Stability competitive adaptive reweighted sampling (SCARS) and its applications to multivariate calibration of NIR spectra \citep{5zheng2012stability}.
+		
+		\item Cross-validation for the selection of spectral variables using the successive projections algorithm \citep{3galvao2007cross}.   
+		
+		\item A variable elimination method to improve the parsimony of MLR models using the successive projections algorithm \citep{7galvao2008variable}.            
+		
+		\item Pretreating near infrared spectra with fractional order Savitzky–Golay differentiation (FOSGD) \citep{6zheng2015pretreating}.
+		
+		\item Using consensus interval partial least square in near infrared spectra analysis \citep{8ji2015using}
+			
+	\end{enumerate}
 	
-	\begin{landscape}
+	As shown in table \ref{tab:moisture}. The headers of the table mean:
+	
+	\begin{enumerate}
 		
-		\begin{table}[]
-			\begin{tabular}{ll}
-				\hline
-				Number & Paper's title                                                                                                                          \\ \hline
-				1      & A Partial Least Squares‐Based Consensus Regression Method for the Analysis of Near‐Infrared Complex Spectral Data of Plant Samples \\
-				2      & A strategy that iteratively retains informative variables for selecting optimal variable subset in multivariate calibration            \\
-				3      & Reduced PCR/PLSR models by subspace projections                                                                                        \\
-				4      & Stability competitive adaptive reweighted sampling (SCARS) and its applications to multivariate calibration of NIR spectra             \\
-				5      & Cross-validation for the selection of spectral variables using the successive projections algorithm                                    \\
-				6      & A variable elimination method to improve the parsimony of MLR models using the successive projections algorithm                        \\
-				7      & Pretreating near infrared spectra with fractional order Savitzky–Golay differentiation (FOSGD)                                       \\
-				8      & Using consensus interval partial least square in near infrared spectra analysis                                                        
-			\end{tabular}
-			\caption{Papers and related numbers}
-			\label{tab:papers}
-		\end{table}
-		
-	\end{landscape}
+	\item Paper: the corresponding number can be found in section \ref{sec:Compare with papers} and each number corresponds to an identical paper.
+	
+	\item Data set: the regression models use one of m5, mp5 or mp6 spectrum as an independent variable $X$.
+	
+	\item Pre-treatment: preprocessing of corn data and SG(m,p,w) means m differentiation order, p polynomial order and w window size.
+	
+	\item Calibration set: the number of calibration set samples, and the corresponding number of prediction set samples is 80 - number of calibration set samples. The value in parentheses represent the type of cross validation.
+	
+	\item Number of components: the number of  components used in PLSR and it is the same as papers setting.
+	
+	\item Moisture: there are two sub-options of RMSECV and RMSEP under Moisture. All data representing this table is the regression of the moisture.
+	
+	\item PLS in papers: the PLSR result in corresponding numbered papers.
+	
+	\item Developed method: the new algorithm result from corresponding numbered papers.
+	
+\end{enumerate}
 	
 	\begin{landscape}
 		
@@ -468,12 +564,13 @@ After completing the runscript, it can use "qsub" to submit this script into rem
 				3                    & m5                   & Scale                & 40(LOO)    & 12 &                  & 0.0231(0.00443) &   &        & 0.3506 &   &         & 0.3485  &   &   &   \\
 				3                    & mp5                  & Scale                & 40(LOO)    & 12 &                  & 0.159(0.0178)   &   &        & 0.3506 &   &         & 0.3485  &   &   &   \\
 				4                    & mp5                  & Scale                & 40(LOO)    & 10 &                  & 0.405(0.0467)   &   &        & 0.357  &   &         & 0.265   &   &   &   \\
-				5                    & m5                   & SG(1,2,13)           & 60(3-fold) & 5  &                  & 0.0547(0.00942) &   &        & 0.040  &   &         & 0.012   &   &   &   \\
-				6                    & m5                   & SG(1,2,21)           & 60(LOO)    & 6  &                  & 0.0396(0.00625) &   &        & 0.045  &   &         & 0.019   &   &   &   \\
+				5                    & m5                   & SG(1,2,13)*           & 60(3-fold) & 5  &                  & 0.0547(0.00942) &   &        & 0.040  &   &         & 0.012   &   &   &   \\
+				6                    & m5                   & SG(1,2,21)*           & 60(LOO)    & 6  &                  & 0.0396(0.00625) &   &        & 0.045  &   &         & 0.019   &   &   &   \\
 				8                    & m5                   & Delete 75 , 77       & 52(LOO)    & 10 & 0.0221(0.0018)   & 0.0194(0.00298) &   & 0.0124 & 0.0157 &   & 0.0047  & 0.0056  &   &   &   
 			\end{tabular}
 			
-			\caption{regression of moisture.The values in parentheses corresponds to the cross-validation type in calibration set and standard deviation in moisture.}
+			\caption{regression of moisture.The values in parentheses corresponds to the cross-validation type in calibration set and standard deviation in moisture.
+			*SG(m,p,w)=savitzkyGolay filler with m as differentiation order, p as polynomial order and w as window size.}
 			\label{tab:moisture}
 		\end{table}
 		
@@ -494,15 +591,16 @@ After completing the runscript, it can use "qsub" to submit this script into rem
 				1                    & mp6                  & None                 & 60(LOO)    & 10 &                 & 0.0991(0.0161)  &   &        & 0.107  &   &        & 0.0948         &         &    &                 \\
 				3                    & m5                   & Scale                & 40(LOO)    & 14 &                 & 0.396(0.0665)   &   &        & 0.6912 &   &        & 0.6902         &         &    &                 \\
 				3                    & mp5                  & Scale                & 40(LOO)    & 14 &                 & 0.694(0.095)    &   &        & 0.6912 &   &        & 0.6902         &         &    &                 \\
-				5                    & m5                   & SG(1,2,13)           & 60(3-fold) & 12 &                 & 0.0329(0.00672) &   &        & 0.029  &   &        & 0.022          &         &    &                 \\
-				6                    & m5                   & SG(1,2,21)           & 60(LOO)    & 10 &                 & 0.0505(0.0103)  &   &        & 0.028  &   &        & 0.030          &         &    &                 \\
-				7                    & m5                   & SG(0,2,13)           & 64(5-fold) & 7  & 0.0827(0.00419) & 0.0716(0.0116)  &   & 0.0729 & 0.0855 &   &        & 0.0400         &         &    &                 \\
-				7                    & m5                   & SG(1,2,13)           & 64(5-fold) & 7  & 0.0639(0.00357) & 0.0548(0.012)   &   & 0.0577 & 0.0682 &   & 0.0363 & 0.0400         &         &    &                 \\
-				7                    & m5                   & SG(2,2,13)           & 64(5-fold) & 7  & 0.0480(0.00312) & 0.0368 (0.0088) &   & 0.0370 & 0.0397 &   & 0.0363 & 0.0400         &         &    &                 \\
+				5                    & m5                   & SG(1,2,13)*           & 60(3-fold) & 12 &                 & 0.0329(0.00672) &   &        & 0.029  &   &        & 0.022          &         &    &                 \\
+				6                    & m5                   & SG(1,2,21)*           & 60(LOO)    & 10 &                 & 0.0505(0.0103)  &   &        & 0.028  &   &        & 0.030          &         &    &                 \\
+				7                    & m5                   & SG(0,2,13)*           & 64(5-fold) & 7  & 0.0827(0.00419) & 0.0716(0.0116)  &   & 0.0729 & 0.0855 &   &        & 0.0400         &         &    &                 \\
+				7                    & m5                   & SG(1,2,13)*           & 64(5-fold) & 7  & 0.0639(0.00357) & 0.0548(0.012)   &   & 0.0577 & 0.0682 &   & 0.0363 & 0.0400         &         &    &                 \\
+				7                    & m5                   & SG(2,2,13)*           & 64(5-fold) & 7  & 0.0480(0.00312) & 0.0368 (0.0088) &   & 0.0370 & 0.0397 &   & 0.0363 & 0.0400         &         &    &                 \\
 				8                    & m5                   & Delete 75 , 77       & 52(LOO)    & 10 & 0.0651(0.00662) & 0.0604(0.00876) &   & 0.0613 & 0.0673 &   & 0.0483 & 0.0546         &         &    &                 
 			\end{tabular}
 			
-			\caption{regression of oil. The values in parentheses corresponds to the cross-validation type in calibration set and standard deviation in moisture.}
+			\caption{regression of oil. The values in parentheses corresponds to the cross-validation type in calibration set and standard deviation in moisture.
+			*SG(m,p,w)=savitzkyGolay filler with m as differentiation order, p as polynomial order and w as window size.}
 			\label{tab:oil}
 		\end{table}
 
@@ -517,12 +615,13 @@ After completing the runscript, it can use "qsub" to submit this script into rem
 				1                    & mp6                  & None                 & 60(LOO)    & 10 &                  & 0.141(0.0203) &   &        & 0.150  &   &        & 0.145  &   &   &   \\
 				3                    & m5                   & Scale                & 40(LOO)    & 8  &                  & 0.349(0.051)  &   &        & 0.4466 &   &        & 0.4349 &   &   &   \\
 				3                    & mp5                  & Scale                & 40(LOO)    & 8  &                  & 0.37(0.0485)  &   &        & 0.4466 &   &        & 0.4349 &   &   &   \\
-				5                    & m5                   & SG(1,2,13)           & 60(3-fold) & 6  &                  & 0.107(0.0195) &   &        & 0.119  &   &        & 0.040  &   &   &   \\
-				6                    & m5                   & SG(1,2,21)           & 60(LOO)    & 7  &                  & 0.102(0.0186) &   &        & 0.110  &   &        & 0.033  &   &   &   \\
+				5                    & m5                   & SG(1,2,13)*           & 60(3-fold) & 6  &                  & 0.107(0.0195) &   &        & 0.119  &   &        & 0.040  &   &   &   \\
+				6                    & m5                   & SG(1,2,21)*           & 60(LOO)    & 7  &                  & 0.102(0.0186) &   &        & 0.110  &   &        & 0.033  &   &   &   \\
 				8                    & m5                   & Delete 75 , 77       & 52(LOO)    & 13 & 0.119 ( 0.0155 ) & 0.11(0.0169)  &   & 0.1080 & 0.1353 &   & 0.0429 & 0.0846 &   &   &   
 			\end{tabular}
 			
-			\caption{regression of protein. The values in parentheses corresponds to the cross-validation type in calibration set and standard deviation in moisture.}
+			\caption{regression of protein. The values in parentheses corresponds to the cross-validation type in calibration set and standard deviation in moisture.
+			*SG(m,p,w)=savitzkyGolay filler with m as differentiation order, p as polynomial order and w as window size.}
 			\label{tab:protein}
 		\end{table}
 
@@ -537,15 +636,15 @@ After completing the runscript, it can use "qsub" to submit this script into rem
 				1                    & mp6                  & None                 & 60(LOO)    & 10 &                & 0.35(0.056)   &   &        & 0.370  &   &        & 0.358          &         &    &               \\
 				3                    & m5                   & Scale                & 40(LOO)    & 9  &                & 0.393(0.0736) &   &        & 0.5010 &   &        & 0.4443         &         &    &               \\
 				3                    & mp5                  & Scale                & 40(LOO)    & 9  &                & 0.513(0.0779) &   &        & 0.5010 &   &        & 0.4443         &         &    &               \\
-				5                    & m5                   & SG(1,2,13)           & 60(3-fold) & 6  &                & 0.239(0.0449) &   &        & 0.196  &   &        & 0.100          &         &    &               \\
-				6                    & m5                   & SG(1,2,21)           & 60(LOO)    & 5  &                & 0.258(0.0453) &   &        & 0.228  &   &        & 0.101          &         &    &               \\
-				7                    & m5                   & SG(0,2,13)           & 64(5-fold) & 8  & 0.333(0.0226)  & 0.283(0.0624) &   & 0.312  & 0.214  &   & 0.240  & 0.219          &         &    &               \\
-				7                    & m5                   & SG(1,2,13)           & 64(5-fold) & 8  & 0.2412(0.0171) & 0.221(0.049)  &   & 0.248  & 0.221  &   & 0.240  & 0.219          &         &    &               \\
-				7                    & m5                   & SG(2,2,13)           & 64(5-fold) & 8  & 0.318(0.0252)  & 0.302(0.061)  &   & 0.347  & 0.228  &   & 0.240  & 0.219          &         &    &               \\
+				5                    & m5                   & SG(1,2,13)*           & 60(3-fold) & 6  &                & 0.239(0.0449) &   &        & 0.196  &   &        & 0.100          &         &    &               \\
+				6                    & m5                   & SG(1,2,21)*           & 60(LOO)    & 5  &                & 0.258(0.0453) &   &        & 0.228  &   &        & 0.101          &         &    &               \\
+				7                    & m5                   & SG(0,2,13)*           & 64(5-fold) & 8  & 0.333(0.0226)  & 0.283(0.0624) &   & 0.312  & 0.214  &   & 0.240  & 0.219          &         &    &               \\
+				7                    & m5                   & SG(1,2,13)*           & 64(5-fold) & 8  & 0.2412(0.0171) & 0.221(0.049)  &   & 0.248  & 0.221  &   & 0.240  & 0.219          &         &    &               \\
+				7                    & m5                   & SG(2,2,13)*           & 64(5-fold) & 8  & 0.318(0.0252)  & 0.302(0.061)  &   & 0.347  & 0.228  &   & 0.240  & 0.219          &         &    &               \\
 				8                    & m5                   & Delete 75 , 77       & 52(LOO)    & 10 & 0.292(0.0312)  & 0.282(0.043)  &   & 0.2579 & 0.2356 &   & 0.1137 & 0.1188         &         &    &               
 			\end{tabular}
 			
-			\caption{regression of starch. The values in parentheses corresponds to the cross-validation type in calibration set and standard deviation in moisture.}
+			\caption{regression of starch. The values in parentheses corresponds to the cross-validation type in calibration set and standard deviation in moisture.*SG(m,p,w)=savitzkyGolay filler with m as differentiation order, p as polynomial order and w as window size.}
 			\label{tab:starch}
 		\end{table}
 	\end{landscape}
@@ -555,6 +654,76 @@ After completing the runscript, it can use "qsub" to submit this script into rem
 	\subsection{Developed method significant test}
 	\label{sec: test}
 	
+\begin{table}[h]
+			\centering           % put the graph(s) in the centre of the page (horizontally)
+	\begin{tabular}{llllll}
+
+		\hline
+		\multicolumn{1}{c}{Paper} & \begin{tabular}[c]{@{}l@{}}Prediction\\ set\end{tabular} & \begin{tabular}[c]{@{}l@{}}RMSEP of \\ PLS in papers\end{tabular} & \begin{tabular}[c]{@{}l@{}}RMSEP of\\ developed method\end{tabular} & F statistic & \begin{tabular}[c]{@{}l@{}}Significant \\ F value (0.05)\end{tabular} \\ \hline
+		1 & 20 & 0.159 & 0.139 & 1.31 & 2.124155 \\
+		2 & 16 & 0.0201 & 0.00035 & 3298.04 & 2.333484 \\
+		3 & 40 & 0.3506 & 0.3485 & 1.01 & 1.692797 \\
+		4 & 40 & 0.357 & 0.265 & 1.81 & 1.692797 \\
+		5 & 20 & 0.040 & 0.012 & 11.11 & 2.124155 \\
+		6 & 20 & 0.045 & 0.019 & 5.61 & 2.124155 \\
+		8 & 26 & 0.0157 & 0.0056 & 7.86 & 1.929213
+	\end{tabular}
+\caption{F-test on regression of moisture.}
+\label{tab:F-moisture}
+
+\end{table}
+	
+	\begin{table}[h]
+			\centering 
+		\begin{tabular}{llllll}
+			\hline
+			\multicolumn{1}{c}{Paper} & \begin{tabular}[c]{@{}l@{}}Calibration\\ set\end{tabular} & \begin{tabular}[c]{@{}l@{}}RMSEP of\\ PLS in papers\end{tabular} & \begin{tabular}[c]{@{}l@{}}RMSEP of\\ developed method\end{tabular} & F statistic & \begin{tabular}[c]{@{}l@{}}Significant\\ F value (0.05)\end{tabular} \\ \hline
+			1 & 20 & 0.107 & 0.0948 & 1.27 & 2.124155 \\
+			3 & 40 & 0.6912 & 0.6902 & 1.00 & 1.692797 \\
+			5 & 20 & 0.029 & 0.022 & 1.74 & 2.124155 \\
+			6 & 20 & 0.028 & 0.030 & 0.87 & 2.124155 \\
+			7 & 16 & 0.0855 & 0.0400 & 4.57 & 2.333484 \\
+			7 & 16 & 0.0682 & 0.0400 & 2.91 & 2.333484 \\
+			7 & 16 & 0.0397 & 0.0400 & 0.99 & 2.333484 \\
+			8 & 26 & 0.0673 & 0.0546 & 1.52 & 1.929213
+		\end{tabular}
+	\caption{F-test on regression of oil.}
+	\label{tab:F-oil}
+	\end{table}
+	
+	\begin{table}[h]
+			\centering 
+		\begin{tabular}{llllll}
+			\hline
+			\multicolumn{1}{c}{Paper} & \begin{tabular}[c]{@{}l@{}}Calibration\\ set\end{tabular} & \begin{tabular}[c]{@{}l@{}}RMSEP of\\ PLS in papers\end{tabular} & \begin{tabular}[c]{@{}l@{}}RMSEP of\\ developed method\end{tabular} & F statistic & \begin{tabular}[c]{@{}l@{}}Significant\\ F value (0.05)\end{tabular} \\ \hline
+			1 & 20 & 0.150 & 0.145 & 1.07 & 2.124155 \\
+			3 & 40 & 0.4466 & 0.4349 & 1.05 & 1.692797 \\
+			5 & 20 & 0.119 & 0.040 & 8.85 & 2.124155 \\
+			6 & 20 & 0.110 & 0.033 & 11.11 & 2.124155 \\
+			8 & 26 & 0.1353 & 0.0846 & 2.56 & 1.929213
+		\end{tabular}
+		\caption{F-test on regression of protein.}
+	\label{tab:F-protein}
+	\end{table}
+	
+	
+	\begin{table}[h]
+					\centering 
+		\begin{tabular}{llllll}
+			\hline
+			\multicolumn{1}{c}{Paper} & \begin{tabular}[c]{@{}l@{}}Calibration\\ set\end{tabular} & \begin{tabular}[c]{@{}l@{}}RMSEP of\\ PLS in papers\end{tabular} & \begin{tabular}[c]{@{}l@{}}RMSEP of\\ developed method\end{tabular} & F statistic & \begin{tabular}[c]{@{}l@{}}Significant \\ F value (0.05)\end{tabular} \\ \hline
+			1 & 20 & 0.370 & 0.358 & 1.07 & 2.124155 \\
+			3 & 40 & 0.5010 & 0.4443 & 1.27 & 1.692797 \\
+			5 & 20 & 0.196 & 0.100 & 3.84 & 2.124155 \\
+			6 & 20 & 0.228 & 0.101 & 5.10 & 2.124155 \\
+			7 & 16 & 0.214 & 0.219 & 0.95 & 2.333484 \\
+			7 & 16 & 0.221 & 0.219 & 1.02 & 2.333484 \\
+			7 & 16 & 0.228 & 0.219 & 1.08 & 2.333484 \\
+			8 & 26 & 0.2356 & 0.1188 & 3.93 & 1.929213
+		\end{tabular}
+			\caption{F-test on regression of starch.}
+	\label{tab:F-statch}
+	\end{table}
 	
 	
 	\section{Conclusions}
@@ -565,11 +734,12 @@ After completing the runscript, it can use "qsub" to submit this script into rem
 	
 	
 	
-	
+	\clearpage	
 	\addcontentsline{toc}{section}{References} % to add references to table of contents
 	\bibliography{hongwei_pls_MSc}                     % read references from example.bib
 	\bibliographystyle{chicago}            % file to determine the style of references
 	
+	\clearpage
 	\begin{appendices}
 		\section{Number of samples}
 		\label{app:Number_of_samples}
@@ -579,7 +749,7 @@ After completing the runscript, it can use "qsub" to submit this script into rem
 			\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_calibration/unnamed-chunk-1-1".png}  % width changes size
 			\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_calibration/unnamed-chunk-1-2".png}  % width changes size
 			%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
-			\caption{The RMSECV and RMSEP from PLSR of moisture on m5 under different number of calibration set}          % a meaningful caption
+			\caption{The RMSECV and RMSEP from PLSR of moisture on m5 under different number of calibration set.}          % a meaningful caption
 			\label{fig:calibration_1-1}               % label for the figure
 			\end{figure}                        % end of figure environment
 
@@ -588,7 +758,7 @@ After completing the runscript, it can use "qsub" to submit this script into rem
 	\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_calibration/unnamed-chunk-2-1".png}  % width changes size
 	\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_calibration/unnamed-chunk-2-2".png}  % width changes size
 	%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
-	\caption{The RMSECV and RMSEP from PLSR of oil on m5 under different number of calibration set}          % a meaningful caption
+	\caption{The RMSECV and RMSEP from PLSR of oil on m5 under different number of calibration set.}          % a meaningful caption
 	\label{fig:calibration_2-1}               % label for the figure
 \end{figure}                        % end of figure environment
 
@@ -598,7 +768,7 @@ After completing the runscript, it can use "qsub" to submit this script into rem
 	\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_calibration/unnamed-chunk-3-1".png}  % width changes size
 	\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_calibration/unnamed-chunk-3-2".png}  % width changes size
 	%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
-	\caption{The RMSECV and RMSEP from PLSR of protein on m5 under different number of calibration set}          % a meaningful caption
+	\caption{The RMSECV and RMSEP from PLSR of protein on m5 under different number of calibration set.}          % a meaningful caption
 	\label{fig:calibration_3-1}               % label for the figure
 \end{figure}                        % end of figure environment
 
@@ -609,7 +779,7 @@ After completing the runscript, it can use "qsub" to submit this script into rem
 	\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_calibration/unnamed-chunk-4-1".png}  % width changes size
 	\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_calibration/unnamed-chunk-4-2".png}  % width changes size
 	%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
-	\caption{The RMSECV and RMSEP from PLSR of starch on m5 under different number of calibration set}          % a meaningful caption
+	\caption{The RMSECV and RMSEP from PLSR of starch on m5 under different number of calibration set.}          % a meaningful caption
 	\label{fig:calibration_4-1}               % label for the figure
 \end{figure}                        % end of figure environment
 
@@ -620,7 +790,7 @@ After completing the runscript, it can use "qsub" to submit this script into rem
 	\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_calibration/unnamed-chunk-5-1".png}  % width changes size
 	\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_calibration/unnamed-chunk-5-2".png}  % width changes size
 	%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
-	\caption{The RMSECV and RMSEP from PLSR of moisture on mp5 under different number of calibration set}          % a meaningful caption
+	\caption{The RMSECV and RMSEP from PLSR of moisture on mp5 under different number of calibration set.}          % a meaningful caption
 	\label{fig:calibration_5-1}               % label for the figure
 \end{figure}                        % end of figure environment
 
@@ -631,7 +801,7 @@ After completing the runscript, it can use "qsub" to submit this script into rem
 	\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_calibration/unnamed-chunk-6-1".png}  % width changes size
 	\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_calibration/unnamed-chunk-6-2".png}  % width changes size
 	%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
-	\caption{The RMSECV and RMSEP from PLSR of oil on mp5 under different number of calibration set}          % a meaningful caption
+	\caption{The RMSECV and RMSEP from PLSR of oil on mp5 under different number of calibration set.}          % a meaningful caption
 	\label{fig:calibration_6-1}               % label for the figure
 \end{figure}                        % end of figure environment
 
@@ -642,8 +812,8 @@ After completing the runscript, it can use "qsub" to submit this script into rem
 	\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_calibration/unnamed-chunk-7-1".png}  % width changes size
 	\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_calibration/unnamed-chunk-7-2".png}  % width changes size
 	%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
-	\caption{The RMSECV and RMSEP from PLSR of protein on mp5 under different number of calibration set}          % a meaningful caption
-	\label{fig:calibration_6-1}               % label for the figure
+	\caption{The RMSECV and RMSEP from PLSR of protein on mp5 under different number of calibration set.}          % a meaningful caption
+	\label{fig:calibration_7-1}               % label for the figure
 \end{figure}                        % end of figure environment
 
 
@@ -653,7 +823,7 @@ After completing the runscript, it can use "qsub" to submit this script into rem
 	\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_calibration/unnamed-chunk-8-1".png}  % width changes size
 	\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_calibration/unnamed-chunk-8-2".png}  % width changes size
 	%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
-	\caption{The RMSECV and RMSEP from PLSR of starch on mp5 under different number of calibration set}          % a meaningful caption
+	\caption{The RMSECV and RMSEP from PLSR of starch on mp5 under different number of calibration set.}          % a meaningful caption
 	\label{fig:calibration_8-1}               % label for the figure
 \end{figure}                        % end of figure environment
 
@@ -664,7 +834,7 @@ After completing the runscript, it can use "qsub" to submit this script into rem
 	\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_calibration/unnamed-chunk-9-1".png}  % width changes size
 	\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_calibration/unnamed-chunk-9-2".png}  % width changes size
 	%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
-	\caption{The RMSECV and RMSEP from PLSR of moisture on mp6 under different number of calibration set}          % a meaningful caption
+	\caption{The RMSECV and RMSEP from PLSR of moisture on mp6 under different number of calibration set.}          % a meaningful caption
 	\label{fig:calibration_9-1}               % label for the figure
 \end{figure}                        % end of figure environment
 
@@ -674,7 +844,7 @@ After completing the runscript, it can use "qsub" to submit this script into rem
 	\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_calibration/unnamed-chunk-10-1".png}  % width changes size
 	\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_calibration/unnamed-chunk-10-2".png}  % width changes size
 	%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
-	\caption{The RMSECV and RMSEP from PLSR of oil on mp6 under different number of calibration set}          % a meaningful caption
+	\caption{The RMSECV and RMSEP from PLSR of oil on mp6 under different number of calibration set.}          % a meaningful caption
 	\label{fig:calibration_10-1}               % label for the figure
 \end{figure}                        % end of figure environment
 
@@ -685,7 +855,7 @@ After completing the runscript, it can use "qsub" to submit this script into rem
 	\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_calibration/unnamed-chunk-11-1".png}  % width changes size
 	\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_calibration/unnamed-chunk-11-2".png}  % width changes size
 	%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
-	\caption{The RMSECV and RMSEP from PLSR of protein on mp6 under different number of calibration set}          % a meaningful caption
+	\caption{The RMSECV and RMSEP from PLSR of protein on mp6 under different number of calibration set.}          % a meaningful caption
 	\label{fig:calibration_11-1}               % label for the figure
 \end{figure}                        % end of figure environment
 
@@ -695,7 +865,7 @@ After completing the runscript, it can use "qsub" to submit this script into rem
 	\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_calibration/unnamed-chunk-12-1".png}  % width changes size
 	\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_calibration/unnamed-chunk-12-2".png}  % width changes size
 	%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
-	\caption{The RMSECV and RMSEP from PLSR of starch on mp6 under different number of calibration set}          % a meaningful caption
+	\caption{The RMSECV and RMSEP from PLSR of starch on mp6 under different number of calibration set.}          % a meaningful caption
 	\label{fig:calibration_12-1}               % label for the figure
 \end{figure}                        % end of figure environment
 		
@@ -706,10 +876,160 @@ After completing the runscript, it can use "qsub" to submit this script into rem
 		
 		\clearpage
 		\section{Number of components}
+		\label{app:Number_of_components}
+				
+	\begin{figure}[h]    % start of figure environment
+		\centering           % put the graph(s) in the centre of the page (horizontally)
+		\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_components/unnamed-chunk-1-1".png}  % width changes size
+		\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_components/unnamed-chunk-1-2".png}  % width changes size
+		%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
+		\caption{The RMSECV and RMSEP from PLSR of moisture on m5 under different number of components. And 60 samples as calibration set take leave-one-out as cross validation.}          % a meaningful caption
+		\label{fig:components_1-1}               % label for the figure
+	\end{figure}                        % end of figure environment
+	
+	\begin{figure}[h]    % start of figure environment
+		\centering           % put the graph(s) in the centre of the page (horizontally)
+		\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_components/unnamed-chunk-2-1".png}  % width changes size
+		\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_components/unnamed-chunk-2-2".png}  % width changes size
+		%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
+		\caption{The RMSECV and RMSEP from PLSR of oil on m5 under different number of components. And 60 samples as calibration set take leave-one-out as cross validation.}          % a meaningful caption
+		\label{fig:components_2-1}               % label for the figure
+	\end{figure}                        % end of figure environment
+	
+	
+	\begin{figure}[h]    % start of figure environment
+		\centering           % put the graph(s) in the centre of the page (horizontally)
+		\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_components/unnamed-chunk-3-1".png}  % width changes size
+		\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_components/unnamed-chunk-3-2".png}  % width changes size
+		%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
+		\caption{The RMSECV and RMSEP from PLSR of protein on m5 under different number of components. And 60 samples as calibration set take leave-one-out as cross validation.}          % a meaningful caption
+		\label{fig:components_3-1}               % label for the figure
+	\end{figure}                        % end of figure environment
+	
+	
+	
+	\begin{figure}[h]    % start of figure environment
+		\centering           % put the graph(s) in the centre of the page (horizontally)
+		\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_components/unnamed-chunk-4-1".png}  % width changes size
+		\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_components/unnamed-chunk-4-2".png}  % width changes size
+		%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
+		\caption{The RMSECV and RMSEP from PLSR of starch on m5 under different number of components. And 60 samples as calibration set take leave-one-out as cross validation.}          % a meaningful caption
+		\label{fig:components_4-1}               % label for the figure
+	\end{figure}                        % end of figure environment
+	
+	
+	
+	\begin{figure}[h]    % start of figure environment
+		\centering           % put the graph(s) in the centre of the page (horizontally)
+		\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_components/unnamed-chunk-5-1".png}  % width changes size
+		\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_components/unnamed-chunk-5-2".png}  % width changes size
+		%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
+		\caption{The RMSECV and RMSEP from PLSR of moisture on mp5 under different number of components. And 60 samples as calibration set take leave-one-out as cross validation.}          % a meaningful caption
+		\label{fig:components_5-1}               % label for the figure
+	\end{figure}                        % end of figure environment
+	
+	
+	
+	\begin{figure}[h]    % start of figure environment
+		\centering           % put the graph(s) in the centre of the page (horizontally)
+		\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_components/unnamed-chunk-6-1".png}  % width changes size
+		\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_components/unnamed-chunk-6-2".png}  % width changes size
+		%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
+		\caption{The RMSECV and RMSEP from PLSR of oil on mp5 under different number of components. And 60 samples as calibration set take leave-one-out as cross validation.}          % a meaningful caption
+		\label{fig:components_6-1}               % label for the figure
+	\end{figure}                        % end of figure environment
+	
+	
+	
+	\begin{figure}[h]    % start of figure environment
+		\centering           % put the graph(s) in the centre of the page (horizontally)
+		\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_components/unnamed-chunk-7-1".png}  % width changes size
+		\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_components/unnamed-chunk-7-2".png}  % width changes size
+		%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
+		\caption{The RMSECV and RMSEP from PLSR of protein on mp5 under different number of components. And 60 samples as calibration set take leave-one-out as cross validation.}          % a meaningful caption
+		\label{fig:components_7-1}               % label for the figure
+	\end{figure}                        % end of figure environment
+	
+	
+	
+	\begin{figure}[h]    % start of figure environment
+		\centering           % put the graph(s) in the centre of the page (horizontally)
+		\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_components/unnamed-chunk-8-1".png}  % width changes size
+		\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_components/unnamed-chunk-8-2".png}  % width changes size
+		%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
+		\caption{The RMSECV and RMSEP from PLSR of starch on mp5 under different number of components. And 60 samples as calibration set take leave-one-out as cross validation.}          % a meaningful caption
+		\label{fig:components_8-1}               % label for the figure
+	\end{figure}                        % end of figure environment
+	
+	
+	
+	\begin{figure}[h]    % start of figure environment
+		\centering           % put the graph(s) in the centre of the page (horizontally)
+		\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_components/unnamed-chunk-9-1".png}  % width changes size
+		\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_components/unnamed-chunk-9-2".png}  % width changes size
+		%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
+		\caption{The RMSECV and RMSEP from PLSR of moisture on mp6 under different number of components. And 60 samples as calibration set take leave-one-out as cross validation.}          % a meaningful caption
+		\label{fig:components_9-1}               % label for the figure
+	\end{figure}                        % end of figure environment
+	
+	
+	\begin{figure}[h]    % start of figure environment
+		\centering           % put the graph(s) in the centre of the page (horizontally)
+		\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_components/unnamed-chunk-10-1".png}  % width changes size
+		\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_components/unnamed-chunk-10-2".png}  % width changes size
+		%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
+		\caption{The RMSECV and RMSEP from PLSR of oil on mp6 under different number of components. And 60 samples as calibration set take leave-one-out as cross validation.}          % a meaningful caption
+		\label{fig:components_10-1}               % label for the figure
+	\end{figure}                        % end of figure environment
+	
+	
+	
+	\begin{figure}[h]    % start of figure environment
+		\centering           % put the graph(s) in the centre of the page (horizontally)
+		\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_components/unnamed-chunk-11-1".png}  % width changes size
+		\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_components/unnamed-chunk-11-2".png}  % width changes size
+		%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
+		\caption{The RMSECV and RMSEP from PLSR of protein on mp6 under different number of components. And 60 samples as calibration set take leave-one-out as cross validation.}          % a meaningful caption
+		\label{fig:components_11-1}               % label for the figure
+	\end{figure}                        % end of figure environment
+	
+	
+	\begin{figure}[h]    % start of figure environment
+		\centering           % put the graph(s) in the centre of the page (horizontally)
+		\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_components/unnamed-chunk-12-1".png}  % width changes size
+		\includegraphics[width=7.5cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_components/unnamed-chunk-12-2".png}  % width changes size
+		%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
+		\caption{The RMSECV and RMSEP from PLSR of starch on mp6 under different number of components. And 60 samples as calibration set take leave-one-out as cross validation.}          % a meaningful caption
+		\label{fig:components_12-1}               % label for the figure
+	\end{figure}                        % end of figure environment
+	
+	
+	
+		
 		
 		\clearpage
 		\section{Pre-treatment}
+		\label{app:pre-treatment}
 		
+			\begin{figure}[h]    % start of figure environment
+			\centering           % put the graph(s) in the centre of the page (horizontally)
+			\includegraphics[width=7cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/figure/unnamed-chunk-1-1".png}  % width changes size
+			\includegraphics[width=7cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/figure/unnamed-chunk-2-1".png}  % width changes size
+			%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
+			\caption{The boxplot of RMSECV and RMSEP from 100 loop times PLSR of moisture and oil on m5 under different pre-treatment. "1" stand for none pre-treatment; "2" stand for scale $X$; "3" stand for savitzkyGolay filler with 1differentiation order, 2 polynomial order, 21 window size.And 40 samples as calibration set take leave-one-out as cross validation.}          % a meaningful caption
+			\label{fig:pretreatment-1-1}               % label for the figure
+		\end{figure}                        % end of figure environment
+
+			\begin{figure}[h]    % start of figure environment
+	\centering           % put the graph(s) in the centre of the page (horizontally)
+	\includegraphics[width=7cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/figure/unnamed-chunk-3-1".png}  % width changes size
+	\includegraphics[width=7cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/figure/unnamed-chunk-4-1".png}  % width changes size
+	%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
+	\caption{The boxplot of RMSECV and RMSEP from 100 loop times PLSR of protein and starch on m5 under different pre-treatment. "1" stand for none pre-treatment; "2" stand for scale $X$; "3" stand for savitzkyGolay filler with 1differentiation order, 2 polynomial order, 21 window size.And 40 samples as calibration set take leave-one-out as cross validation.}          % a meaningful caption
+	\label{fig:pre-treatment-3-1}               % label for the figure
+\end{figure}                        % end of figure environment
+
+
 		\clearpage
 		\section{Cross-validation}
 		

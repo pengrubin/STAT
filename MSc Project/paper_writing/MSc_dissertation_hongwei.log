@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.2.10)  29 AUG 2019 00:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.2.10)  29 AUG 2019 11:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -215,11 +215,7 @@ Package: appendix 2009/09/02 v1.2b extra appendix facilities
 \c@@ppsavesec=\count115
 \c@@ppsaveapp=\count116
 )
-(./MSc_dissertation_hongwei.aux
-
-LaTeX Warning: Label `fig:calibration_6-1' multiply defined.
-
-)
+(./MSc_dissertation_hongwei.aux)
 \openout1 = `MSc_dissertation_hongwei.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 52.
@@ -234,7 +230,8 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 52.
 LaTeX Font Info:    ... okay on input line 52.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 52.
 LaTeX Font Info:    ... okay on input line 52.
- (/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+
+(/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count117
 \scratchdimen=\dimen128
@@ -317,18 +314,18 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \tf@toc=\write3
 \openout3 = `MSc_dissertation_hongwei.toc'.
 
- [4]
-<Spectra_on_instrument_m5.pdf, id=23, 614.295pt x 794.97pt>
+ [4] [5]
+<Spectra_on_instrument_m5.pdf, id=26, 614.295pt x 794.97pt>
 File: Spectra_on_instrument_m5.pdf Graphic file (type pdf)
 <use Spectra_on_instrument_m5.pdf>
 Package pdftex.def Info: Spectra_on_instrument_m5.pdf  used on input line 91.
 (pdftex.def)             Requested size: 213.39566pt x 276.15726pt.
-<Spectra_on_instrument_mp5.pdf, id=24, 614.295pt x 794.97pt>
+<Spectra_on_instrument_mp5.pdf, id=27, 614.295pt x 794.97pt>
 File: Spectra_on_instrument_mp5.pdf Graphic file (type pdf)
 <use Spectra_on_instrument_mp5.pdf>
 Package pdftex.def Info: Spectra_on_instrument_mp5.pdf  used on input line 92.
 (pdftex.def)             Requested size: 213.39566pt x 276.15726pt.
- [5] [6 <./Spectra_on_instrument_m5.pdf> <./Spectra_on_instrument_mp5.pdf>]
+ [6 <./Spectra_on_instrument_m5.pdf> <./Spectra_on_instrument_mp5.pdf>]
 Underfull \hbox (badness 10000) in paragraph at lines 118--124
 
  []
@@ -344,11 +341,7 @@ File: cross-validation.png Graphic file (type png)
 <use cross-validation.png>
 Package pdftex.def Info: cross-validation.png  used on input line 180.
 (pdftex.def)             Requested size: 241.84842pt x 241.40173pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[8] [9 <./cross-validation.png>] [10]
+ [8] [9 <./cross-validation.png>] [10]
 (/usr/local/texlive/2018/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
@@ -357,23 +350,17 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 )
 (/usr/local/texlive/2018/texmf-dist/tex/latex/listings/lstlang3.sty
 File: lstlang3.sty 2015/06/04 1.6 listings language file
-)
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[11] (/usr/local/texlive/2018/texmf-dist/tex/latex/listings/lstlang1.sty
+) [11]
+(/usr/local/texlive/2018/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
-)
-<R_cluster.png, id=68, 2039.62pt x 1088.065pt>
-File: R_cluster.png Graphic file (type png)
-<use R_cluster.png>
-Package pdftex.def Info: R_cluster.png  used on input line 348.
+) [12]
+<"R_cluster".jpeg, id=72, 2039.62pt x 1088.065pt>
+File: "R_cluster".jpeg Graphic file (type jpg)
+<use "R_cluster".jpeg>
+Package pdftex.def Info: "R_cluster".jpeg  used on input line 348.
 (pdftex.def)             Requested size: 412.56496pt x 220.08292pt.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[12] [13 <./R_cluster.png>]
+[13 <./R_cluster.jpeg>]
 
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 393.
@@ -390,418 +377,832 @@ File: boxplot_RMSEP_loop_times_500.pdf Graphic file (type pdf)
 Package pdftex.def Info: boxplot_RMSEP_loop_times_500.pdf  used on input line 3
 96.
 (pdftex.def)             Requested size: 156.49014pt x 202.51451pt.
+[14 <./boxplot_RMSECV_loop_times_500.pdf> <./boxplot_RMSEP_loop_times_500.pdf>]
 
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 406.
 
-<sd_RMSECV_loop_times_500.pdf, id=79, 614.295pt x 794.97pt>
+<sd_RMSECV_loop_times_500.pdf, id=94, 614.295pt x 794.97pt>
 File: sd_RMSECV_loop_times_500.pdf Graphic file (type pdf)
 <use sd_RMSECV_loop_times_500.pdf>
 Package pdftex.def Info: sd_RMSECV_loop_times_500.pdf  used on input line 408.
 (pdftex.def)             Requested size: 156.49014pt x 202.51451pt.
-<sd_RMSEP_loop_times_500.pdf, id=80, 614.295pt x 794.97pt>
+<sd_RMSEP_loop_times_500.pdf, id=95, 614.295pt x 794.97pt>
 File: sd_RMSEP_loop_times_500.pdf Graphic file (type pdf)
 <use sd_RMSEP_loop_times_500.pdf>
 Package pdftex.def Info: sd_RMSEP_loop_times_500.pdf  used on input line 409.
 (pdftex.def)             Requested size: 156.49014pt x 202.51451pt.
-[14 <./boxplot_RMSECV_loop_times_500.pdf> <./boxplot_RMSEP_loop_times_500.pdf>]
-[15 <./sd_RMSECV_loop_times_500.pdf> <./sd_RMSEP_loop_times_500.pdf>]
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 439.
-
-
-Overfull \hbox (29.54614pt too wide) in paragraph at lines 440--452
-[][] 
- []
-
-[16]
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 463.
-
-
-Overfull \hbox (53.46625pt too wide) in paragraph at lines 464--477
-[][] 
- []
-
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 490.
-
-
-Overfull \hbox (47.59268pt too wide) in paragraph at lines 492--506
-[][] 
- []
-
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 514.
-
-
-Overfull \hbox (35.84555pt too wide) in paragraph at lines 515--526
-[][] 
- []
-
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 534.
-
-
-Overfull \hbox (29.97198pt too wide) in paragraph at lines 535--549
-[][] 
- []
-
-[17] [18] (./MSc_dissertation_hongwei.bbl)
 <"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_cali
-bration/unnamed-chunk-1-1".png, id=121, 505.89pt x 505.89pt>
+bration/unnamed-chunk-1-1".png, id=96, 505.89pt x 505.89pt>
 File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
 _calibration/unnamed-chunk-1-1".png Graphic file (type png)
 <use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
 calibration/unnamed-chunk-1-1".png>
 Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
-r_writing/number_of_calibration/unnamed-chunk-1-1".png  used on input line 581.
+r_writing/number_of_calibration/unnamed-chunk-1-1".png  used on input line 429.
 
 (pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
 <"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_cali
-bration/unnamed-chunk-1-2".png, id=122, 505.89pt x 505.89pt>
+bration/unnamed-chunk-1-2".png, id=97, 505.89pt x 505.89pt>
 File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
 _calibration/unnamed-chunk-1-2".png Graphic file (type png)
 <use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
 calibration/unnamed-chunk-1-2".png>
 Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
-r_writing/number_of_calibration/unnamed-chunk-1-2".png  used on input line 582.
-
-(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
- [19
-
-
-
-
-]
-<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_cali
-bration/unnamed-chunk-2-1".png, id=126, 505.89pt x 505.89pt>
-File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
-_calibration/unnamed-chunk-2-1".png Graphic file (type png)
-<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
-calibration/unnamed-chunk-2-1".png>
-Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
-r_writing/number_of_calibration/unnamed-chunk-2-1".png  used on input line 590.
-
-(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
-<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_cali
-bration/unnamed-chunk-2-2".png, id=127, 505.89pt x 505.89pt>
-File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
-_calibration/unnamed-chunk-2-2".png Graphic file (type png)
-<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
-calibration/unnamed-chunk-2-2".png>
-Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
-r_writing/number_of_calibration/unnamed-chunk-2-2".png  used on input line 591.
-
-(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
-<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_cali
-bration/unnamed-chunk-3-1".png, id=128, 505.89pt x 505.89pt>
-File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
-_calibration/unnamed-chunk-3-1".png Graphic file (type png)
-<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
-calibration/unnamed-chunk-3-1".png>
-Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
-r_writing/number_of_calibration/unnamed-chunk-3-1".png  used on input line 600.
-
-(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
-<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_cali
-bration/unnamed-chunk-3-2".png, id=129, 505.89pt x 505.89pt>
-File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
-_calibration/unnamed-chunk-3-2".png Graphic file (type png)
-<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
-calibration/unnamed-chunk-3-2".png>
-Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
-r_writing/number_of_calibration/unnamed-chunk-3-2".png  used on input line 601.
-
-(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_cali
-bration/unnamed-chunk-4-1".png, id=130, 505.89pt x 505.89pt>
-File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
-_calibration/unnamed-chunk-4-1".png Graphic file (type png)
-<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
-calibration/unnamed-chunk-4-1".png>
-Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
-r_writing/number_of_calibration/unnamed-chunk-4-1".png  used on input line 611.
-
-(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
-<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_cali
-bration/unnamed-chunk-4-2".png, id=131, 505.89pt x 505.89pt>
-File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
-_calibration/unnamed-chunk-4-2".png Graphic file (type png)
-<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
-calibration/unnamed-chunk-4-2".png>
-Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
-r_writing/number_of_calibration/unnamed-chunk-4-2".png  used on input line 612.
+r_writing/number_of_calibration/unnamed-chunk-1-2".png  used on input line 430.
 
 (pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+[15 <./sd_RMSECV_loop_times_500.pdf> <./sd_RMSEP_loop_times_500.pdf>]
 <"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_cali
-bration/unnamed-chunk-5-1".png, id=132, 505.89pt x 505.89pt>
-File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
-_calibration/unnamed-chunk-5-1".png Graphic file (type png)
-<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
-calibration/unnamed-chunk-5-1".png>
-Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
-r_writing/number_of_calibration/unnamed-chunk-5-1".png  used on input line 622.
-
-(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
-<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_cali
-bration/unnamed-chunk-5-2".png, id=133, 505.89pt x 505.89pt>
-File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
-_calibration/unnamed-chunk-5-2".png Graphic file (type png)
-<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
-calibration/unnamed-chunk-5-2".png>
-Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
-r_writing/number_of_calibration/unnamed-chunk-5-2".png  used on input line 623.
-
-(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_cali
-bration/unnamed-chunk-6-1".png, id=134, 505.89pt x 505.89pt>
+bration/unnamed-chunk-6-1".png, id=113, 505.89pt x 505.89pt>
 File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
 _calibration/unnamed-chunk-6-1".png Graphic file (type png)
 <use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
 calibration/unnamed-chunk-6-1".png>
 Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
-r_writing/number_of_calibration/unnamed-chunk-6-1".png  used on input line 633.
+r_writing/number_of_calibration/unnamed-chunk-6-1".png  used on input line 442.
 
 (pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
 <"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_cali
-bration/unnamed-chunk-6-2".png, id=135, 505.89pt x 505.89pt>
+bration/unnamed-chunk-6-2".png, id=114, 505.89pt x 505.89pt>
 File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
 _calibration/unnamed-chunk-6-2".png Graphic file (type png)
 <use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
 calibration/unnamed-chunk-6-2".png>
 Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
-r_writing/number_of_calibration/unnamed-chunk-6-2".png  used on input line 634.
+r_writing/number_of_calibration/unnamed-chunk-6-2".png  used on input line 443.
+
+(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
+ [16 </Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
+calibration/unnamed-chunk-1-1.png> </Users/hongwei/Documents/GitHub/STAT/MSc Pr
+oject/paper_writing/number_of_calibration/unnamed-chunk-1-2.png> </Users/hongwe
+i/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_calibration/unnamed
+-chunk-6-1.png> </Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing
+/number_of_calibration/unnamed-chunk-6-2.png>]
+<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_comp
+onents/unnamed-chunk-8-1".png, id=122, 505.89pt x 505.89pt>
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
+_components/unnamed-chunk-8-1".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
+components/unnamed-chunk-8-1".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/number_of_components/unnamed-chunk-8-1".png  used on input line 461.
+(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
+<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_comp
+onents/unnamed-chunk-8-2".png, id=123, 505.89pt x 505.89pt>
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
+_components/unnamed-chunk-8-2".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
+components/unnamed-chunk-8-2".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/number_of_components/unnamed-chunk-8-2".png  used on input line 462.
+(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
+<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/figure/unnamed
+-chunk-1-1".png, id=124, 505.89pt x 505.89pt>
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/figure/un
+named-chunk-1-1".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/figure/unn
+amed-chunk-1-1".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/figure/unnamed-chunk-1-1".png  used on input line 478.
+(pdftex.def)             Requested size: 199.16928pt x 199.17207pt.
+<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/figure/unnamed
+-chunk-2-1".png, id=125, 505.89pt x 505.89pt>
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/figure/un
+named-chunk-2-1".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/figure/unn
+amed-chunk-2-1".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/figure/unnamed-chunk-2-1".png  used on input line 479.
+(pdftex.def)             Requested size: 199.16928pt x 199.17207pt.
+ [17 </Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
+components/unnamed-chunk-8-1.png> </Users/hongwei/Documents/GitHub/STAT/MSc Pro
+ject/paper_writing/number_of_components/unnamed-chunk-8-2.png>]
+<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/figure/unnamed
+-chunk-3-1".png, id=131, 505.89pt x 505.89pt>
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/figure/un
+named-chunk-3-1".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/figure/unn
+amed-chunk-3-1".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/figure/unnamed-chunk-3-1".png  used on input line 487.
+(pdftex.def)             Requested size: 199.16928pt x 199.17207pt.
+<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/figure/unnamed
+-chunk-4-1".png, id=132, 505.89pt x 505.89pt>
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/figure/un
+named-chunk-4-1".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/figure/unn
+amed-chunk-4-1".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/figure/unnamed-chunk-4-1".png  used on input line 488.
+(pdftex.def)             Requested size: 199.16928pt x 199.17207pt.
+<"LOO cross validation".pdf, id=133, 614.295pt x 794.97pt>
+File: "LOO cross validation".pdf Graphic file (type pdf)
+<use "LOO cross validation".pdf>
+Package pdftex.def Info: "LOO cross validation".pdf  used on input line 499.
+(pdftex.def)             Requested size: 199.16928pt x 257.74355pt.
+<"K-fold cross validation".pdf, id=134, 614.295pt x 794.97pt>
+File: "K-fold cross validation".pdf Graphic file (type pdf)
+<use "K-fold cross validation".pdf>
+Package pdftex.def Info: "K-fold cross validation".pdf  used on input line 500.
+
+(pdftex.def)             Requested size: 199.16928pt x 257.74355pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[18 </Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/figure/unna
+med-chunk-1-1.png> </Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writ
+ing/figure/unnamed-chunk-2-1.png> </Users/hongwei/Documents/GitHub/STAT/MSc Pro
+ject/paper_writing/figure/unnamed-chunk-3-1.png> </Users/hongwei/Documents/GitH
+ub/STAT/MSc Project/paper_writing/figure/unnamed-chunk-4-1.png>] [19 <./LOO cro
+ss validation.pdf> <./K-fold cross validation.pdf>] [20]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 559.
+
+
+Overfull \hbox (53.46625pt too wide) in paragraph at lines 560--573
+[][] 
+ []
+
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 587.
+
+
+Overfull \hbox (47.59268pt too wide) in paragraph at lines 589--603
+[][] 
+ []
+
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 612.
+
+
+Overfull \hbox (35.84555pt too wide) in paragraph at lines 613--624
+[][] 
+ []
+
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 633.
+
+
+Overfull \hbox (29.97198pt too wide) in paragraph at lines 634--648
+[][] 
+ []
+
+[21] [22]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[23
+
+
+] [24] (./MSc_dissertation_hongwei.bbl) [25
+
+]
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
+_calibration/unnamed-chunk-1-1".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
+calibration/unnamed-chunk-1-1".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/number_of_calibration/unnamed-chunk-1-1".png  used on input line 751.
+
+(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
+_calibration/unnamed-chunk-1-2".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
+calibration/unnamed-chunk-1-2".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/number_of_calibration/unnamed-chunk-1-2".png  used on input line 752.
+
+(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
+<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_cali
+bration/unnamed-chunk-2-1".png, id=177, 505.89pt x 505.89pt>
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
+_calibration/unnamed-chunk-2-1".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
+calibration/unnamed-chunk-2-1".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/number_of_calibration/unnamed-chunk-2-1".png  used on input line 760.
+
+(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
+<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_cali
+bration/unnamed-chunk-2-2".png, id=178, 505.89pt x 505.89pt>
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
+_calibration/unnamed-chunk-2-2".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
+calibration/unnamed-chunk-2-2".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/number_of_calibration/unnamed-chunk-2-2".png  used on input line 761.
+
+(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
+<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_cali
+bration/unnamed-chunk-3-1".png, id=179, 505.89pt x 505.89pt>
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
+_calibration/unnamed-chunk-3-1".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
+calibration/unnamed-chunk-3-1".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/number_of_calibration/unnamed-chunk-3-1".png  used on input line 770.
+
+(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
+<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_cali
+bration/unnamed-chunk-3-2".png, id=180, 505.89pt x 505.89pt>
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
+_calibration/unnamed-chunk-3-2".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
+calibration/unnamed-chunk-3-2".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/number_of_calibration/unnamed-chunk-3-2".png  used on input line 771.
+
+(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_cali
+bration/unnamed-chunk-4-1".png, id=181, 505.89pt x 505.89pt>
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
+_calibration/unnamed-chunk-4-1".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
+calibration/unnamed-chunk-4-1".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/number_of_calibration/unnamed-chunk-4-1".png  used on input line 781.
+
+(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
+<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_cali
+bration/unnamed-chunk-4-2".png, id=182, 505.89pt x 505.89pt>
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
+_calibration/unnamed-chunk-4-2".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
+calibration/unnamed-chunk-4-2".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/number_of_calibration/unnamed-chunk-4-2".png  used on input line 782.
 
 (pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 <"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_cali
-bration/unnamed-chunk-7-1".png, id=136, 505.89pt x 505.89pt>
+bration/unnamed-chunk-5-1".png, id=183, 505.89pt x 505.89pt>
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
+_calibration/unnamed-chunk-5-1".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
+calibration/unnamed-chunk-5-1".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/number_of_calibration/unnamed-chunk-5-1".png  used on input line 792.
+
+(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
+<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_cali
+bration/unnamed-chunk-5-2".png, id=184, 505.89pt x 505.89pt>
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
+_calibration/unnamed-chunk-5-2".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
+calibration/unnamed-chunk-5-2".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/number_of_calibration/unnamed-chunk-5-2".png  used on input line 793.
+
+(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
+_calibration/unnamed-chunk-6-1".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
+calibration/unnamed-chunk-6-1".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/number_of_calibration/unnamed-chunk-6-1".png  used on input line 803.
+
+(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
+_calibration/unnamed-chunk-6-2".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
+calibration/unnamed-chunk-6-2".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/number_of_calibration/unnamed-chunk-6-2".png  used on input line 804.
+
+(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_cali
+bration/unnamed-chunk-7-1".png, id=185, 505.89pt x 505.89pt>
 File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
 _calibration/unnamed-chunk-7-1".png Graphic file (type png)
 <use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
 calibration/unnamed-chunk-7-1".png>
 Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
-r_writing/number_of_calibration/unnamed-chunk-7-1".png  used on input line 644.
+r_writing/number_of_calibration/unnamed-chunk-7-1".png  used on input line 814.
 
 (pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
 <"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_cali
-bration/unnamed-chunk-7-2".png, id=137, 505.89pt x 505.89pt>
+bration/unnamed-chunk-7-2".png, id=186, 505.89pt x 505.89pt>
 File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
 _calibration/unnamed-chunk-7-2".png Graphic file (type png)
 <use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
 calibration/unnamed-chunk-7-2".png>
 Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
-r_writing/number_of_calibration/unnamed-chunk-7-2".png  used on input line 645.
+r_writing/number_of_calibration/unnamed-chunk-7-2".png  used on input line 815.
 
 (pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 <"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_cali
-bration/unnamed-chunk-8-1".png, id=138, 505.89pt x 505.89pt>
+bration/unnamed-chunk-8-1".png, id=187, 505.89pt x 505.89pt>
 File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
 _calibration/unnamed-chunk-8-1".png Graphic file (type png)
 <use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
 calibration/unnamed-chunk-8-1".png>
 Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
-r_writing/number_of_calibration/unnamed-chunk-8-1".png  used on input line 655.
+r_writing/number_of_calibration/unnamed-chunk-8-1".png  used on input line 825.
 
 (pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
 <"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_cali
-bration/unnamed-chunk-8-2".png, id=139, 505.89pt x 505.89pt>
+bration/unnamed-chunk-8-2".png, id=188, 505.89pt x 505.89pt>
 File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
 _calibration/unnamed-chunk-8-2".png Graphic file (type png)
 <use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
 calibration/unnamed-chunk-8-2".png>
 Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
-r_writing/number_of_calibration/unnamed-chunk-8-2".png  used on input line 656.
+r_writing/number_of_calibration/unnamed-chunk-8-2".png  used on input line 826.
 
 (pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 <"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_cali
-bration/unnamed-chunk-9-1".png, id=140, 505.89pt x 505.89pt>
+bration/unnamed-chunk-9-1".png, id=189, 505.89pt x 505.89pt>
 File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
 _calibration/unnamed-chunk-9-1".png Graphic file (type png)
 <use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
 calibration/unnamed-chunk-9-1".png>
 Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
-r_writing/number_of_calibration/unnamed-chunk-9-1".png  used on input line 666.
+r_writing/number_of_calibration/unnamed-chunk-9-1".png  used on input line 836.
 
 (pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
 <"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_cali
-bration/unnamed-chunk-9-2".png, id=141, 505.89pt x 505.89pt>
+bration/unnamed-chunk-9-2".png, id=190, 505.89pt x 505.89pt>
 File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
 _calibration/unnamed-chunk-9-2".png Graphic file (type png)
 <use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
 calibration/unnamed-chunk-9-2".png>
 Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
-r_writing/number_of_calibration/unnamed-chunk-9-2".png  used on input line 667.
+r_writing/number_of_calibration/unnamed-chunk-9-2".png  used on input line 837.
 
 (pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 <"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_cali
-bration/unnamed-chunk-10-1".png, id=142, 505.89pt x 505.89pt>
+bration/unnamed-chunk-10-1".png, id=191, 505.89pt x 505.89pt>
 File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
 _calibration/unnamed-chunk-10-1".png Graphic file (type png)
 <use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
 calibration/unnamed-chunk-10-1".png>
 Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
-r_writing/number_of_calibration/unnamed-chunk-10-1".png  used on input line 676
+r_writing/number_of_calibration/unnamed-chunk-10-1".png  used on input line 846
 .
 (pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
 <"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_cali
-bration/unnamed-chunk-10-2".png, id=143, 505.89pt x 505.89pt>
+bration/unnamed-chunk-10-2".png, id=192, 505.89pt x 505.89pt>
 File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
 _calibration/unnamed-chunk-10-2".png Graphic file (type png)
 <use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
 calibration/unnamed-chunk-10-2".png>
 Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
-r_writing/number_of_calibration/unnamed-chunk-10-2".png  used on input line 677
+r_writing/number_of_calibration/unnamed-chunk-10-2".png  used on input line 847
 .
 (pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 <"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_cali
-bration/unnamed-chunk-11-1".png, id=144, 505.89pt x 505.89pt>
+bration/unnamed-chunk-11-1".png, id=193, 505.89pt x 505.89pt>
 File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
 _calibration/unnamed-chunk-11-1".png Graphic file (type png)
 <use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
 calibration/unnamed-chunk-11-1".png>
 Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
-r_writing/number_of_calibration/unnamed-chunk-11-1".png  used on input line 687
+r_writing/number_of_calibration/unnamed-chunk-11-1".png  used on input line 857
 .
 (pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
 <"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_cali
-bration/unnamed-chunk-11-2".png, id=145, 505.89pt x 505.89pt>
+bration/unnamed-chunk-11-2".png, id=194, 505.89pt x 505.89pt>
 File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
 _calibration/unnamed-chunk-11-2".png Graphic file (type png)
 <use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
 calibration/unnamed-chunk-11-2".png>
 Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
-r_writing/number_of_calibration/unnamed-chunk-11-2".png  used on input line 688
+r_writing/number_of_calibration/unnamed-chunk-11-2".png  used on input line 858
 .
 (pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 <"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_cali
-bration/unnamed-chunk-12-1".png, id=146, 505.89pt x 505.89pt>
+bration/unnamed-chunk-12-1".png, id=195, 505.89pt x 505.89pt>
 File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
 _calibration/unnamed-chunk-12-1".png Graphic file (type png)
 <use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
 calibration/unnamed-chunk-12-1".png>
 Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
-r_writing/number_of_calibration/unnamed-chunk-12-1".png  used on input line 697
+r_writing/number_of_calibration/unnamed-chunk-12-1".png  used on input line 867
 .
 (pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
 <"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_cali
-bration/unnamed-chunk-12-2".png, id=147, 505.89pt x 505.89pt>
+bration/unnamed-chunk-12-2".png, id=196, 505.89pt x 505.89pt>
 File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
 _calibration/unnamed-chunk-12-2".png Graphic file (type png)
 <use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
 calibration/unnamed-chunk-12-2".png>
 Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
-r_writing/number_of_calibration/unnamed-chunk-12-2".png  used on input line 698
+r_writing/number_of_calibration/unnamed-chunk-12-2".png  used on input line 868
 .
 (pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[20 </Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_c
-alibration/unnamed-chunk-1-1.png> </Users/hongwei/Documents/GitHub/STAT/MSc Pro
-ject/paper_writing/number_of_calibration/unnamed-chunk-1-2.png> </Users/hongwei
-/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_calibration/unnamed-
-chunk-2-1.png> </Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/
-number_of_calibration/unnamed-chunk-2-2.png>] [21 </Users/hongwei/Documents/Git
-Hub/STAT/MSc Project/paper_writing/number_of_calibration/unnamed-chunk-3-1.png>
+[26
+
  </Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_cali
-bration/unnamed-chunk-3-2.png> </Users/hongwei/Documents/GitHub/STAT/MSc Projec
-t/paper_writing/number_of_calibration/unnamed-chunk-4-1.png> </Users/hongwei/Do
-cuments/GitHub/STAT/MSc Project/paper_writing/number_of_calibration/unnamed-chu
-nk-4-2.png>] [22 </Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writin
-g/number_of_calibration/unnamed-chunk-5-1.png> </Users/hongwei/Documents/GitHub
-/STAT/MSc Project/paper_writing/number_of_calibration/unnamed-chunk-5-2.png> </
-Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_calibra
-tion/unnamed-chunk-6-1.png> </Users/hongwei/Documents/GitHub/STAT/MSc Project/p
-aper_writing/number_of_calibration/unnamed-chunk-6-2.png>] [23 </Users/hongwei/
-Documents/GitHub/STAT/MSc Project/paper_writing/number_of_calibration/unnamed-c
-hunk-7-1.png> </Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/n
-umber_of_calibration/unnamed-chunk-7-2.png> </Users/hongwei/Documents/GitHub/ST
-AT/MSc Project/paper_writing/number_of_calibration/unnamed-chunk-8-1.png> </Use
-rs/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_calibratio
-n/unnamed-chunk-8-2.png>] [24 </Users/hongwei/Documents/GitHub/STAT/MSc Project
-/paper_writing/number_of_calibration/unnamed-chunk-9-1.png> </Users/hongwei/Doc
-uments/GitHub/STAT/MSc Project/paper_writing/number_of_calibration/unnamed-chun
-k-9-2.png> </Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/numb
-er_of_calibration/unnamed-chunk-10-1.png> </Users/hongwei/Documents/GitHub/STAT
-/MSc Project/paper_writing/number_of_calibration/unnamed-chunk-10-2.png>]
-[25 </Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_c
-alibration/unnamed-chunk-11-1.png> </Users/hongwei/Documents/GitHub/STAT/MSc Pr
-oject/paper_writing/number_of_calibration/unnamed-chunk-11-2.png> </Users/hongw
+bration/unnamed-chunk-2-1.png> </Users/hongwei/Documents/GitHub/STAT/MSc Projec
+t/paper_writing/number_of_calibration/unnamed-chunk-2-2.png>] [27 </Users/hongw
 ei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_calibration/unname
-d-chunk-12-1.png> </Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writi
-ng/number_of_calibration/unnamed-chunk-12-2.png>] [26
+d-chunk-3-1.png> </Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writin
+g/number_of_calibration/unnamed-chunk-3-2.png> </Users/hongwei/Documents/GitHub
+/STAT/MSc Project/paper_writing/number_of_calibration/unnamed-chunk-4-1.png> </
+Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_calibra
+tion/unnamed-chunk-4-2.png>] [28 </Users/hongwei/Documents/GitHub/STAT/MSc Proj
+ect/paper_writing/number_of_calibration/unnamed-chunk-5-1.png> </Users/hongwei/
+Documents/GitHub/STAT/MSc Project/paper_writing/number_of_calibration/unnamed-c
+hunk-5-2.png>] [29 </Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writ
+ing/number_of_calibration/unnamed-chunk-7-1.png> </Users/hongwei/Documents/GitH
+ub/STAT/MSc Project/paper_writing/number_of_calibration/unnamed-chunk-7-2.png> 
+</Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_calib
+ration/unnamed-chunk-8-1.png> </Users/hongwei/Documents/GitHub/STAT/MSc Project
+/paper_writing/number_of_calibration/unnamed-chunk-8-2.png>] [30 </Users/hongwe
+i/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_calibration/unnamed
+-chunk-9-1.png> </Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing
+/number_of_calibration/unnamed-chunk-9-2.png> </Users/hongwei/Documents/GitHub/
+STAT/MSc Project/paper_writing/number_of_calibration/unnamed-chunk-10-1.png> </
+Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_calibra
+tion/unnamed-chunk-10-2.png>] [31 </Users/hongwei/Documents/GitHub/STAT/MSc Pro
+ject/paper_writing/number_of_calibration/unnamed-chunk-11-1.png> </Users/hongwe
+i/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_calibration/unnamed
+-chunk-11-2.png> </Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writin
+g/number_of_calibration/unnamed-chunk-12-1.png> </Users/hongwei/Documents/GitHu
+b/STAT/MSc Project/paper_writing/number_of_calibration/unnamed-chunk-12-2.png>]
+<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_comp
+onents/unnamed-chunk-1-1".png, id=237, 505.89pt x 505.89pt>
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
+_components/unnamed-chunk-1-1".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
+components/unnamed-chunk-1-1".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/number_of_components/unnamed-chunk-1-1".png  used on input line 885.
+(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
+<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_comp
+onents/unnamed-chunk-1-2".png, id=238, 505.89pt x 505.89pt>
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
+_components/unnamed-chunk-1-2".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
+components/unnamed-chunk-1-2".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/number_of_components/unnamed-chunk-1-2".png  used on input line 886.
+(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
+<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_comp
+onents/unnamed-chunk-2-1".png, id=239, 505.89pt x 505.89pt>
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
+_components/unnamed-chunk-2-1".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
+components/unnamed-chunk-2-1".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/number_of_components/unnamed-chunk-2-1".png  used on input line 894.
+(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
+<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_comp
+onents/unnamed-chunk-2-2".png, id=240, 505.89pt x 505.89pt>
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
+_components/unnamed-chunk-2-2".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
+components/unnamed-chunk-2-2".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/number_of_components/unnamed-chunk-2-2".png  used on input line 895.
+(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
+<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_comp
+onents/unnamed-chunk-3-1".png, id=241, 505.89pt x 505.89pt>
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
+_components/unnamed-chunk-3-1".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
+components/unnamed-chunk-3-1".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/number_of_components/unnamed-chunk-3-1".png  used on input line 904.
+(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
+<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_comp
+onents/unnamed-chunk-3-2".png, id=242, 505.89pt x 505.89pt>
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
+_components/unnamed-chunk-3-2".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
+components/unnamed-chunk-3-2".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/number_of_components/unnamed-chunk-3-2".png  used on input line 905.
+(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
 
-] [27
 
-] [28
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_comp
+onents/unnamed-chunk-4-1".png, id=243, 505.89pt x 505.89pt>
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
+_components/unnamed-chunk-4-1".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
+components/unnamed-chunk-4-1".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/number_of_components/unnamed-chunk-4-1".png  used on input line 915.
+(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
+<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_comp
+onents/unnamed-chunk-4-2".png, id=244, 505.89pt x 505.89pt>
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
+_components/unnamed-chunk-4-2".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
+components/unnamed-chunk-4-2".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/number_of_components/unnamed-chunk-4-2".png  used on input line 916.
+(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_comp
+onents/unnamed-chunk-5-1".png, id=245, 505.89pt x 505.89pt>
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
+_components/unnamed-chunk-5-1".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
+components/unnamed-chunk-5-1".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/number_of_components/unnamed-chunk-5-1".png  used on input line 926.
+(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
+<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_comp
+onents/unnamed-chunk-5-2".png, id=246, 505.89pt x 505.89pt>
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
+_components/unnamed-chunk-5-2".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
+components/unnamed-chunk-5-2".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/number_of_components/unnamed-chunk-5-2".png  used on input line 927.
+(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_comp
+onents/unnamed-chunk-6-1".png, id=247, 505.89pt x 505.89pt>
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
+_components/unnamed-chunk-6-1".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
+components/unnamed-chunk-6-1".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/number_of_components/unnamed-chunk-6-1".png  used on input line 937.
+(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
+<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_comp
+onents/unnamed-chunk-6-2".png, id=248, 505.89pt x 505.89pt>
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
+_components/unnamed-chunk-6-2".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
+components/unnamed-chunk-6-2".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/number_of_components/unnamed-chunk-6-2".png  used on input line 938.
+(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_comp
+onents/unnamed-chunk-7-1".png, id=249, 505.89pt x 505.89pt>
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
+_components/unnamed-chunk-7-1".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
+components/unnamed-chunk-7-1".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/number_of_components/unnamed-chunk-7-1".png  used on input line 948.
+(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
+<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_comp
+onents/unnamed-chunk-7-2".png, id=250, 505.89pt x 505.89pt>
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
+_components/unnamed-chunk-7-2".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
+components/unnamed-chunk-7-2".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/number_of_components/unnamed-chunk-7-2".png  used on input line 949.
+(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
+_components/unnamed-chunk-8-1".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
+components/unnamed-chunk-8-1".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/number_of_components/unnamed-chunk-8-1".png  used on input line 959.
+(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
+_components/unnamed-chunk-8-2".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
+components/unnamed-chunk-8-2".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/number_of_components/unnamed-chunk-8-2".png  used on input line 960.
+(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_comp
+onents/unnamed-chunk-9-1".png, id=251, 505.89pt x 505.89pt>
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
+_components/unnamed-chunk-9-1".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
+components/unnamed-chunk-9-1".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/number_of_components/unnamed-chunk-9-1".png  used on input line 970.
+(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
+<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_comp
+onents/unnamed-chunk-9-2".png, id=252, 505.89pt x 505.89pt>
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
+_components/unnamed-chunk-9-2".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
+components/unnamed-chunk-9-2".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/number_of_components/unnamed-chunk-9-2".png  used on input line 971.
+(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_comp
+onents/unnamed-chunk-10-1".png, id=253, 505.89pt x 505.89pt>
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
+_components/unnamed-chunk-10-1".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
+components/unnamed-chunk-10-1".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/number_of_components/unnamed-chunk-10-1".png  used on input line 980.
+
+(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
+<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_comp
+onents/unnamed-chunk-10-2".png, id=254, 505.89pt x 505.89pt>
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
+_components/unnamed-chunk-10-2".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
+components/unnamed-chunk-10-2".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/number_of_components/unnamed-chunk-10-2".png  used on input line 981.
+
+(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_comp
+onents/unnamed-chunk-11-1".png, id=255, 505.89pt x 505.89pt>
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
+_components/unnamed-chunk-11-1".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
+components/unnamed-chunk-11-1".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/number_of_components/unnamed-chunk-11-1".png  used on input line 991.
+
+(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
+<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_comp
+onents/unnamed-chunk-11-2".png, id=256, 505.89pt x 505.89pt>
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
+_components/unnamed-chunk-11-2".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
+components/unnamed-chunk-11-2".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/number_of_components/unnamed-chunk-11-2".png  used on input line 992.
+
+(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_comp
+onents/unnamed-chunk-12-1".png, id=257, 505.89pt x 505.89pt>
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
+_components/unnamed-chunk-12-1".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
+components/unnamed-chunk-12-1".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/number_of_components/unnamed-chunk-12-1".png  used on input line 1001
+.
+(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
+<"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_comp
+onents/unnamed-chunk-12-2".png, id=258, 505.89pt x 505.89pt>
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
+_components/unnamed-chunk-12-2".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_
+components/unnamed-chunk-12-2".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/number_of_components/unnamed-chunk-12-2".png  used on input line 1002
+.
+(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[32
+
+ </Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_comp
+onents/unnamed-chunk-1-1.png> </Users/hongwei/Documents/GitHub/STAT/MSc Project
+/paper_writing/number_of_components/unnamed-chunk-1-2.png> </Users/hongwei/Docu
+ments/GitHub/STAT/MSc Project/paper_writing/number_of_components/unnamed-chunk-
+2-1.png> </Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number
+_of_components/unnamed-chunk-2-2.png>] [33 </Users/hongwei/Documents/GitHub/STA
+T/MSc Project/paper_writing/number_of_components/unnamed-chunk-3-1.png> </Users
+/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_components/u
+nnamed-chunk-3-2.png> </Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_w
+riting/number_of_components/unnamed-chunk-4-1.png> </Users/hongwei/Documents/Gi
+tHub/STAT/MSc Project/paper_writing/number_of_components/unnamed-chunk-4-2.png>
+] [34 </Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of
+_components/unnamed-chunk-5-1.png> </Users/hongwei/Documents/GitHub/STAT/MSc Pr
+oject/paper_writing/number_of_components/unnamed-chunk-5-2.png> </Users/hongwei
+/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_components/unnamed-c
+hunk-6-1.png> </Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/n
+umber_of_components/unnamed-chunk-6-2.png>] [35 </Users/hongwei/Documents/GitHu
+b/STAT/MSc Project/paper_writing/number_of_components/unnamed-chunk-7-1.png> </
+Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_compone
+nts/unnamed-chunk-7-2.png>] [36 </Users/hongwei/Documents/GitHub/STAT/MSc Proje
+ct/paper_writing/number_of_components/unnamed-chunk-9-1.png> </Users/hongwei/Do
+cuments/GitHub/STAT/MSc Project/paper_writing/number_of_components/unnamed-chun
+k-9-2.png> </Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/numb
+er_of_components/unnamed-chunk-10-1.png> </Users/hongwei/Documents/GitHub/STAT/
+MSc Project/paper_writing/number_of_components/unnamed-chunk-10-2.png>]
+[37 </Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_c
+omponents/unnamed-chunk-11-1.png> </Users/hongwei/Documents/GitHub/STAT/MSc Pro
+ject/paper_writing/number_of_components/unnamed-chunk-11-2.png> </Users/hongwei
+/Documents/GitHub/STAT/MSc Project/paper_writing/number_of_components/unnamed-c
+hunk-12-1.png> </Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/
+number_of_components/unnamed-chunk-12-2.png>]
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/figure/un
+named-chunk-1-1".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/figure/unn
+amed-chunk-1-1".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/figure/unnamed-chunk-1-1".png  used on input line 1018.
+(pdftex.def)             Requested size: 199.16928pt x 199.17207pt.
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/figure/un
+named-chunk-2-1".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/figure/unn
+amed-chunk-2-1".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/figure/unnamed-chunk-2-1".png  used on input line 1019.
+(pdftex.def)             Requested size: 199.16928pt x 199.17207pt.
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/figure/un
+named-chunk-3-1".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/figure/unn
+amed-chunk-3-1".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/figure/unnamed-chunk-3-1".png  used on input line 1027.
+(pdftex.def)             Requested size: 199.16928pt x 199.17207pt.
+File: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/figure/un
+named-chunk-4-1".png Graphic file (type png)
+<use "/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/figure/unn
+amed-chunk-4-1".png>
+Package pdftex.def Info: "/Users/hongwei/Documents/GitHub/STAT/MSc Project/pape
+r_writing/figure/unnamed-chunk-4-1".png  used on input line 1028.
+(pdftex.def)             Requested size: 199.16928pt x 199.17207pt.
+ [38
+
+] [39
 
 ]
-(./MSc_dissertation_hongwei.aux)
-
-LaTeX Warning: There were multiply-defined labels.
-
- ) 
+(./MSc_dissertation_hongwei.aux) ) 
 Here is how much of TeX's memory you used:
- 5874 strings out of 492649
- 86397 string characters out of 6129622
- 202391 words of memory out of 5000000
- 9628 multiletter control sequences out of 15000+600000
+ 6025 strings out of 492649
+ 99870 string characters out of 6129622
+ 203643 words of memory out of 5000000
+ 9774 multiletter control sequences out of 15000+600000
  16968 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,15n,42p,1501b,1817s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
-</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
-/usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></
-usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></us
-r/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/
-local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loc
-al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loca
-l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/
-texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/te
-xlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texl
-ive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texliv
-e/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/
-2018/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/20
-18/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/texlive/2018
-/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb>
-Output written on MSc_dissertation_hongwei.pdf (29 pages, 1744767 bytes).
+ 41i,15n,42p,1733b,1817s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2018/texmf-dist/fonts/enc
+/dvips/cm-super/cm-super-t1.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmsy8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-s
+uper/sfbx1200.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-sup
+er/sfbx1440.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super
+/sfbx1728.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/s
+frm1200.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfr
+m1440.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm2
+074.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfti120
+0.pfb>
+Output written on MSc_dissertation_hongwei.pdf (40 pages, 2093773 bytes).
 PDF statistics:
- 247 PDF objects out of 1000 (max. 8388607)
- 138 compressed objects within 2 object streams
+ 354 PDF objects out of 1000 (max. 8388607)
+ 174 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 161 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 311 words of extra memory for PDF output out of 10000 (max. 10000000)
 
