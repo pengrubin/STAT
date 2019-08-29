@@ -1,25 +1,30 @@
 ---
 title: "Parallel all papers PLS for corn data"
 author: "Hongwei Peng"
-date: "09/07/2019"
-output:
-  pdf_document: default
-  html_document:
-    df_print: paged
+date: "28/08/2019"
+output: html_document
 ---
 
+#1~m5
 ```{r echo=FALSE,warning=FALSE,message=FALSE}
 library(R.matlab)
 library(pls) 
 library(lars)
 library(ggplot2)
 library(parallel)                                      # 载入parallel包
-clnum<-detectCores()-1                                 # 计算可用线程数，并设置并行使用线程数
+clnum<-detectCores()                                 # 计算可用线程数，并设置并行使用线程数
 cl <- makeCluster(getOption("cl.cores", clnum))        # 初始化并行
-rawdata <- readMat("/Users/hongwei/Downloads/corn.mat")
-clusterExport(cl, "rawdata")                           # 额外加载变量
+Myriad_flag=TRUE                                        # myriad_flag TRUE means in cluster environment 
+if (Myriad_flag==TRUE)                                   # FALSE means in PC environment
+{
+  rawdata <- readMat("/home/uczlhpe/Scratch/corn.mat")   # Myriad dir
+} else {
+  rawdata <- readMat("/Users/hongwei/Downloads/corn.mat")# PC dir
+}
+clusterExport(cl, "rawdata")                             # input the rawdata to parallel
+clusterExport(cl, "Myriad_flag")
 system.time({
-  corn_PLS=function(n){                                #n is the number of calibration
+  corn_PLS=function(NV){                                #n is the number of calibration
     library(pls)
     m5data <- rawdata$m5spec$data
     mp5data <- rawdata$mp5spec$data
@@ -28,7 +33,7 @@ system.time({
     #m5data <- m5data[,c(-75,-77)]
     #propvals <- propvals[,c(-75,-77)]
     
-    NV <- 10                                           #number of variables 
+    n <- 60                                           #number of variables 
     sample <- sample(1:80)                             #set random order; the begin of reset order
     DF <- data.frame(NIR = I(m5data),                  #input data
                      y=propvals[,1])
@@ -47,19 +52,747 @@ system.time({
     return(cbind(RMSECV,RMSEP))                        #return 1x2matrix
   }
   #corn_PLS(n)
-  n <- as.matrix(rep(20:70,300))                           #the number of calibration, rep(a:b,c): from a to b and repeat c. 
+  n <- as.matrix(rep(1:50,50))                           #the number of calibration, rep(a:b,c): from a to b and repeat c. 
   #PlsResult <- apply(n,1,corn_PLS)                     #loop
   PlsResult <- parSapply(cl,n,corn_PLS)                #optimizated loop
   PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
-  par(mfrow=c(1,2))
-  boxplot(V2~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSECV",main="PLS")
-  boxplot(V3~V1,data=PlotData,xlab="Number of Calibration", ylab="RMSEP",main="PLS")
-  PlotDataMean <- apply(PlotData,2,mean)
-  PlotDataSd <- apply(PlotData,2,sd)
+  #par(mfrow=c(1,2))
+  boxplot(V2~V1,data=PlotData,xlab="Number of components", ylab="RMSECV",main="PLS of moisture on m5")
+  boxplot(V3~V1,data=PlotData,xlab="Number of components", ylab="RMSEP",main="PLS of moisture on m5")
+  #PlotDataMean <- apply(PlotData,2,mean)
+  #PlotDataSd <- apply(PlotData,2,sd)
   #cat(PlotDataMean[2]-PlotDataSd[2],PlotDataMean[2],PlotDataMean[2]+PlotDataSd[2],"\n")
-  cat(PlotDataMean[3]-PlotDataSd[3],PlotDataMean[3],PlotDataMean[3]+PlotDataSd[3],"\n")
+  #cat(PlotDataMean[3]-PlotDataSd[3],PlotDataMean[3],PlotDataMean[3]+PlotDataSd[3],"\n")
+  if (Myriad_flag==TRUE) {
+    save(PlotData,file="1~m5_Number_of_components_PlotData.RData")                  # save results in myriad
+  }
+  clnum
 })
 stopCluster(cl)
+```
 
+#2~m5
+```{r echo=FALSE,warning=FALSE,message=FALSE}
+library(R.matlab)
+library(pls) 
+library(lars)
+library(ggplot2)
+library(parallel)                                      # 载入parallel包
+clnum<-detectCores()                                 # 计算可用线程数，并设置并行使用线程数
+cl <- makeCluster(getOption("cl.cores", clnum))        # 初始化并行
+Myriad_flag=TRUE                                        # myriad_flag TRUE means in cluster environment 
+if (Myriad_flag==TRUE)                                   # FALSE means in PC environment
+{
+  rawdata <- readMat("/home/uczlhpe/Scratch/corn.mat")   # Myriad dir
+} else {
+  rawdata <- readMat("/Users/hongwei/Downloads/corn.mat")# PC dir
+}
+clusterExport(cl, "rawdata")                             # input the rawdata to parallel
+clusterExport(cl, "Myriad_flag")
+system.time({
+  corn_PLS=function(NV){                                #n is the number of calibration
+    library(pls)
+    m5data <- rawdata$m5spec$data
+    mp5data <- rawdata$mp5spec$data
+    mp6data <- rawdata$mp6spec$data
+    propvals <- rawdata$propvals$data
+    #m5data <- m5data[,c(-75,-77)]
+    #propvals <- propvals[,c(-75,-77)]
+    
+    n <- 60                                           #number of variables 
+    sample <- sample(1:80)                             #set random order; the begin of reset order
+    DF <- data.frame(NIR = I(m5data),                  #input data
+                     y=propvals[,2])
+    class(DF$NIR) <- "matrix"                          # just to be certain, it was "AsIs"
+    #str(DF)                                           #check point
+    DF$train <- rep(FALSE, 80)
+    DF$train[sample<=n] <- TRUE                        #chose calibration
+    corn.pls <- plsr(y ~ NIR, data = DF, ncomp = NV, validation="LOO", jackknife = TRUE, subset = train)
+    #summary(corn.pls,what="all")                      #check point
+    RMSECV <- RMSEP(corn.pls)$val[1,1,NV]
+    #print(RMSECV)                                     #check point
+    predict <- predict(corn.pls, ncomp = NV, newdata = DF[!DF$train,])
+    RMSEP <- sqrt(sum((predict-DF[!DF$train,]$y)^2)/(80-n))
+    #print(RMSEP)                                      #check point
+    #plot(R2(corn.pls))                                #check point
+    return(cbind(RMSECV,RMSEP))                        #return 1x2matrix
+  }
+  #corn_PLS(n)
+  n <- as.matrix(rep(1:50,50))                           #the number of calibration, rep(a:b,c): from a to b and repeat c. 
+  #PlsResult <- apply(n,1,corn_PLS)                     #loop
+  PlsResult <- parSapply(cl,n,corn_PLS)                #optimizated loop
+  PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
+  #par(mfrow=c(1,2))
+  boxplot(V2~V1,data=PlotData,xlab="Number of components", ylab="RMSECV",main="PLS of oil on m5")
+  boxplot(V3~V1,data=PlotData,xlab="Number of components", ylab="RMSEP",main="PLS of oil on m5")
+  #PlotDataMean <- apply(PlotData,2,mean)
+  #PlotDataSd <- apply(PlotData,2,sd)
+  #cat(PlotDataMean[2]-PlotDataSd[2],PlotDataMean[2],PlotDataMean[2]+PlotDataSd[2],"\n")
+  #cat(PlotDataMean[3]-PlotDataSd[3],PlotDataMean[3],PlotDataMean[3]+PlotDataSd[3],"\n")
+  if (Myriad_flag==TRUE) {
+    save(PlotData,file="2~m5_Number_of_components_PlotData.RData")                  # save results in myriad
+  }
+  clnum
+})
+stopCluster(cl)
+```
 
+#3~m5
+```{r echo=FALSE,warning=FALSE,message=FALSE}
+library(R.matlab)
+library(pls) 
+library(lars)
+library(ggplot2)
+library(parallel)                                      # 载入parallel包
+clnum<-detectCores()                                 # 计算可用线程数，并设置并行使用线程数
+cl <- makeCluster(getOption("cl.cores", clnum))        # 初始化并行
+Myriad_flag=TRUE                                        # myriad_flag TRUE means in cluster environment 
+if (Myriad_flag==TRUE)                                   # FALSE means in PC environment
+{
+  rawdata <- readMat("/home/uczlhpe/Scratch/corn.mat")   # Myriad dir
+} else {
+  rawdata <- readMat("/Users/hongwei/Downloads/corn.mat")# PC dir
+}
+clusterExport(cl, "rawdata")                             # input the rawdata to parallel
+clusterExport(cl, "Myriad_flag")
+system.time({
+  corn_PLS=function(NV){                                #n is the number of calibration
+    library(pls)
+    m5data <- rawdata$m5spec$data
+    mp5data <- rawdata$mp5spec$data
+    mp6data <- rawdata$mp6spec$data
+    propvals <- rawdata$propvals$data
+    #m5data <- m5data[,c(-75,-77)]
+    #propvals <- propvals[,c(-75,-77)]
+    
+    n <- 60                                           #number of variables 
+    sample <- sample(1:80)                             #set random order; the begin of reset order
+    DF <- data.frame(NIR = I(m5data),                  #input data
+                     y=propvals[,3])
+    class(DF$NIR) <- "matrix"                          # just to be certain, it was "AsIs"
+    #str(DF)                                           #check point
+    DF$train <- rep(FALSE, 80)
+    DF$train[sample<=n] <- TRUE                        #chose calibration
+    corn.pls <- plsr(y ~ NIR, data = DF, ncomp = NV, validation="LOO", jackknife = TRUE, subset = train)
+    #summary(corn.pls,what="all")                      #check point
+    RMSECV <- RMSEP(corn.pls)$val[1,1,NV]
+    #print(RMSECV)                                     #check point
+    predict <- predict(corn.pls, ncomp = NV, newdata = DF[!DF$train,])
+    RMSEP <- sqrt(sum((predict-DF[!DF$train,]$y)^2)/(80-n))
+    #print(RMSEP)                                      #check point
+    #plot(R2(corn.pls))                                #check point
+    return(cbind(RMSECV,RMSEP))                        #return 1x2matrix
+  }
+  #corn_PLS(n)
+  n <- as.matrix(rep(1:50,50))                           #the number of calibration, rep(a:b,c): from a to b and repeat c. 
+  #PlsResult <- apply(n,1,corn_PLS)                     #loop
+  PlsResult <- parSapply(cl,n,corn_PLS)                #optimizated loop
+  PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
+  #par(mfrow=c(1,2))
+  boxplot(V2~V1,data=PlotData,xlab="Number of components", ylab="RMSECV",main="PLS of protein on m5")
+  boxplot(V3~V1,data=PlotData,xlab="Number of components", ylab="RMSEP",main="PLS of protein on m5")
+  #PlotDataMean <- apply(PlotData,2,mean)
+  #PlotDataSd <- apply(PlotData,2,sd)
+  #cat(PlotDataMean[2]-PlotDataSd[2],PlotDataMean[2],PlotDataMean[2]+PlotDataSd[2],"\n")
+  #cat(PlotDataMean[3]-PlotDataSd[3],PlotDataMean[3],PlotDataMean[3]+PlotDataSd[3],"\n")
+  if (Myriad_flag==TRUE) {
+    save(PlotData,file="3~m5_Number_of_components_PlotData.RData")                  # save results in myriad
+  }
+  clnum
+})
+stopCluster(cl)
+```
+
+#4~m5
+```{r echo=FALSE,warning=FALSE,message=FALSE}
+library(R.matlab)
+library(pls) 
+library(lars)
+library(ggplot2)
+library(parallel)                                      # 载入parallel包
+clnum<-detectCores()                                 # 计算可用线程数，并设置并行使用线程数
+cl <- makeCluster(getOption("cl.cores", clnum))        # 初始化并行
+Myriad_flag=TRUE                                        # myriad_flag TRUE means in cluster environment 
+if (Myriad_flag==TRUE)                                   # FALSE means in PC environment
+{
+  rawdata <- readMat("/home/uczlhpe/Scratch/corn.mat")   # Myriad dir
+} else {
+  rawdata <- readMat("/Users/hongwei/Downloads/corn.mat")# PC dir
+}
+clusterExport(cl, "rawdata")                             # input the rawdata to parallel
+clusterExport(cl, "Myriad_flag")
+system.time({
+  corn_PLS=function(NV){                                #n is the number of calibration
+    library(pls)
+    m5data <- rawdata$m5spec$data
+    mp5data <- rawdata$mp5spec$data
+    mp6data <- rawdata$mp6spec$data
+    propvals <- rawdata$propvals$data
+    #m5data <- m5data[,c(-75,-77)]
+    #propvals <- propvals[,c(-75,-77)]
+    
+    n <- 60                                           #number of variables 
+    sample <- sample(1:80)                             #set random order; the begin of reset order
+    DF <- data.frame(NIR = I(m5data),                  #input data
+                     y=propvals[,4])
+    class(DF$NIR) <- "matrix"                          # just to be certain, it was "AsIs"
+    #str(DF)                                           #check point
+    DF$train <- rep(FALSE, 80)
+    DF$train[sample<=n] <- TRUE                        #chose calibration
+    corn.pls <- plsr(y ~ NIR, data = DF, ncomp = NV, validation="LOO", jackknife = TRUE, subset = train)
+    #summary(corn.pls,what="all")                      #check point
+    RMSECV <- RMSEP(corn.pls)$val[1,1,NV]
+    #print(RMSECV)                                     #check point
+    predict <- predict(corn.pls, ncomp = NV, newdata = DF[!DF$train,])
+    RMSEP <- sqrt(sum((predict-DF[!DF$train,]$y)^2)/(80-n))
+    #print(RMSEP)                                      #check point
+    #plot(R2(corn.pls))                                #check point
+    return(cbind(RMSECV,RMSEP))                        #return 1x2matrix
+  }
+  #corn_PLS(n)
+  n <- as.matrix(rep(1:50,50))                           #the number of calibration, rep(a:b,c): from a to b and repeat c. 
+  #PlsResult <- apply(n,1,corn_PLS)                     #loop
+  PlsResult <- parSapply(cl,n,corn_PLS)                #optimizated loop
+  PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
+  #par(mfrow=c(1,2))
+  boxplot(V2~V1,data=PlotData,xlab="Number of components", ylab="RMSECV",main="PLS of starch on m5")
+  boxplot(V3~V1,data=PlotData,xlab="Number of components", ylab="RMSEP",main="PLS of starch on m5")
+  #PlotDataMean <- apply(PlotData,2,mean)
+  #PlotDataSd <- apply(PlotData,2,sd)
+  #cat(PlotDataMean[2]-PlotDataSd[2],PlotDataMean[2],PlotDataMean[2]+PlotDataSd[2],"\n")
+  #cat(PlotDataMean[3]-PlotDataSd[3],PlotDataMean[3],PlotDataMean[3]+PlotDataSd[3],"\n")
+  if (Myriad_flag==TRUE) {
+    save(PlotData,file="4~m5_Number_of_components_PlotData.RData")                  # save results in myriad
+  }
+  clnum
+})
+stopCluster(cl)
+```
+
+#1~mp5
+```{r echo=FALSE,warning=FALSE,message=FALSE}
+library(R.matlab)
+library(pls) 
+library(lars)
+library(ggplot2)
+library(parallel)                                      # 载入parallel包
+clnum<-detectCores()                                 # 计算可用线程数，并设置并行使用线程数
+cl <- makeCluster(getOption("cl.cores", clnum))        # 初始化并行
+Myriad_flag=TRUE                                        # myriad_flag TRUE means in cluster environment 
+if (Myriad_flag==TRUE)                                   # FALSE means in PC environment
+{
+  rawdata <- readMat("/home/uczlhpe/Scratch/corn.mat")   # Myriad dir
+} else {
+  rawdata <- readMat("/Users/hongwei/Downloads/corn.mat")# PC dir
+}
+clusterExport(cl, "rawdata")                             # input the rawdata to parallel
+clusterExport(cl, "Myriad_flag")
+system.time({
+  corn_PLS=function(NV){                                #n is the number of calibration
+    library(pls)
+    m5data <- rawdata$m5spec$data
+    mp5data <- rawdata$mp5spec$data
+    mp6data <- rawdata$mp6spec$data
+    propvals <- rawdata$propvals$data
+    #m5data <- m5data[,c(-75,-77)]
+    #propvals <- propvals[,c(-75,-77)]
+    
+    n <- 60                                           #number of variables 
+    sample <- sample(1:80)                             #set random order; the begin of reset order
+    DF <- data.frame(NIR = I(mp5data),                  #input data
+                     y=propvals[,1])
+    class(DF$NIR) <- "matrix"                          # just to be certain, it was "AsIs"
+    #str(DF)                                           #check point
+    DF$train <- rep(FALSE, 80)
+    DF$train[sample<=n] <- TRUE                        #chose calibration
+    corn.pls <- plsr(y ~ NIR, data = DF, ncomp = NV, validation="LOO", jackknife = TRUE, subset = train)
+    #summary(corn.pls,what="all")                      #check point
+    RMSECV <- RMSEP(corn.pls)$val[1,1,NV]
+    #print(RMSECV)                                     #check point
+    predict <- predict(corn.pls, ncomp = NV, newdata = DF[!DF$train,])
+    RMSEP <- sqrt(sum((predict-DF[!DF$train,]$y)^2)/(80-n))
+    #print(RMSEP)                                      #check point
+    #plot(R2(corn.pls))                                #check point
+    return(cbind(RMSECV,RMSEP))                        #return 1x2matrix
+  }
+  #corn_PLS(n)
+  n <- as.matrix(rep(1:50,50))                           #the number of calibration, rep(a:b,c): from a to b and repeat c. 
+  #PlsResult <- apply(n,1,corn_PLS)                     #loop
+  PlsResult <- parSapply(cl,n,corn_PLS)                #optimizated loop
+  PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
+  #par(mfrow=c(1,2))
+  boxplot(V2~V1,data=PlotData,xlab="Number of components", ylab="RMSECV",main="PLS of moisture on mp5")
+  boxplot(V3~V1,data=PlotData,xlab="Number of components", ylab="RMSEP",main="PLS of moisture on mp5")
+  #PlotDataMean <- apply(PlotData,2,mean)
+  #PlotDataSd <- apply(PlotData,2,sd)
+  #cat(PlotDataMean[2]-PlotDataSd[2],PlotDataMean[2],PlotDataMean[2]+PlotDataSd[2],"\n")
+  #cat(PlotDataMean[3]-PlotDataSd[3],PlotDataMean[3],PlotDataMean[3]+PlotDataSd[3],"\n")
+  if (Myriad_flag==TRUE) {
+    save(PlotData,file="1~mp5_Number_of_components_PlotData.RData")                  # save results in myriad
+  }
+  clnum
+})
+stopCluster(cl)
+```
+
+#2~mp5
+```{r echo=FALSE,warning=FALSE,message=FALSE}
+library(R.matlab)
+library(pls) 
+library(lars)
+library(ggplot2)
+library(parallel)                                      # 载入parallel包
+clnum<-detectCores()                                 # 计算可用线程数，并设置并行使用线程数
+cl <- makeCluster(getOption("cl.cores", clnum))        # 初始化并行
+Myriad_flag=TRUE                                        # myriad_flag TRUE means in cluster environment 
+if (Myriad_flag==TRUE)                                   # FALSE means in PC environment
+{
+  rawdata <- readMat("/home/uczlhpe/Scratch/corn.mat")   # Myriad dir
+} else {
+  rawdata <- readMat("/Users/hongwei/Downloads/corn.mat")# PC dir
+}
+clusterExport(cl, "rawdata")                             # input the rawdata to parallel
+clusterExport(cl, "Myriad_flag")
+system.time({
+  corn_PLS=function(NV){                                #n is the number of calibration
+    library(pls)
+    m5data <- rawdata$m5spec$data
+    mp5data <- rawdata$mp5spec$data
+    mp6data <- rawdata$mp6spec$data
+    propvals <- rawdata$propvals$data
+    #m5data <- m5data[,c(-75,-77)]
+    #propvals <- propvals[,c(-75,-77)]
+    
+    n <- 60                                           #number of variables 
+    sample <- sample(1:80)                             #set random order; the begin of reset order
+    DF <- data.frame(NIR = I(mp5data),                  #input data
+                     y=propvals[,2])
+    class(DF$NIR) <- "matrix"                          # just to be certain, it was "AsIs"
+    #str(DF)                                           #check point
+    DF$train <- rep(FALSE, 80)
+    DF$train[sample<=n] <- TRUE                        #chose calibration
+    corn.pls <- plsr(y ~ NIR, data = DF, ncomp = NV, validation="LOO", jackknife = TRUE, subset = train)
+    #summary(corn.pls,what="all")                      #check point
+    RMSECV <- RMSEP(corn.pls)$val[1,1,NV]
+    #print(RMSECV)                                     #check point
+    predict <- predict(corn.pls, ncomp = NV, newdata = DF[!DF$train,])
+    RMSEP <- sqrt(sum((predict-DF[!DF$train,]$y)^2)/(80-n))
+    #print(RMSEP)                                      #check point
+    #plot(R2(corn.pls))                                #check point
+    return(cbind(RMSECV,RMSEP))                        #return 1x2matrix
+  }
+  #corn_PLS(n)
+  n <- as.matrix(rep(1:50,50))                           #the number of calibration, rep(a:b,c): from a to b and repeat c. 
+  #PlsResult <- apply(n,1,corn_PLS)                     #loop
+  PlsResult <- parSapply(cl,n,corn_PLS)                #optimizated loop
+  PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
+  #par(mfrow=c(1,2))
+  boxplot(V2~V1,data=PlotData,xlab="Number of components", ylab="RMSECV",main="PLS of oil on mp5")
+  boxplot(V3~V1,data=PlotData,xlab="Number of components", ylab="RMSEP",main="PLS of oil on mp5")
+  #PlotDataMean <- apply(PlotData,2,mean)
+  #PlotDataSd <- apply(PlotData,2,sd)
+  #cat(PlotDataMean[2]-PlotDataSd[2],PlotDataMean[2],PlotDataMean[2]+PlotDataSd[2],"\n")
+  #cat(PlotDataMean[3]-PlotDataSd[3],PlotDataMean[3],PlotDataMean[3]+PlotDataSd[3],"\n")
+  if (Myriad_flag==TRUE) {
+    save(PlotData,file="2~mp5_Number_of_components_PlotData.RData")                  # save results in myriad
+  }
+  clnum
+})
+stopCluster(cl)
+```
+
+#3~mp5
+```{r echo=FALSE,warning=FALSE,message=FALSE}
+library(R.matlab)
+library(pls) 
+library(lars)
+library(ggplot2)
+library(parallel)                                      # 载入parallel包
+clnum<-detectCores()                                 # 计算可用线程数，并设置并行使用线程数
+cl <- makeCluster(getOption("cl.cores", clnum))        # 初始化并行
+Myriad_flag=TRUE                                        # myriad_flag TRUE means in cluster environment 
+if (Myriad_flag==TRUE)                                   # FALSE means in PC environment
+{
+  rawdata <- readMat("/home/uczlhpe/Scratch/corn.mat")   # Myriad dir
+} else {
+  rawdata <- readMat("/Users/hongwei/Downloads/corn.mat")# PC dir
+}
+clusterExport(cl, "rawdata")                             # input the rawdata to parallel
+clusterExport(cl, "Myriad_flag")
+system.time({
+  corn_PLS=function(NV){                                #n is the number of calibration
+    library(pls)
+    m5data <- rawdata$m5spec$data
+    mp5data <- rawdata$mp5spec$data
+    mp6data <- rawdata$mp6spec$data
+    propvals <- rawdata$propvals$data
+    #m5data <- m5data[,c(-75,-77)]
+    #propvals <- propvals[,c(-75,-77)]
+    
+    n <- 60                                           #number of variables 
+    sample <- sample(1:80)                             #set random order; the begin of reset order
+    DF <- data.frame(NIR = I(mp5data),                  #input data
+                     y=propvals[,3])
+    class(DF$NIR) <- "matrix"                          # just to be certain, it was "AsIs"
+    #str(DF)                                           #check point
+    DF$train <- rep(FALSE, 80)
+    DF$train[sample<=n] <- TRUE                        #chose calibration
+    corn.pls <- plsr(y ~ NIR, data = DF, ncomp = NV, validation="LOO", jackknife = TRUE, subset = train)
+    #summary(corn.pls,what="all")                      #check point
+    RMSECV <- RMSEP(corn.pls)$val[1,1,NV]
+    #print(RMSECV)                                     #check point
+    predict <- predict(corn.pls, ncomp = NV, newdata = DF[!DF$train,])
+    RMSEP <- sqrt(sum((predict-DF[!DF$train,]$y)^2)/(80-n))
+    #print(RMSEP)                                      #check point
+    #plot(R2(corn.pls))                                #check point
+    return(cbind(RMSECV,RMSEP))                        #return 1x2matrix
+  }
+  #corn_PLS(n)
+  n <- as.matrix(rep(1:50,50))                           #the number of calibration, rep(a:b,c): from a to b and repeat c. 
+  #PlsResult <- apply(n,1,corn_PLS)                     #loop
+  PlsResult <- parSapply(cl,n,corn_PLS)                #optimizated loop
+  PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
+  #par(mfrow=c(1,2))
+  boxplot(V2~V1,data=PlotData,xlab="Number of components", ylab="RMSECV",main="PLS of protein on mp5")
+  boxplot(V3~V1,data=PlotData,xlab="Number of components", ylab="RMSEP",main="PLS of protein on mp5")
+  #PlotDataMean <- apply(PlotData,2,mean)
+  #PlotDataSd <- apply(PlotData,2,sd)
+  #cat(PlotDataMean[2]-PlotDataSd[2],PlotDataMean[2],PlotDataMean[2]+PlotDataSd[2],"\n")
+  #cat(PlotDataMean[3]-PlotDataSd[3],PlotDataMean[3],PlotDataMean[3]+PlotDataSd[3],"\n")
+  if (Myriad_flag==TRUE) {
+    save(PlotData,file="3~mp5_Number_of_components_PlotData.RData")                  # save results in myriad
+  }
+  clnum
+})
+stopCluster(cl)
+```
+
+#4~mp5
+```{r echo=FALSE,warning=FALSE,message=FALSE}
+library(R.matlab)
+library(pls) 
+library(lars)
+library(ggplot2)
+library(parallel)                                      # 载入parallel包
+clnum<-detectCores()                                 # 计算可用线程数，并设置并行使用线程数
+cl <- makeCluster(getOption("cl.cores", clnum))        # 初始化并行
+Myriad_flag=TRUE                                        # myriad_flag TRUE means in cluster environment 
+if (Myriad_flag==TRUE)                                   # FALSE means in PC environment
+{
+  rawdata <- readMat("/home/uczlhpe/Scratch/corn.mat")   # Myriad dir
+} else {
+  rawdata <- readMat("/Users/hongwei/Downloads/corn.mat")# PC dir
+}
+clusterExport(cl, "rawdata")                             # input the rawdata to parallel
+clusterExport(cl, "Myriad_flag")
+system.time({
+  corn_PLS=function(NV){                                #n is the number of calibration
+    library(pls)
+    m5data <- rawdata$m5spec$data
+    mp5data <- rawdata$mp5spec$data
+    mp6data <- rawdata$mp6spec$data
+    propvals <- rawdata$propvals$data
+    #m5data <- m5data[,c(-75,-77)]
+    #propvals <- propvals[,c(-75,-77)]
+    
+    n <- 60                                           #number of variables 
+    sample <- sample(1:80)                             #set random order; the begin of reset order
+    DF <- data.frame(NIR = I(mp5data),                  #input data
+                     y=propvals[,4])
+    class(DF$NIR) <- "matrix"                          # just to be certain, it was "AsIs"
+    #str(DF)                                           #check point
+    DF$train <- rep(FALSE, 80)
+    DF$train[sample<=n] <- TRUE                        #chose calibration
+    corn.pls <- plsr(y ~ NIR, data = DF, ncomp = NV, validation="LOO", jackknife = TRUE, subset = train)
+    #summary(corn.pls,what="all")                      #check point
+    RMSECV <- RMSEP(corn.pls)$val[1,1,NV]
+    #print(RMSECV)                                     #check point
+    predict <- predict(corn.pls, ncomp = NV, newdata = DF[!DF$train,])
+    RMSEP <- sqrt(sum((predict-DF[!DF$train,]$y)^2)/(80-n))
+    #print(RMSEP)                                      #check point
+    #plot(R2(corn.pls))                                #check point
+    return(cbind(RMSECV,RMSEP))                        #return 1x2matrix
+  }
+  #corn_PLS(n)
+  n <- as.matrix(rep(1:50,50))                           #the number of calibration, rep(a:b,c): from a to b and repeat c. 
+  #PlsResult <- apply(n,1,corn_PLS)                     #loop
+  PlsResult <- parSapply(cl,n,corn_PLS)                #optimizated loop
+  PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
+  #par(mfrow=c(1,2))
+  boxplot(V2~V1,data=PlotData,xlab="Number of components", ylab="RMSECV",main="PLS of starch on mp5")
+  boxplot(V3~V1,data=PlotData,xlab="Number of components", ylab="RMSEP",main="PLS of starch on mp5")
+  #PlotDataMean <- apply(PlotData,2,mean)
+  #PlotDataSd <- apply(PlotData,2,sd)
+  #cat(PlotDataMean[2]-PlotDataSd[2],PlotDataMean[2],PlotDataMean[2]+PlotDataSd[2],"\n")
+  #cat(PlotDataMean[3]-PlotDataSd[3],PlotDataMean[3],PlotDataMean[3]+PlotDataSd[3],"\n")
+  if (Myriad_flag==TRUE) {
+    save(PlotData,file="4~mp5_Number_of_components_PlotData.RData")                  # save results in myriad
+  }
+  clnum
+})
+stopCluster(cl)
+```
+
+#1~mp6
+```{r echo=FALSE,warning=FALSE,message=FALSE}
+library(R.matlab)
+library(pls) 
+library(lars)
+library(ggplot2)
+library(parallel)                                      # 载入parallel包
+clnum<-detectCores()                                 # 计算可用线程数，并设置并行使用线程数
+cl <- makeCluster(getOption("cl.cores", clnum))        # 初始化并行
+Myriad_flag=TRUE                                        # myriad_flag TRUE means in cluster environment 
+if (Myriad_flag==TRUE)                                   # FALSE means in PC environment
+{
+  rawdata <- readMat("/home/uczlhpe/Scratch/corn.mat")   # Myriad dir
+} else {
+  rawdata <- readMat("/Users/hongwei/Downloads/corn.mat")# PC dir
+}
+clusterExport(cl, "rawdata")                             # input the rawdata to parallel
+clusterExport(cl, "Myriad_flag")
+system.time({
+  corn_PLS=function(NV){                                #n is the number of calibration
+    library(pls)
+    m5data <- rawdata$m5spec$data
+    mp5data <- rawdata$mp5spec$data
+    mp6data <- rawdata$mp6spec$data
+    propvals <- rawdata$propvals$data
+    #m5data <- m5data[,c(-75,-77)]
+    #propvals <- propvals[,c(-75,-77)]
+    
+    n <- 60                                           #number of variables 
+    sample <- sample(1:80)                             #set random order; the begin of reset order
+    DF <- data.frame(NIR = I(mp6data),                  #input data
+                     y=propvals[,1])
+    class(DF$NIR) <- "matrix"                          # just to be certain, it was "AsIs"
+    #str(DF)                                           #check point
+    DF$train <- rep(FALSE, 80)
+    DF$train[sample<=n] <- TRUE                        #chose calibration
+    corn.pls <- plsr(y ~ NIR, data = DF, ncomp = NV, validation="LOO", jackknife = TRUE, subset = train)
+    #summary(corn.pls,what="all")                      #check point
+    RMSECV <- RMSEP(corn.pls)$val[1,1,NV]
+    #print(RMSECV)                                     #check point
+    predict <- predict(corn.pls, ncomp = NV, newdata = DF[!DF$train,])
+    RMSEP <- sqrt(sum((predict-DF[!DF$train,]$y)^2)/(80-n))
+    #print(RMSEP)                                      #check point
+    #plot(R2(corn.pls))                                #check point
+    return(cbind(RMSECV,RMSEP))                        #return 1x2matrix
+  }
+  #corn_PLS(n)
+  n <- as.matrix(rep(1:50,50))                           #the number of calibration, rep(a:b,c): from a to b and repeat c. 
+  #PlsResult <- apply(n,1,corn_PLS)                     #loop
+  PlsResult <- parSapply(cl,n,corn_PLS)                #optimizated loop
+  PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
+  #par(mfrow=c(1,2))
+  boxplot(V2~V1,data=PlotData,xlab="Number of components", ylab="RMSECV",main="PLS of moisture on mp6")
+  boxplot(V3~V1,data=PlotData,xlab="Number of components", ylab="RMSEP",main="PLS of moisture on mp6")
+  #PlotDataMean <- apply(PlotData,2,mean)
+  #PlotDataSd <- apply(PlotData,2,sd)
+  #cat(PlotDataMean[2]-PlotDataSd[2],PlotDataMean[2],PlotDataMean[2]+PlotDataSd[2],"\n")
+  #cat(PlotDataMean[3]-PlotDataSd[3],PlotDataMean[3],PlotDataMean[3]+PlotDataSd[3],"\n")
+  if (Myriad_flag==TRUE) {
+    save(PlotData,file="1~mp6_Number_of_components_PlotData.RData")                  # save results in myriad
+  }
+  clnum
+})
+stopCluster(cl)
+```
+
+#2~mp6
+```{r echo=FALSE,warning=FALSE,message=FALSE}
+library(R.matlab)
+library(pls) 
+library(lars)
+library(ggplot2)
+library(parallel)                                      # 载入parallel包
+clnum<-detectCores()                                 # 计算可用线程数，并设置并行使用线程数
+cl <- makeCluster(getOption("cl.cores", clnum))        # 初始化并行
+Myriad_flag=TRUE                                        # myriad_flag TRUE means in cluster environment 
+if (Myriad_flag==TRUE)                                   # FALSE means in PC environment
+{
+  rawdata <- readMat("/home/uczlhpe/Scratch/corn.mat")   # Myriad dir
+} else {
+  rawdata <- readMat("/Users/hongwei/Downloads/corn.mat")# PC dir
+}
+clusterExport(cl, "rawdata")                             # input the rawdata to parallel
+clusterExport(cl, "Myriad_flag")
+system.time({
+  corn_PLS=function(NV){                                #n is the number of calibration
+    library(pls)
+    m5data <- rawdata$m5spec$data
+    mp5data <- rawdata$mp5spec$data
+    mp6data <- rawdata$mp6spec$data
+    propvals <- rawdata$propvals$data
+    #m5data <- m5data[,c(-75,-77)]
+    #propvals <- propvals[,c(-75,-77)]
+    
+    n <- 60                                           #number of variables 
+    sample <- sample(1:80)                             #set random order; the begin of reset order
+    DF <- data.frame(NIR = I(mp6data),                  #input data
+                     y=propvals[,2])
+    class(DF$NIR) <- "matrix"                          # just to be certain, it was "AsIs"
+    #str(DF)                                           #check point
+    DF$train <- rep(FALSE, 80)
+    DF$train[sample<=n] <- TRUE                        #chose calibration
+    corn.pls <- plsr(y ~ NIR, data = DF, ncomp = NV, validation="LOO", jackknife = TRUE, subset = train)
+    #summary(corn.pls,what="all")                      #check point
+    RMSECV <- RMSEP(corn.pls)$val[1,1,NV]
+    #print(RMSECV)                                     #check point
+    predict <- predict(corn.pls, ncomp = NV, newdata = DF[!DF$train,])
+    RMSEP <- sqrt(sum((predict-DF[!DF$train,]$y)^2)/(80-n))
+    #print(RMSEP)                                      #check point
+    #plot(R2(corn.pls))                                #check point
+    return(cbind(RMSECV,RMSEP))                        #return 1x2matrix
+  }
+  #corn_PLS(n)
+  n <- as.matrix(rep(1:50,50))                           #the number of calibration, rep(a:b,c): from a to b and repeat c. 
+  #PlsResult <- apply(n,1,corn_PLS)                     #loop
+  PlsResult <- parSapply(cl,n,corn_PLS)                #optimizated loop
+  PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
+  #par(mfrow=c(1,2))
+  boxplot(V2~V1,data=PlotData,xlab="Number of components", ylab="RMSECV",main="PLS of oil on mp6")
+  boxplot(V3~V1,data=PlotData,xlab="Number of components", ylab="RMSEP",main="PLS of oil on mp6")
+  #PlotDataMean <- apply(PlotData,2,mean)
+  #PlotDataSd <- apply(PlotData,2,sd)
+  #cat(PlotDataMean[2]-PlotDataSd[2],PlotDataMean[2],PlotDataMean[2]+PlotDataSd[2],"\n")
+  #cat(PlotDataMean[3]-PlotDataSd[3],PlotDataMean[3],PlotDataMean[3]+PlotDataSd[3],"\n")
+  if (Myriad_flag==TRUE) {
+    save(PlotData,file="2~mp6_Number_of_components_PlotData.RData")                  # save results in myriad
+  }
+  clnum
+})
+stopCluster(cl)
+```
+
+#3~mp6
+```{r echo=FALSE,warning=FALSE,message=FALSE}
+library(R.matlab)
+library(pls) 
+library(lars)
+library(ggplot2)
+library(parallel)                                      # 载入parallel包
+clnum<-detectCores()                                 # 计算可用线程数，并设置并行使用线程数
+cl <- makeCluster(getOption("cl.cores", clnum))        # 初始化并行
+Myriad_flag=TRUE                                        # myriad_flag TRUE means in cluster environment 
+if (Myriad_flag==TRUE)                                   # FALSE means in PC environment
+{
+  rawdata <- readMat("/home/uczlhpe/Scratch/corn.mat")   # Myriad dir
+} else {
+  rawdata <- readMat("/Users/hongwei/Downloads/corn.mat")# PC dir
+}
+clusterExport(cl, "rawdata")                             # input the rawdata to parallel
+clusterExport(cl, "Myriad_flag")
+system.time({
+  corn_PLS=function(NV){                                #n is the number of calibration
+    library(pls)
+    m5data <- rawdata$m5spec$data
+    mp5data <- rawdata$mp5spec$data
+    mp6data <- rawdata$mp6spec$data
+    propvals <- rawdata$propvals$data
+    #m5data <- m5data[,c(-75,-77)]
+    #propvals <- propvals[,c(-75,-77)]
+    
+    n <- 60                                           #number of variables 
+    sample <- sample(1:80)                             #set random order; the begin of reset order
+    DF <- data.frame(NIR = I(mp6data),                  #input data
+                     y=propvals[,3])
+    class(DF$NIR) <- "matrix"                          # just to be certain, it was "AsIs"
+    #str(DF)                                           #check point
+    DF$train <- rep(FALSE, 80)
+    DF$train[sample<=n] <- TRUE                        #chose calibration
+    corn.pls <- plsr(y ~ NIR, data = DF, ncomp = NV, validation="LOO", jackknife = TRUE, subset = train)
+    #summary(corn.pls,what="all")                      #check point
+    RMSECV <- RMSEP(corn.pls)$val[1,1,NV]
+    #print(RMSECV)                                     #check point
+    predict <- predict(corn.pls, ncomp = NV, newdata = DF[!DF$train,])
+    RMSEP <- sqrt(sum((predict-DF[!DF$train,]$y)^2)/(80-n))
+    #print(RMSEP)                                      #check point
+    #plot(R2(corn.pls))                                #check point
+    return(cbind(RMSECV,RMSEP))                        #return 1x2matrix
+  }
+  #corn_PLS(n)
+  n <- as.matrix(rep(1:50,50))                           #the number of calibration, rep(a:b,c): from a to b and repeat c. 
+  #PlsResult <- apply(n,1,corn_PLS)                     #loop
+  PlsResult <- parSapply(cl,n,corn_PLS)                #optimizated loop
+  PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
+  #par(mfrow=c(1,2))
+  boxplot(V2~V1,data=PlotData,xlab="Number of components", ylab="RMSECV",main="PLS of protein on mp6")
+  boxplot(V3~V1,data=PlotData,xlab="Number of components", ylab="RMSEP",main="PLS of protein on mp6")
+  #PlotDataMean <- apply(PlotData,2,mean)
+  #PlotDataSd <- apply(PlotData,2,sd)
+  #cat(PlotDataMean[2]-PlotDataSd[2],PlotDataMean[2],PlotDataMean[2]+PlotDataSd[2],"\n")
+  #cat(PlotDataMean[3]-PlotDataSd[3],PlotDataMean[3],PlotDataMean[3]+PlotDataSd[3],"\n")
+  if (Myriad_flag==TRUE) {
+    save(PlotData,file="3~mp6_Number_of_components_PlotData.RData")                  # save results in myriad
+  }
+  clnum
+})
+stopCluster(cl)
+```
+
+#4~mp6
+```{r echo=FALSE,warning=FALSE,message=FALSE}
+library(R.matlab)
+library(pls) 
+library(lars)
+library(ggplot2)
+library(parallel)                                      # 载入parallel包
+clnum<-detectCores()                                 # 计算可用线程数，并设置并行使用线程数
+cl <- makeCluster(getOption("cl.cores", clnum))        # 初始化并行
+Myriad_flag=TRUE                                        # myriad_flag TRUE means in cluster environment 
+if (Myriad_flag==TRUE)                                   # FALSE means in PC environment
+{
+  rawdata <- readMat("/home/uczlhpe/Scratch/corn.mat")   # Myriad dir
+} else {
+  rawdata <- readMat("/Users/hongwei/Downloads/corn.mat")# PC dir
+}
+clusterExport(cl, "rawdata")                             # input the rawdata to parallel
+clusterExport(cl, "Myriad_flag")
+system.time({
+  corn_PLS=function(NV){                                #n is the number of calibration
+    library(pls)
+    m5data <- rawdata$m5spec$data
+    mp5data <- rawdata$mp5spec$data
+    mp6data <- rawdata$mp6spec$data
+    propvals <- rawdata$propvals$data
+    #m5data <- m5data[,c(-75,-77)]
+    #propvals <- propvals[,c(-75,-77)]
+    
+    n <- 60                                           #number of variables 
+    sample <- sample(1:80)                             #set random order; the begin of reset order
+    DF <- data.frame(NIR = I(mp6data),                  #input data
+                     y=propvals[,4])
+    class(DF$NIR) <- "matrix"                          # just to be certain, it was "AsIs"
+    #str(DF)                                           #check point
+    DF$train <- rep(FALSE, 80)
+    DF$train[sample<=n] <- TRUE                        #chose calibration
+    corn.pls <- plsr(y ~ NIR, data = DF, ncomp = NV, validation="LOO", jackknife = TRUE, subset = train)
+    #summary(corn.pls,what="all")                      #check point
+    RMSECV <- RMSEP(corn.pls)$val[1,1,NV]
+    #print(RMSECV)                                     #check point
+    predict <- predict(corn.pls, ncomp = NV, newdata = DF[!DF$train,])
+    RMSEP <- sqrt(sum((predict-DF[!DF$train,]$y)^2)/(80-n))
+    #print(RMSEP)                                      #check point
+    #plot(R2(corn.pls))                                #check point
+    return(cbind(RMSECV,RMSEP))                        #return 1x2matrix
+  }
+  #corn_PLS(n)
+  n <- as.matrix(rep(1:50,50))                           #the number of calibration, rep(a:b,c): from a to b and repeat c. 
+  #PlsResult <- apply(n,1,corn_PLS)                     #loop
+  PlsResult <- parSapply(cl,n,corn_PLS)                #optimizated loop
+  PlotData <- as.data.frame(cbind(n,t(PlsResult)))     #combind the results
+  #par(mfrow=c(1,2))
+  boxplot(V2~V1,data=PlotData,xlab="Number of components", ylab="RMSECV",main="PLS of starch on mp6")
+  boxplot(V3~V1,data=PlotData,xlab="Number of components", ylab="RMSEP",main="PLS of starch on mp6")
+  #PlotDataMean <- apply(PlotData,2,mean)
+  #PlotDataSd <- apply(PlotData,2,sd)
+  #cat(PlotDataMean[2]-PlotDataSd[2],PlotDataMean[2],PlotDataMean[2]+PlotDataSd[2],"\n")
+  #cat(PlotDataMean[3]-PlotDataSd[3],PlotDataMean[3],PlotDataMean[3]+PlotDataSd[3],"\n")
+  if (Myriad_flag==TRUE) {
+    save(PlotData,file="4~mp6_Number_of_components_PlotData.RData")                  # save results in myriad
+  }
+  clnum
+})
+stopCluster(cl)
 ```

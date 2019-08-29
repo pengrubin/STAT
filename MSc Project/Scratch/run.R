@@ -5,7 +5,7 @@ library(ggplot2)
 library(parallel)                                        # load the parallel package
 clnum<-detectCores()                                   # Calculate and set the number of available cores
 cl <- makeCluster(getOption("cl.cores", clnum))          # Initialization parallel
-Myriad_flag=TRUE                                        # myriad_flag TRUE means in cluster environment 
+Myriad_flag=F                                        # myriad_flag TRUE means in cluster environment 
 if (Myriad_flag==TRUE)                                   # FALSE means in PC environment
 {
   rawdata <- readMat("/home/uczlhpe/Scratch/corn.mat")   # Myriad dir
@@ -15,7 +15,7 @@ if (Myriad_flag==TRUE)                                   # FALSE means in PC env
 clusterExport(cl, "rawdata")                             # input the rawdata to parallel
 clusterExport(cl, "Myriad_flag")
 system.time({
-  corn_PLS=function(NV){                                 # n is the number of calibration
+  corn_PLS=function(n){                                 # n is the number of calibration
     library(pls)
     m5data <- rawdata$m5spec$data
     mp5data <- rawdata$mp5spec$data
@@ -23,11 +23,11 @@ system.time({
     propvals <- rawdata$propvals$data
     #m5data <- m5data[,c(-75,-77)]
     #propvals <- propvals[,c(-75,-77)]
-    n=40
-    NV <- 15                                            # number of variables 
+    #n=40
+    NV <- 10                                            # number of variables 
     sample <- sample(1:80)                               # set random order; the begin of reset order
     DF <- data.frame(NIR = I(m5data),                    # input data
-                     y=propvals[,2])
+                     y=propvals[,1])
     class(DF$NIR) <- "matrix"                            # just to be certain, it was "AsIs"
     #str(DF)                                             # check point
     DF$train <- rep(FALSE, 80)
@@ -43,27 +43,27 @@ system.time({
     return(cbind(RMSECV,RMSEP))                          # return 1x2matrix
   }
   #corn_PLS(n)
-  #n <- as.matrix(rep(10,100))                           # the number of calibration, rep(a:b,c): from a to b and repeat c. 
-  n <- matrix()                                          # n is the LOOP times
-  for (i in seq(10,300,by=10)) {                         
-    if (is.na(n)) {
-      n <- as.matrix(rep(i,i))
-    } else {
-      n <- rbind(n,as.matrix(rep(i,i)))
-    }
-  }
+  n <- as.matrix(rep(20:70,5))                           # the number of calibration, rep(a:b,c): from a to b and repeat c. 
+  #n <- matrix()                                          # n is the LOOP times
+  #for (i in seq(10,300,by=10)) {                         
+   # if (is.na(n)) {
+    #  n <- as.matrix(rep(i,i))
+    #} else {
+     # n <- rbind(n,as.matrix(rep(i,i)))
+    #}
+  #}
   #PlsResult <- apply(n,1,corn_PLS)                      # loop
   PlsResult <- parSapply(cl,n,corn_PLS)                  # optimizated loop
   PlotData <- as.data.frame(cbind(n,t(PlsResult)))       # combind the results
   par(mfrow=c(1,2))
-  boxplot(V2~V1,data=PlotData,xlab="Loop times", ylab="RMSECV",main="PLS")
-  boxplot(V3~V1,data=PlotData,xlab="Loop times", ylab="RMSEP",main="PLS")
+  boxplot(V2~V1,data=PlotData,xlab="Number of calibration set", ylab="RMSECV",main="Boxplot")
+  boxplot(V3~V1,data=PlotData,xlab="Number of calibration set", ylab="RMSEP",main="Boxplot")
   PlotDataMean <- apply(PlotData,2,mean)
   PlotDataSd <- apply(PlotData,2,sd)
   #cat(PlotDataMean[2]-PlotDataSd[2],PlotDataMean[2],PlotDataMean[2]+PlotDataSd[2],"\n")
   cat(PlotDataMean[3]-PlotDataSd[3],PlotDataMean[3],PlotDataMean[3]+PlotDataSd[3],"\n")
   if (Myriad_flag==TRUE) {
-    save(PlotData,file="loop_times_10_300_10PlotData.RData")                  # save results in myriad
+    save(PlotData,file="m5~1_20_70_300PlotData.RData")                  # save results in myriad
   }
 clnum
 })

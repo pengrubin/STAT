@@ -1,0 +1,21 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Literature reviews}{}% 2
+\BOOKMARK [1][-]{section.3}{Datasets}{}% 3
+\BOOKMARK [1][-]{section.4}{Methodology}{}% 4
+\BOOKMARK [2][-]{subsection.4.1}{Model Evaluation}{section.4}% 5
+\BOOKMARK [2][-]{subsection.4.2}{Pre-treatment}{section.4}% 6
+\BOOKMARK [2][-]{subsection.4.3}{Sample splitting}{section.4}% 7
+\BOOKMARK [2][-]{subsection.4.4}{Cross-validation}{section.4}% 8
+\BOOKMARK [2][-]{subsection.4.5}{PLS algorithm}{section.4}% 9
+\BOOKMARK [2][-]{subsection.4.6}{Parallel computing}{section.4}% 10
+\BOOKMARK [2][-]{subsection.4.7}{High performance computing \(HPC\)}{section.4}% 11
+\BOOKMARK [1][-]{section.5}{Result and discussion}{}% 12
+\BOOKMARK [2][-]{subsection.5.1}{Loop times}{section.5}% 13
+\BOOKMARK [2][-]{subsection.5.2}{Number of samples}{section.5}% 14
+\BOOKMARK [2][-]{subsection.5.3}{Number of components}{section.5}% 15
+\BOOKMARK [2][-]{subsection.5.4}{Pre-treatment}{section.5}% 16
+\BOOKMARK [2][-]{subsection.5.5}{Cross-validation}{section.5}% 17
+\BOOKMARK [2][-]{subsection.5.6}{Compare with papers}{section.5}% 18
+\BOOKMARK [2][-]{subsection.5.7}{Developed method significant test}{section.5}% 19
+\BOOKMARK [1][-]{section.6}{Conclusions}{}% 20
+\BOOKMARK [1][-]{section.6}{References}{}% 21

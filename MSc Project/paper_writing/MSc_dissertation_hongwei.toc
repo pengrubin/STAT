@@ -1,21 +1,27 @@
-\contentsline {section}{\numberline {1}Introduction}{2}
-\contentsline {section}{\numberline {2}Literature reviews}{2}
-\contentsline {section}{\numberline {3}Datasets}{2}
-\contentsline {section}{\numberline {4}Methodology}{2}
-\contentsline {subsection}{\numberline {4.1}Model Evaluation}{2}
-\contentsline {subsection}{\numberline {4.2}Pre-treatment}{3}
-\contentsline {subsection}{\numberline {4.3}Sample splitting}{3}
-\contentsline {subsection}{\numberline {4.4}Cross-validation}{4}
-\contentsline {subsection}{\numberline {4.5}PLS algorithm}{4}
-\contentsline {subsection}{\numberline {4.6}Parallel computing}{6}
-\contentsline {subsection}{\numberline {4.7}High performance computing system}{6}
-\contentsline {section}{\numberline {5}Result and discussion}{6}
-\contentsline {subsection}{\numberline {5.1}Loop times}{6}
-\contentsline {subsection}{\numberline {5.2}Number of samples}{6}
-\contentsline {subsection}{\numberline {5.3}Number of components}{6}
-\contentsline {subsection}{\numberline {5.4}Pre-treatment}{6}
-\contentsline {subsection}{\numberline {5.5}Cross-validation}{6}
-\contentsline {subsection}{\numberline {5.6}Compare with papers}{6}
-\contentsline {subsection}{\numberline {5.7}Developed method significant test}{13}
-\contentsline {section}{\numberline {6}Conclusions}{13}
-\contentsline {section}{References}{13}
+\contentsline {section}{\numberline {1}Abstruct}{1}
+\contentsline {section}{\numberline {2}Acknowledgements}{2}
+\contentsline {section}{\numberline {3}Introduction}{5}
+\contentsline {section}{\numberline {4}Literature reviews}{5}
+\contentsline {section}{\numberline {5}Datasets}{5}
+\contentsline {section}{\numberline {6}Methodology}{6}
+\contentsline {subsection}{\numberline {6.1}Model Evaluation}{6}
+\contentsline {subsection}{\numberline {6.2}Pre-treatment}{7}
+\contentsline {subsection}{\numberline {6.3}Sample splitting}{8}
+\contentsline {subsection}{\numberline {6.4}Cross-validation}{8}
+\contentsline {subsection}{\numberline {6.5}PLS algorithm}{8}
+\contentsline {subsection}{\numberline {6.6}Parallel computing}{10}
+\contentsline {subsection}{\numberline {6.7}High performance computing (HPC)}{12}
+\contentsline {section}{\numberline {7}Result and discussion}{14}
+\contentsline {subsection}{\numberline {7.1}Loop times}{14}
+\contentsline {subsection}{\numberline {7.2}Number of samples}{15}
+\contentsline {subsection}{\numberline {7.3}Number of components}{15}
+\contentsline {subsection}{\numberline {7.4}Pre-treatment}{15}
+\contentsline {subsection}{\numberline {7.5}Cross-validation}{15}
+\contentsline {subsection}{\numberline {7.6}Compare with papers}{15}
+\contentsline {subsection}{\numberline {7.7}Developed method significant test}{19}
+\contentsline {section}{\numberline {8}Conclusions}{19}
+\contentsline {section}{References}{19}
+\contentsline {section}{\numberline {A}Number of samples}{20}
+\contentsline {section}{\numberline {B}Number of components}{26}
+\contentsline {section}{\numberline {C}Pre-treatment}{27}
+\contentsline {section}{\numberline {D}Cross-validation}{28}
