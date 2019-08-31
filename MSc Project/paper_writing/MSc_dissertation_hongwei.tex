@@ -27,7 +27,7 @@
 
 % set up title page
 \title{The NIR Corn Data Set}
-\author{Hongwei PENG \vspace{2cm} \\
+\author{YZPH8 \vspace{2cm} \\
 	Supervisor : Prof Tom Fearn \vspace{2cm} \\
 	Department of Statistical Science \\
 	University College London}
@@ -53,11 +53,29 @@
 	\maketitle         % create title etc
 	
 	\section{Abstruct} 
-	These algorithms will often claim that their new algorithm has a better performs. So the purpose of this dissertation is to search for as many different papers as possible, and write a critical overall to find the most efficient measure that can evaluate whether the model performs well and quantify the improvements mentioned in the paper.
+	
+	One of the most easily accessible public data sets of high-dimensional NIR spectroscopic data is the so-called corn data. Its analysis has been reported in many publications, usually with the claim that some new method of data analysis performs better than the standard ones. The most common method of spectral analysis is partial least squares regression (PLSR). 
+	
+	First of all, the main job of this dissertation is to write a critical overview by reading as much literature as possible about corn data. Then summarize the patterns that affect PLSR. These patterns include pre-treatment, sample splitting,  number of samples, cross-validation and number of components. 
+	
+	Second, using the corn data to establish PLS model to research the specific impact of each patterns on the partial least squares regression results. Firstly, as the sample size increases, the prediction results of PLSR will get better and better and then tend to be stable or unstable but still keep better. Secondly, as the number of components increases, the prediction of PLSR will be better and better, and then worse. thirdly standardization is not a good pre-processing in the spectral analysis. Usually the effect of using the SavitzkyGolay filter will be better than not doing any pre-processing. Finally, the cross validation should be determined based on the original data. A k-fold cross validation is recommended when the sample data is too large.
+	
+	Moreover, select some papers that use corn data, and repeat the experiments in those papers to summarize the developed methods in papers. Analyze whether the difference between the developed methods and the standard method (PLS) is obvious and assess the developed methods made for improvements. Furthermore,  evaluate the difference between the developed methods and PLS, and construct an approximate F-statistics to detect whether the performance is significantly improved.
+	
+	last but not least, as part of dissertation, because there are too many dimensions to explore, and to ensure that the results are stable, it is necessary to perform a sufficient number of loop, which leads to a large amount of calculations in this dissertation. In order to solve the problem of computationly heavy, this dissertation first optimizes the code by modifying the program logic for parallel computing. Second, by submitting computing tasks to remote servers which is called the high performer computing system, a more stable computing environment and superior computer performance are achieved. Finally, because supercomputers have more cores than personal computers, parallel computing will play a bigger role on remote servers.
 	\newpage           % start a new page
 	
 	\section{Acknowledgements} 
- 	I would thank
+ I would like to thank my supervisor Professor Tom Fearn for his consistent support and guidance during this project. 
+ 
+ I would also like to thank my parents and Chihyi CHANG for supporting me during the compilation of this dissertation. 
+ 
+
+ Finally, I would also like to thank Dr. Chuling DING and Dr. Kevin Bronik for providing guidance about HPC. 
+ 
+ 
+ 	
+ 	
 	\newpage           % start a new page
 	
 	\tableofcontents   % create table of contents
@@ -78,8 +96,8 @@
 	
 	Of course, as part of dissertation, because there are too many dimensions to explore, and to ensure that the results are stable, it is necessary to perform a sufficient number of loop, which leads to a large amount of calculations in this dissertation. In order to solve the problem of computationly heavy, this dissertation first optimizes the code by modifying the program logic for parallel computing. Second, by submitting computing tasks to remote servers which is called the high performer computing system, a more stable computing environment and superior computer performance are achieved. Finally, because supercomputers have more cores than personal computers, parallel computing will play a bigger role on remote servers.
 	
-	\section{Literature reviews}
-	\label{sec:liter}
+	%\section{Literature reviews}
+%	\label{sec:liter}
 	
 	\section{Datasets}
 	\label{sec:data}
@@ -97,7 +115,7 @@
 	 Each of these samples also gives the corresponding moisture, oil, protein and starch values. In this dissertation, the spectrum data measured by m5 spectrometers calls as m5. So the same as mp5 and mp6. And one of m5, mp5 and mp6 NIR data will be selected as $X$ in each regression. The value related to the moisture, oil, protein and starch values was considered as the dependent variable $Y$. So $X$ should be one of three 80$\times$700 matrices and $Y$ should be one of four 80$\times$1 vectors.
 	  In addition, corn data set will be divided into a calibration set and a prediction set using a random sampling method. Model the calibration set and then predict prediction set. Finally, RMSECV and RMSEP are calculated as the criterion.
 	
-	Firstly, the effect of each conditions on partial least squares regression (PLSR) is observed by different performance of PLSR based on corn data under different conditions. Then find out as much papers using corn data as possible to compare the results in papers with the results in dissertation. In this way, we can observe whether the new algorithm has a significant improvement compared to PLSR. Finally, the F-test is used to test whether the new method is significantly different from PLS.
+	Firstly, the effect of each conditions on partial least squares regression (PLSR) is observed by different performance of PLSR based on corn data under different conditions. Secondly find out as much papers using corn data as possible to compare the results in papers with the results in dissertation. In this way, we can observe whether the new algorithm has a significant improvement compared to PLSR. Finally, the F-test is used to test whether the new method is significantly different from PLS.
 	
 	
 
@@ -339,7 +357,7 @@
 	R
 	\end{lstlisting}
 	
-	After setting anaconda environment, the interactive operation interface under tmux shell is as figure \ref{fig:R_cluster}.
+	After setting anaconda environment, the interactive operation interface under tmux shell is as Figure \ref{fig:R_cluster}.
 	
 	\begin{figure}[h]    % start of figure environment
 	\centering           % put the graph(s) in the centre of the page (horizontally)
@@ -386,7 +404,7 @@ After completing the runscript, it can use "qsub" to submit this script into rem
 	
 	Set different loop times and repeat PLSR to calculate how many loop times are needed to get stable results. Too small a number of cycles will result in very unstable results and large standard deviations. However, because of the limitations of computer, there are also upper limits on the number of loop times. If the program loops too many times, it will require a unimaginable long runtime.
 	
-	First, 40 samples were randomly selected as calibration set 40 samples as prediction set. Then make 10 as the number of component. Calculate the corresponding RMSECV and RMSEP. Then continue to cycle this process, get the figure of RMSECV and RMSEP based on different loop times. Through above steps, the  figure \ref{fig:sd_RMSECV_RMSEP} based on the partial least squares result under different cycle times can be obtained. Left graph of figure \ref{fig:sd_RMSECV_RMSEP} is RMSECV and the right boxplot is RMSEP.
+	First, 40 samples were randomly selected as calibration set 40 samples as prediction set. Then make 10 as the number of component. Calculate the corresponding RMSECV and RMSEP. Then continue to cycle this process, get the figure of RMSECV and RMSEP based on different loop times. Through above steps, the  Figure \ref{fig:sd_RMSECV_RMSEP} based on the partial least squares result under different cycle times can be obtained. Left graph of Figure \ref{fig:sd_RMSECV_RMSEP} is RMSECV and the right boxplot is RMSEP.
 	
 	\begin{figure}[]    % start of figure environment
 		\centering           % put the graph(s) in the centre of the page (horizontally)
@@ -411,7 +429,7 @@ After completing the runscript, it can use "qsub" to submit this script into rem
 	\end{figure}                        % end of figure environment
 	
 	
-	Figure \ref{fig:sd_RMSECV_loop_times_500} shows that the standard deviations of RMSECV will decrease as the loop times increases. The RMSEP standard deviations will decrease with the increase of the loop times, and then tend to be stable. Through figure \ref{fig:sd_RMSECV_loop_times_500} it is easy to see that the loop times is around 350, and the standard deviations of RMSEP will show the stable trends. Hence the number of loop times should be set 40$\sim$350 times to get a stable PLSR result. Because less than 40 the results will show a big fluctuation and there are not different results for the more than 350 loop times.
+	Figure \ref{fig:sd_RMSECV_loop_times_500} shows that the standard deviations of RMSECV will decrease as the loop times increases. The RMSEP standard deviations will decrease with the increase of the loop times, and then tend to be stable. Through Figure \ref{fig:sd_RMSECV_loop_times_500} it is easy to see that the loop times is around 350, and the standard deviations of RMSEP will show the stable trends. Hence the number of loop times should be set 40$\sim$350 times to get a stable PLSR result. Because less than 40 the results will show a big fluctuation and there are not different results for the more than 350 loop times.
 	
 	\subsection{Number of samples}
 	\label{sec:Number of Samples}
@@ -433,7 +451,7 @@ After completing the runscript, it can use "qsub" to submit this script into rem
 	
 	The effect of the second type is that as the number of sample in calibration set increases, the RMSEP will drop significantly. As the sample size continues to increase to a threshold, the RMSEP will be very slowly smaller, but its variance will become larger and larger. In other words, the prediction of models will become more and more unstable. Please note that this is similar to the model's over-fitting, but it is not. The specific impact is that when the sample size is too big, each new sample will bring more but limited information to models, so the overall RMSEP will slowly decline. But when the calibration set size is much more than the prediction set, two things will happen. One is that the sample from calibration set will surround the predictors. This means that when using regression model for prediction, since there are enough calibration points similar to the prediction points, which makes the prediction easy, there may be cases where the RMSEP is extremely low. Another situation is that the calibration points do not surround the prediction points. The prediction point interval will not match the calibration point interval. This will lead to deviations in models. This makes RMSEP bigger. An extreme case can be considered when there is only one predicted point if the point is an outlier. Then the predictions will get very bad.
 	
-	As we can see figure \ref{fig:sample_2}. The regression of the oil content on mp5 shows that this is second type effect. As the sample size increases, RMSEP will continue to decrease, but its variance will decrease first and then increase.
+	As we can see Figure \ref{fig:sample_2}. The regression of the oil content on mp5 shows that this is second type effect. As the sample size increases, RMSEP will continue to decrease, but its variance will decrease first and then increase.
 	
 				\begin{figure}[h]    % start of figure environment
 		\centering           % put the graph(s) in the centre of the page (horizontally)
@@ -445,14 +463,14 @@ After completing the runscript, it can use "qsub" to submit this script into rem
 	\end{figure}                        % end of figure environment
 	
 	In order to research the specific impact of sample size on the PLS model. All corn data is used for regression.
-	First select one of the three spectrums as an independent variable $X$. Then select one of the four constituents as the dependent variable $Y$. Set the number of components to 10. Use the leave-one-out cross validation and calculate the RMSECV of the model. Then the model is used to predict the remaining prediction samples. The predicted error deviation is recorded as RMSEP. Observe the changes in RMSECV and RMSEP by changing the number of calibration set samples. Finally, different independent variables $X$ from three spectrums and different dependent variables $Y$ from four constituents are selected to continue the PLSR. The specific calculation results of the complete partial least squares model are detailed in appendix \ref{app:Number_of_samples}.
+	First select one of the three spectrums as an independent variable $X$. Then select one of the four constituents as the dependent variable $Y$. Set the number of components to 10. Use the leave-one-out cross validation and calculate the RMSECV of the model. Then the model is used to predict the remaining prediction samples. The predicted error deviation is recorded as RMSEP. Observe the changes in RMSECV and RMSEP by changing the number of calibration set samples. Finally, different independent variables $X$ from three spectrums and different dependent variables $Y$ from four constituents are selected to continue the PLSR. The specific calculation results of the complete partial least squares model are detailed in Appendix \ref{app:Number_of_samples}.
 	
 	\subsection{Number of components}
 	\label{sec:Number of Components}
 	
 	The number of components is the most important parameter in PLSR. A change in this parameter will result in a big change in PLSR. The number of components represents that several independent variables will be selected as regressions in PLSR. As the number of components increases, the regression performe of models should be getting better and better. However, when the number of components is too large and over the threshold, there will be a situation of overfitting. The model's RMSECV and RMSEP will be reduced to a minimum and then rise again, and the variance will gradually increase during the rise process.
 	
-	The figure \ref{fig:component_1} shows that the PLSR of starch content on mp5 under different number of components. From the figure \ref{fig:component_1} we can see that when the number of components exceeds 10, RMSECV and RMSEP will become larger and more unstable.
+	The Figure \ref{fig:component_1} shows that the PLSR of starch content on mp5 under different number of components. From the Figure \ref{fig:component_1} we can see that when the number of components exceeds 10, RMSECV and RMSEP will become larger and more unstable.
 	
 		\begin{figure}[h]    % start of figure environment
 		\centering           % put the graph(s) in the centre of the page (horizontally)
@@ -465,42 +483,84 @@ After completing the runscript, it can use "qsub" to submit this script into rem
 	
 	The reason for the deterioration of the regression model is that too many principal components include some irrelevant details as part of the model, so the prediction set will be poorly predicted. This is the significant over-fitting problem we often say.
 	
-	All the regression results on different components show in appendix \ref{app:Number_of_components}.
-	It is worth noting that when the independent variable $X$ selects the m5 spectrum, figures \ref{fig:components_1-1}, \ref{fig:components_2-1}, \ref{fig:components_3-1}, \ref{fig:components_4-1} show a trend that violates theory. As the number of components selected increases, the RMSECV and RMSEP  will continue to decrease and eventually stabilize. The reasons for this trend are not yet explained. So in the future this can be used as a research direction.
+	All the regression results on different components show in Appendix \ref{app:Number_of_components}.
+	It is worth noting that when the independent variable $X$ selects the m5 spectrum, Figures \ref{fig:components_1-1}, \ref{fig:components_2-1}, \ref{fig:components_3-1}, \ref{fig:components_4-1} show a trend that violates theory. As the number of components selected increases, the RMSECV and RMSEP  will continue to decrease and eventually stabilize. The reasons for this trend are not yet explained. So in the future this can be used as a research direction.
 	
 	\subsection{Pre-treatment}
 	\label{sec:Pre-treatment}
 	
-				\begin{figure}[h]    % start of figure environment
-		\centering           % put the graph(s) in the centre of the page (horizontally)
-		\includegraphics[width=7cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/figure/unnamed-chunk-1-1".png}  % width changes size
-		\includegraphics[width=7cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/figure/unnamed-chunk-2-1".png}  % width changes size
-		%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
-		\caption{The boxplot of RMSECV and RMSEP from 100 loop times PLSR of moisture and oil on m5 under different pre-treatment. "1" stand for none pre-treatment; "2" stand for scale $X$; "3" stand for savitzkyGolay filler with 1differentiation order, 2 polynomial order, 21 window size.And 40 samples as calibration set take leave-one-out as cross validation.}          % a meaningful caption
-		\label{fig:pretreatment-1}               % label for the figure
-	\end{figure}                        % end of figure environment
+	In section \ref{sec:treat}, there were four common pretreatments. The last pre-processing is to delete the outliers. When the outliers are deleted, the model can be unaffected by extreme values, so that a better model can be established. However, the subjectivity of this scheme is too strong, so quantitative discussions cannot be conducted here. So this dissertation focuses on three different treatments.
+	\begin{enumerate}
+	\item Nothing to deal with data \citep{1su2006partial}.
 	
-	\begin{figure}[h]    % start of figure environment
-		\centering           % put the graph(s) in the centre of the page (horizontally)
-		\includegraphics[width=7cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/figure/unnamed-chunk-3-1".png}  % width changes size
-		\includegraphics[width=7cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/figure/unnamed-chunk-4-1".png}  % width changes size
-		%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
-		\caption{The boxplot of RMSECV and RMSEP from 100 loop times PLSR of protein and starch on m5 under different pre-treatment. "1" stand for none pre-treatment; "2" stand for scale $X$; "3" stand for savitzkyGolay filler with 1differentiation order, 2 polynomial order, 21 window size.And 40 samples as calibration set take leave-one-out as cross validation.}          % a meaningful caption
-		\label{fig:pre-treatment-2}               % label for the figure
-	\end{figure}                        % end of figure environment
+	\item Scale the data \citep{4ergon2006reduced}.
+	
+	\item SavitzkyGolay filter processing on the data \citep{3galvao2007cross}.
+	
+\end{enumerate}
+
+First, the corn data was divided into two parts, among which 40 samples were randomly selected as the calibration set, and the remaining 40 samples were used as the prediction set. Then set the number of components to 10. Preprocess the data and then enter 100 cycles PLSR. The results of the calculations are available in Appendix \ref{app:pre-treatment}. The Figure \ref{fig:pre-treatment-1-1} is the boxplot of RMSECV and RMSEP from 100 loop times PLSR  of oil on m5 under different pre-treatment. "1" stands for none pre-treatment; "2" stands for scale $X$; "3" stands for savitzkyGolay filler with 1differentiation order, 2 polynomial order, 21 window size.
+	
+			\begin{figure}[h]    % start of figure environment
+	\centering           % put the graph(s) in the centre of the page (horizontally)
+
+	\includegraphics[width=7cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/pre-treatment/unnamed-chunk-2-1".png}  % width changes size
+	%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
+	\caption{The boxplot of RMSECV and RMSEP under different pre-treatment.}          % a meaningful caption
+	\label{fig:pre-treatment-1-1}               % label for the figure
+\end{figure}                        % end of figure environment
+	
+	As can be seen from Figure \ref{fig:pre-treatment-1-1}, standardization is the most inappropriate pre-processing of the data. According to all tables in Appendix \ref{app:pre-treatment}, it can be seen that the standardized pretreatment has the worst regression effect for each of the corn spectra.
+	Because it has the largest rmsecv and rmsep. This is mainly because the standardization makes the value close to zero become close to "-1". Being close to zero in spectroscopy means that the spectrum at this band is meaningless. But standardization makes a number that was originally meaningless a non-zero value. This brings more useless information to the model. This is why standardization is a poor preprocessing method in spectroscopy.
+	
+	According to Appendix \ref{app:pre-treatment}, we can see that the regression results of the SavitzkyGolay filter are better than the results of no pre-treatment. This is mainly because SavitzkyGolay filter smoothes data, so that the data with the displacement can be corrected, and SavitzkyGolay filter preprocessing makes  regression models more robust. However, in some cases, no pre-processing will result in better results, so you need to consider the two before building the model.
+	
+	
 	
 	\subsection{Cross-validation}
 	\label{sec:Cross-Validation}
 	
+	According to section \ref{cross-validation}, cross-validation is divided into two categories. In this dissertation will discuss leave-one-out cross-validation (LOO) and k-fold cross-validation (K-fold). The most intuitive difference is that LOO will consume more computer resources. But in fact, when the amount of data is too large, LOO will be more likely to fall into the over-fitting problem.
+	
+	In the process of regression modeling, cross-validation is the action that has the least impact on the results. However, if an inappropriate cross-validation is chosen, it will lead to overfitting or unstable regression results. Cross-validation will influence the process of selecting the number of components in PLSR. Figure \ref{fig:Cross-validation-1} is the RMSECV as a function of the number of components. The left image is based on LOO and the right image is based on 2-fold. It should be noted here that in order to unify the variable names in dissertation, the RMSECV here is the same variable as RMSEP in the cross-validation. 
+	
 		\begin{figure}[h]    % start of figure environment
 		\centering           % put the graph(s) in the centre of the page (horizontally)
-		\includegraphics[width=7cm, angle=0]{"LOO cross validation".pdf}  % width changes size
-		\includegraphics[width=7cm, angle=0]{"K-fold cross validation".pdf}  % width changes size
+		\includegraphics[width=7.5cm, angle=0]{"LOO cross validation".pdf}  % width changes size
+		\includegraphics[width=7.5cm, angle=0]{"K-fold cross validation".pdf}  % width changes size
 		%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
-		\caption{RMSEP curves for the corn data under LOO cross-validation  and k-fold cross-validation}          % a meaningful caption
+		\caption{RMSEP curves for the corn data under LOO cross-validation  and k-fold cross-validation.}          % a meaningful caption
 		\label{fig:Cross-validation-1}               % label for the figure
 	\end{figure}                        % end of figure environment
 	
+	Usually in the process of PLSR, we will select the corresponding number of components according to Figure \ref{fig:Cross-validation-1}. The inflection point and the lowest point are usually chosen. In Figure \ref{fig:Cross-validation-1}, according to the left side image, 11 will be the number of components under LOO, and according to 2-fold on the right side image, 9 will be the number of components. So, if using LOO, a larger number of components will be chosen. But Figure \ref{fig:Cross-validation-1} is not obvious, and because k-fold is random, we repeat the 2-fold as much as possible. The Figure \ref{fig:Cross-validation-2} shows the results based on 100 times 2-fold cross-validation. 
+	
+	
+	
+	
+			\begin{figure}[h]    % start of figure environment
+		\centering           % put the graph(s) in the centre of the page (horizontally)
+		\includegraphics[width=7.5cm, angle=0]{"LOO cross validation2".pdf}  % width changes size
+		\includegraphics[width=7.5cm, angle=0]{"K-fold cross validation2".pdf}  % width changes size
+		%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
+		\caption{RMSEP curves for the corn data under LOO cross-validation  and k-fold cross-validation}          % a meaningful caption
+		\label{fig:Cross-validation-2}               % label for the figure
+	\end{figure}                        % end of figure environment
+	
+	Then zoom in Figure \ref{fig:Cross-validation-2} and fix the number of components from 7 to 18 to get Figure \ref{fig:Cross-validation-3}.
+		
+	\begin{figure}[h]    % start of figure environment
+		\centering           % put the graph(s) in the centre of the page (horizontally)
+		\includegraphics[width=7.5cm, angle=0]{"LOO cross validation3".pdf}  % width changes size
+		\includegraphics[width=7.5cm, angle=0]{"K-fold cross validation3".pdf}  % width changes size
+		%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
+		\caption{RMSEP curves for the corn data under LOO cross-validation  and k-fold cross-validation}          % a meaningful caption
+		\label{fig:Cross-validation-3}               % label for the figure
+	\end{figure}                        % end of figure environment
+	
+	As can be seen from the Figure \ref{fig:Cross-validation-3}, the RMSECV based on 2-fold is larger than the RMSECV based on LOO. This may cause RMSECV curve based on K-fold to enter the inflection point and the lowest point in advance. Thereby a smaller number of components is obtained. Moreover, the RMSECV based on LOO will be smaller than RMSECV based in K-fold at the same number of components. This is mainly because during the cross-validation process, LOO will use all data excepted one prediction sample to regress the one. At this time, the model will have better performance and will make the RMSECV value smaller, so when selecting the principal component, LOO will make people choose the bigger number of components.
+	
+	When the amount of sample data is small, the difference between LOO and K-fold is not obvious. However, it should be noted that when the amount of data is too large, the large number of principal components obtained from LOO can easily cause the model over-fitting, which is not what we hope. Unfortunately, the corn data sample is not large enough, so we can't clearly show the difference between LOO and K-fold here. finally, when the sample size looks like big, choosing cross-valiation should be carefully considered to prevent over-fitting problems.
 	
 	\subsection{Compare with papers}
 	\label{sec:Compare with papers}
@@ -527,7 +587,7 @@ After completing the runscript, it can use "qsub" to submit this script into rem
 			
 	\end{enumerate}
 	
-	As shown in table \ref{tab:moisture}. The headers of the table mean:
+	As shown in Table \ref{tab:moisture}. The headers of the table mean:
 	
 	\begin{enumerate}
 		
@@ -548,6 +608,16 @@ After completing the runscript, it can use "qsub" to submit this script into rem
 	\item Developed method: the new algorithm result from corresponding numbered papers.
 	
 \end{enumerate}
+	
+Table \ref{tab:moisture} is the PLSR result of moisture. Table \ref{tab:moisture} shows for the first paper, although the developed method has a smaller RMSEP compared to PLSR. However, the RMSEP of developed method in first paper is within one-fold variance of RMSEP by PLSR in this dissertation. So it's hard to think that the new method has a significant improvement over PLSR. The developed method in the second paper got a surprising RMSEP. This is a very surprising result and perhaps this is a fact. From this paper, we can't see anything obviously wrong, maybe it is true that selecting a small number of wavelengths works better for these data. In Table \ref{tab:moisture}, there are two lines of result for the third paper. The third paper claims that it uses the m5 spectrum, but in fact, according to the parameters mentioned in this paper, the mp5 spectrum is used to obtain the PLSR result which is more similar to the result in third paper. So the third paper might have used a different spectrum than it claimed. And according to the PLS result of the third paper, compared with the fourth paper. The PLS in third paper may use 10 components instead of the 12 it claims. But we can see from the results that its developed method has no better results than PLS. In the 4th, 5th 6th and 8th paper, according to the results in Table \ref{tab:moisture}, the developed method does have a better RMSEP than the PLS. It shows that these new methods have a better performance in the regression of moisture.
+
+	Table \ref{tab:oil} is a regression result of the oil. According to Table \ref{tab:oil}, we can see that the developed method mentioned in the first paper is not very good, because the RMSEP based on developed method is similar to the RMSEP of PLSR. The new algorithm based on third paper has not seen a significant improvement compared to the PLSR. However, it is hard to judge whether there is not a significant difference between the new method and PLS. Also for the fifth paper, although the RMSEP based on the developed algorithm is smaller than the RMSEP based on PLSR, the difference between the new and old algorithm is small, and it is impossible to visually judge whether the developed algorithm and PLSR are significantly different. The seventh paper proposes a non-integral Savitzky–Golay differentiation method. The developed method has a more significant improvement than integral Savitzky–Golay filters with 0 and 1 differentiation order. But there is no way to tell that the new method has a significant difference compared to Savitzky–Golay filters with 2 differentiation order. And the new algorithm mentioned in the eighth paper also can not judge the obvious difference with PLS. 
+	
+	
+	Table \ref{tab:protein} is a regression result of the protein. It can be seen from Table \ref{tab:protein} that the developed algorithm regression performance of the first and third paper is not much different from the PLSR. Even in some special cases, PLSR shows better regression results. The new regression model in the fifth, sixth and eighth paper has a significant improvement over the PLSR.
+	
+	
+	Table \ref{tab:starch} is a regression result of the starch. Table \ref{tab:starch} shows that the results of the new algorithm in the first, third and seventh paper are not much different from those obtained from PLSR. The standard deviation of RMSEP can be used to measure the impact of random sampling on the results. From the standard deviation of RMSEP, it can be known that the PLSR has not a big probability that the new algorithm better than it. The new methods of the fifth, sixth and eighth papers all perform better than PLSR.
 	
 	\begin{landscape}
 		
@@ -651,15 +721,72 @@ After completing the runscript, it can use "qsub" to submit this script into rem
 	
 	
 	
-	\subsection{Developed method significant test}
+	\subsection{Developed method's significant test}
 	\label{sec: test}
 	
+	In section \ref{sec:Compare with papers}, although we calculated the difference between PLS and the developed method, there is no evaluation index to evaluate whether there is a significant difference between the two method. Because RMSEP does not obey the common distribution, which is why it is difficult to test, this section gives an approximate test method. This method is true when the model's bias is much smaller than the variance. According to section \ref{sec:eva}, RMSEP is calculated as follows, it can be divided into two parts, variance and bias.
+	
+	
+		\begin{equation}
+	RMSEP^2={\frac{1}{m}\sum_{i=1}^{m} (\hat y_i-y_i)^2}=Var(\hat{y})+Bias(\hat{y},y)^2 \approx Var(\hat{y})
+		\end{equation}
+		
+		Here, if the model's bias is much smaller than the variance, then the BIOS can be ignored. Thus, RMSEP obeys the $\chi^2$ distribution. 
+		
+				\begin{equation}
+		\dfrac{df*Var(\hat{y})}{\sigma} \sim \chi_{df}^2
+		\end{equation}
+		\begin{conditions}
+			df     &  degree of freedom for the prediction set \\
+			\sigma    &    the variance of sample
+		\end{conditions}
+	
+	
+		Therefore, the F-value corresponding to the chi-square distribution can be constructed to check whether the difference between the two groups is significant. F value structure is as follows.
+		
+				\begin{equation}
+	\frac{RMSEP_{1}^{2}}{RMSEP_{2}^{2}} \sim F(df_1,df_2)
+		\end{equation}
+	\begin{conditions}
+	df     &  degree of freedom for the prediction set and $df_1 = df_2$ in here \\
+	RMSEP_{1}    &    RMSEP based on PLS \\
+	RMSEP_{2}    &    RMSEP based on developed method \\
+\end{conditions}
+
+			The degree of freedom $df$ equals the number m of samples of the prediction set.
+		
+		\begin{equation}
+	RMSEP=\sqrt{\frac{1}{m}\sum_{i=1}^{m} \mathrm{e}_{i}^2}
+		\end{equation}
+
+
+		Where $\mathrm{e}_i \sim N(0,\sigma)$. Therefore, the degrees of freedom of sum of $e_i$ are m.
+		
+		The fourth paper on the regression of moisture as an example. RMSEP based on PLS equals to 0.357. RMSEP based on developed method equals to 0.265. So F-value equals to 1.81. The number of samples in the prediction set is 40, so under 0.05 confidence level, the F-statistic with 40-40 degrees of freedom equls to 1.692797 which is smaller than the F-value. Hence the developed method in the fourth paper is significant better than PLS.
+		
+		But what we need to pay attention to is that this is just an approximate test method. There are two main problems with this model.
+
+	\begin{enumerate}
+		
+		\item The model assumes that the bias must be much smaller than the variance, which is true in most of time. However, in some situation, the bias distribution is non-central chi-square distribution. If the bias does not less than the variance, this test will be invalid.
+		
+		\item The hypothesis of the F-statistic includes two chi-square distribution variables and are independent to each other. But in this test, because the PLSR and the developed method are based on the same data set. So $RMSEP_1$ and $RMSEP_2$ are not independent. Compared with the previous problem, this trouble will have more serious consequences, so the lack of independence between the two variables is the main factor causing the model to be inaccurate.
+		
+	\end{enumerate}
+		
+		Although this model has some problems, the test is still of reference. To some extent, it can be explained whether the developed regression method has a significant improvement.
+		
+		The calculation results of all the papers are shown in the Table \ref{tab:F-moisture}, \ref{tab:F-oil}, \ref{tab:F-protein} and \ref{tab:F-statch}.
+		
+		
+		Table \ref{tab:F-moisture} shows a significant difference in moisture based on PLS and developed method.
+		
 \begin{table}[h]
 			\centering           % put the graph(s) in the centre of the page (horizontally)
 	\begin{tabular}{llllll}
 
 		\hline
-		\multicolumn{1}{c}{Paper} & \begin{tabular}[c]{@{}l@{}}Prediction\\ set\end{tabular} & \begin{tabular}[c]{@{}l@{}}RMSEP of \\ PLS in papers\end{tabular} & \begin{tabular}[c]{@{}l@{}}RMSEP of\\ developed method\end{tabular} & F statistic & \begin{tabular}[c]{@{}l@{}}Significant \\ F value (0.05)\end{tabular} \\ \hline
+		\multicolumn{1}{c}{Paper} & \begin{tabular}[c]{@{}l@{}}Prediction\\ set\end{tabular} & \begin{tabular}[c]{@{}l@{}}RMSEP of \\ PLS in papers\end{tabular} & \begin{tabular}[c]{@{}l@{}}RMSEP of\\ developed method\end{tabular} & F value & \begin{tabular}[c]{@{}l@{}}Significant \\ F statistic (0.05)\end{tabular} \\ \hline
 		1 & 20 & 0.159 & 0.139 & 1.31 & 2.124155 \\
 		2 & 16 & 0.0201 & 0.00035 & 3298.04 & 2.333484 \\
 		3 & 40 & 0.3506 & 0.3485 & 1.01 & 1.692797 \\
@@ -673,11 +800,13 @@ After completing the runscript, it can use "qsub" to submit this script into rem
 
 \end{table}
 	
+		Table \ref{tab:F-oil} shows a significant difference in oil based on PLS and developed method.
+	
 	\begin{table}[h]
 			\centering 
 		\begin{tabular}{llllll}
 			\hline
-			\multicolumn{1}{c}{Paper} & \begin{tabular}[c]{@{}l@{}}Calibration\\ set\end{tabular} & \begin{tabular}[c]{@{}l@{}}RMSEP of\\ PLS in papers\end{tabular} & \begin{tabular}[c]{@{}l@{}}RMSEP of\\ developed method\end{tabular} & F statistic & \begin{tabular}[c]{@{}l@{}}Significant\\ F value (0.05)\end{tabular} \\ \hline
+			\multicolumn{1}{c}{Paper} & \begin{tabular}[c]{@{}l@{}}Calibration\\ set\end{tabular} & \begin{tabular}[c]{@{}l@{}}RMSEP of\\ PLS in papers\end{tabular} & \begin{tabular}[c]{@{}l@{}}RMSEP of\\ developed method\end{tabular} & F value & \begin{tabular}[c]{@{}l@{}}Significant\\ F statistic (0.05)\end{tabular} \\ \hline
 			1 & 20 & 0.107 & 0.0948 & 1.27 & 2.124155 \\
 			3 & 40 & 0.6912 & 0.6902 & 1.00 & 1.692797 \\
 			5 & 20 & 0.029 & 0.022 & 1.74 & 2.124155 \\
@@ -691,11 +820,13 @@ After completing the runscript, it can use "qsub" to submit this script into rem
 	\label{tab:F-oil}
 	\end{table}
 	
+		Table \ref{tab:F-protein} shows a significant difference in protein based on PLS and developed method.
+	
 	\begin{table}[h]
 			\centering 
 		\begin{tabular}{llllll}
 			\hline
-			\multicolumn{1}{c}{Paper} & \begin{tabular}[c]{@{}l@{}}Calibration\\ set\end{tabular} & \begin{tabular}[c]{@{}l@{}}RMSEP of\\ PLS in papers\end{tabular} & \begin{tabular}[c]{@{}l@{}}RMSEP of\\ developed method\end{tabular} & F statistic & \begin{tabular}[c]{@{}l@{}}Significant\\ F value (0.05)\end{tabular} \\ \hline
+			\multicolumn{1}{c}{Paper} & \begin{tabular}[c]{@{}l@{}}Calibration\\ set\end{tabular} & \begin{tabular}[c]{@{}l@{}}RMSEP of\\ PLS in papers\end{tabular} & \begin{tabular}[c]{@{}l@{}}RMSEP of\\ developed method\end{tabular} & F value & \begin{tabular}[c]{@{}l@{}}Significant\\ F statistic (0.05)\end{tabular} \\ \hline
 			1 & 20 & 0.150 & 0.145 & 1.07 & 2.124155 \\
 			3 & 40 & 0.4466 & 0.4349 & 1.05 & 1.692797 \\
 			5 & 20 & 0.119 & 0.040 & 8.85 & 2.124155 \\
@@ -706,12 +837,13 @@ After completing the runscript, it can use "qsub" to submit this script into rem
 	\label{tab:F-protein}
 	\end{table}
 	
+		Table \ref{tab:F-statch} shows a significant difference in statch based on PLS and developed method.
 	
 	\begin{table}[h]
 					\centering 
 		\begin{tabular}{llllll}
 			\hline
-			\multicolumn{1}{c}{Paper} & \begin{tabular}[c]{@{}l@{}}Calibration\\ set\end{tabular} & \begin{tabular}[c]{@{}l@{}}RMSEP of\\ PLS in papers\end{tabular} & \begin{tabular}[c]{@{}l@{}}RMSEP of\\ developed method\end{tabular} & F statistic & \begin{tabular}[c]{@{}l@{}}Significant \\ F value (0.05)\end{tabular} \\ \hline
+			\multicolumn{1}{c}{Paper} & \begin{tabular}[c]{@{}l@{}}Calibration\\ set\end{tabular} & \begin{tabular}[c]{@{}l@{}}RMSEP of\\ PLS in papers\end{tabular} & \begin{tabular}[c]{@{}l@{}}RMSEP of\\ developed method\end{tabular} & F value & \begin{tabular}[c]{@{}l@{}}Significant \\ F statistic (0.05)\end{tabular} \\ \hline
 			1 & 20 & 0.370 & 0.358 & 1.07 & 2.124155 \\
 			3 & 40 & 0.5010 & 0.4443 & 1.27 & 1.692797 \\
 			5 & 20 & 0.196 & 0.100 & 3.84 & 2.124155 \\
@@ -729,10 +861,19 @@ After completing the runscript, it can use "qsub" to submit this script into rem
 	\section{Conclusions}
 	\label{sec:conclution}
 	
+	This dissertation uses corn data to build PLS models. Study the specific effects of each patterns on PLSR.
 	
+	 Firstly, from this dissertation, it can be known that as the number of sample in calibration set increases, the prediction of the model will become better and better. The RMSEP of PLSR will become smaller and smaller. When the number of sample in calibration set reaches a certain limit, there are two situations. The prediction of PLSR will tend to be stable, or the RMSEP will be very slowly smaller, but the prediction of models will become more and more unstable.
 	
+	Secondly, the number of components is the most important pattern in PLSR. As the number of components increases, the regression performe of models should be getting better and better. However, when the number of components is too large and over the threshold, there will be a situation of overfitting. The model's RMSECV and RMSEP will reach to a minimum and then rise again, and the variance will gradually and fastly increase during the rise process.
 	
+	Thirdly, standardization is the most inappropriate pre-processing of the data. Because the standardization makes the value close to zero become close to "-1". the pionts close to zero in spectroscopy mean no information. But standardization makes those points that was originally meaningless a non-zero value. This brings more useless information to the model and chaos the regression. This is why standardization is a poor preprocessing method in spectroscopy. Furthermore the SavitzkyGolay filter pre-treatment are better than no pre-treatment in most of time. Because SavitzkyGolay filter smoothes data and fixes the incorrect displacement, and SavitzkyGolay filter preprocessing makes  regression models more robust. However, in some cases, no pre-processing will result in better results. 
 	
+	Fourthly, in the process of regression modeling, cross-validation is the action that has the least impact on the results. However, if an inappropriate cross-validation is chosen, it will lead to overfitting or unstable regression results. When the amount of sample data is small, there is no difference between LOO and K-fold. However, it should be noted that when the amount of data becomes large, the bigger number of components based on LOO maybe cause the model over-fitting. Choosing cross-valiation should be carefully and considering to prevent over-fitting problems.
+	
+	Finally, RMSEP does not obey the common distribution, which is why it is difficult to test, this section gives an approximate test method. The F-statistic corresponding to the chi-square distribution can be constructed to check whether the difference between the two groups is significant. F-value structure is $RMSEP_{1}^{2}/RMSEP_{2}^{2}$.
+	
+	As part of dissertation, because this problem is computationly heavy, this dissertation first optimizes the code by modifying the program logic for parallel computing. Submitting computing tasks to the high performer computing system (HPC). And because supercomputers have more cores than personal computers, parallel computing will play a better role on remote servers.
 	
 	\clearpage	
 	\addcontentsline{toc}{section}{References} % to add references to table of contents
@@ -1013,25 +1154,59 @@ After completing the runscript, it can use "qsub" to submit this script into rem
 		
 			\begin{figure}[h]    % start of figure environment
 			\centering           % put the graph(s) in the centre of the page (horizontally)
-			\includegraphics[width=7cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/figure/unnamed-chunk-1-1".png}  % width changes size
-			\includegraphics[width=7cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/figure/unnamed-chunk-2-1".png}  % width changes size
+			\includegraphics[width=7cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/pre-treatment/unnamed-chunk-1-1".png}  % width changes size
+			\includegraphics[width=7cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/pre-treatment/unnamed-chunk-2-1".png}  % width changes size
 			%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
-			\caption{The boxplot of RMSECV and RMSEP from 100 loop times PLSR of moisture and oil on m5 under different pre-treatment. "1" stand for none pre-treatment; "2" stand for scale $X$; "3" stand for savitzkyGolay filler with 1differentiation order, 2 polynomial order, 21 window size.And 40 samples as calibration set take leave-one-out as cross validation.}          % a meaningful caption
+			\caption{The boxplot of RMSECV and RMSEP from 100 loop times PLSR of moisture and oil on m5 under different pre-treatment. "1" stand for none pre-treatment; "2" stand for scale $X$; "3" stand for savitzkyGolay filler with 1differentiation order, 2 polynomial order, 21 window size. And 40 samples as calibration set take leave-one-out as cross validation.}          % a meaningful caption
 			\label{fig:pretreatment-1-1}               % label for the figure
 		\end{figure}                        % end of figure environment
 
 			\begin{figure}[h]    % start of figure environment
 	\centering           % put the graph(s) in the centre of the page (horizontally)
-	\includegraphics[width=7cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/figure/unnamed-chunk-3-1".png}  % width changes size
-	\includegraphics[width=7cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/figure/unnamed-chunk-4-1".png}  % width changes size
+	\includegraphics[width=7cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/pre-treatment/unnamed-chunk-3-1".png}  % width changes size
+	\includegraphics[width=7cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/pre-treatment/unnamed-chunk-4-1".png}  % width changes size
 	%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
-	\caption{The boxplot of RMSECV and RMSEP from 100 loop times PLSR of protein and starch on m5 under different pre-treatment. "1" stand for none pre-treatment; "2" stand for scale $X$; "3" stand for savitzkyGolay filler with 1differentiation order, 2 polynomial order, 21 window size.And 40 samples as calibration set take leave-one-out as cross validation.}          % a meaningful caption
+	\caption{The boxplot of RMSECV and RMSEP from 100 loop times PLSR of protein and starch on m5 under different pre-treatment. "1" stand for none pre-treatment; "2" stand for scale $X$; "3" stand for savitzkyGolay filler with 1differentiation order, 2 polynomial order, 21 window size. And 40 samples as calibration set take leave-one-out as cross validation.}          % a meaningful caption
 	\label{fig:pre-treatment-3-1}               % label for the figure
 \end{figure}                        % end of figure environment
 
 
-		\clearpage
-		\section{Cross-validation}
-		
+			\begin{figure}[h]    % start of figure environment
+	\centering           % put the graph(s) in the centre of the page (horizontally)
+	\includegraphics[width=7cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/pre-treatment/unnamed-chunk-5-1".png}  % width changes size
+	\includegraphics[width=7cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/pre-treatment/unnamed-chunk-6-1".png}  % width changes size
+	%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
+	\caption{The boxplot of RMSECV and RMSEP from 100 loop times PLSR of moisture and oil on mp5 under different pre-treatment. "1" stand for none pre-treatment; "2" stand for scale $X$; "3" stand for savitzkyGolay filler with 1differentiation order, 2 polynomial order, 21 window size. And 40 samples as calibration set take leave-one-out as cross validation.}          % a meaningful caption
+	\label{fig:pretreatment-5-1}               % label for the figure
+\end{figure}                        % end of figure environment
+
+\begin{figure}[h]    % start of figure environment
+	\centering           % put the graph(s) in the centre of the page (horizontally)
+	\includegraphics[width=7cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/pre-treatment/unnamed-chunk-7-1".png}  % width changes size
+	\includegraphics[width=7cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/pre-treatment/unnamed-chunk-8-1".png}  % width changes size
+	%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
+	\caption{The boxplot of RMSECV and RMSEP from 100 loop times PLSR of protein and starch on mp5 under different pre-treatment. "1" stand for none pre-treatment; "2" stand for scale $X$; "3" stand for savitzkyGolay filler with 1differentiation order, 2 polynomial order, 21 window size. And 40 samples as calibration set take leave-one-out as cross validation.}          % a meaningful caption
+	\label{fig:pre-treatment-7-1}               % label for the figure
+\end{figure}                        % end of figure environment
+
+			\begin{figure}[h]    % start of figure environment
+	\centering           % put the graph(s) in the centre of the page (horizontally)
+	\includegraphics[width=7cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/pre-treatment/unnamed-chunk-9-1".png}  % width changes size
+	\includegraphics[width=7cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/pre-treatment/unnamed-chunk-10-1".png}  % width changes size
+	%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
+	\caption{The boxplot of RMSECV and RMSEP from 100 loop times PLSR of moisture and oil on mp6 under different pre-treatment. "1" stand for none pre-treatment; "2" stand for scale $X$; "3" stand for savitzkyGolay filler with 1differentiation order, 2 polynomial order, 21 window size. And 40 samples as calibration set take leave-one-out as cross validation.}          % a meaningful caption
+	\label{fig:pretreatment-9-1}               % label for the figure
+\end{figure}                        % end of figure environment
+
+\begin{figure}[h]    % start of figure environment
+	\centering           % put the graph(s) in the centre of the page (horizontally)
+	\includegraphics[width=7cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/pre-treatment/unnamed-chunk-11-1".png}  % width changes size
+	\includegraphics[width=7cm, angle=0]{"/Users/hongwei/Documents/GitHub/STAT/MSc Project/paper_writing/pre-treatment/unnamed-chunk-12-1".png}  % width changes size
+	%\vspace*{-0.25cm}    % manual adjustment of vertical spacing
+	\caption{The boxplot of RMSECV and RMSEP from 100 loop times PLSR of protein and starch on mp6 under different pre-treatment. "1" stand for none pre-treatment; "2" stand for scale $X$; "3" stand for savitzkyGolay filler with 1differentiation order, 2 polynomial order, 21 window size. And 40 samples as calibration set take leave-one-out as cross validation.}          % a meaningful caption
+	\label{fig:pre-treatment-11-1}               % label for the figure
+\end{figure}                        % end of figure environment
+
+
 	\end{appendices}
 \end{document} 

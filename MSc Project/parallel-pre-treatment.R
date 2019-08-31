@@ -1,12 +1,12 @@
 ---
-title: "Parallel all papers PLS for corn data"
+  title: "Parallel all papers PLS for corn data"
 author: "Hongwei Peng"
 date: "28/08/2019"
 output: html_document
 ---
-
-#1~m5
-```{r echo=FALSE,warning=FALSE,message=FALSE}
+  
+  #1~m5
+  ```{r echo=FALSE,warning=FALSE,message=FALSE}
 library(R.matlab)
 library(pls) 
 library(lars)
@@ -64,7 +64,7 @@ system.time({
   #cat(PlotDataMean[2]-PlotDataSd[2],PlotDataMean[2],PlotDataMean[2]+PlotDataSd[2],"\n")
   #cat(PlotDataMean[3]-PlotDataSd[3],PlotDataMean[3],PlotDataMean[3]+PlotDataSd[3],"\n")
   ##if (Myriad_flag==TRUE) {
-   # #save(PlotData,file="1~m5_Number_of_Calibration_set_PlotData.RData")                  # save results in myriad
+  # #save(PlotData,file="1~m5_Number_of_Calibration_set_PlotData.RData")                  # save results in myriad
   #}
   clnum
 })
@@ -265,7 +265,7 @@ system.time({
   #cat(PlotDataMean[2]-PlotDataSd[2],PlotDataMean[2],PlotDataMean[2]+PlotDataSd[2],"\n")
   #cat(PlotDataMean[3]-PlotDataSd[3],PlotDataMean[3],PlotDataMean[3]+PlotDataSd[3],"\n")
   ##if (Myriad_flag==TRUE) {
-   # #save(PlotData,file="1~m5_Number_of_Calibration_set_PlotData.RData")                  # save results in myriad
+  # #save(PlotData,file="1~m5_Number_of_Calibration_set_PlotData.RData")                  # save results in myriad
   #}
   clnum
 })
@@ -466,7 +466,7 @@ system.time({
   #cat(PlotDataMean[2]-PlotDataSd[2],PlotDataMean[2],PlotDataMean[2]+PlotDataSd[2],"\n")
   #cat(PlotDataMean[3]-PlotDataSd[3],PlotDataMean[3],PlotDataMean[3]+PlotDataSd[3],"\n")
   #if (Myriad_flag==TRUE) {
-    #save(PlotData,file="1~m5_Number_of_Calibration_set_PlotData.RData")                  # save results in myriad
+  #save(PlotData,file="1~m5_Number_of_Calibration_set_PlotData.RData")                  # save results in myriad
   #}
   clnum
 })
@@ -667,7 +667,7 @@ system.time({
   #cat(PlotDataMean[2]-PlotDataSd[2],PlotDataMean[2],PlotDataMean[2]+PlotDataSd[2],"\n")
   #cat(PlotDataMean[3]-PlotDataSd[3],PlotDataMean[3],PlotDataMean[3]+PlotDataSd[3],"\n")
   #if (Myriad_flag==TRUE) {
-    #save(PlotData,file="1~m5_Number_of_Calibration_set_PlotData.RData")                  # save results in myriad
+  #save(PlotData,file="1~m5_Number_of_Calibration_set_PlotData.RData")                  # save results in myriad
   #}
   clnum
 })
@@ -809,9 +809,9 @@ boxplot(V3~V1,data=PlotData,xlab="Pre-treatment type", ylab="RMSEP",main="PLS of
 
 ```
 
-  
-  #1~m5
-  ```{r echo=FALSE,warning=FALSE,message=FALSE}
+
+#1~m5
+```{r echo=FALSE,warning=FALSE,message=FALSE}
 library(R.matlab)
 library(pls) 
 library(lars)
@@ -1614,9 +1614,9 @@ boxplot(V3~V1,data=PlotData,xlab="Pre-treatment type", ylab="RMSEP",main="PLS of
 
 ```
 
- 
-  #1~m5
-  ```{r echo=FALSE,warning=FALSE,message=FALSE}
+
+#1~m5
+```{r echo=FALSE,warning=FALSE,message=FALSE}
 library(R.matlab)
 library(pls) 
 library(lars)
