@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.2.10)  29 JUL 2019 02:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.2.10)  11 DEC 2019 20:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -226,38 +226,12 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
  [1]
 
-LaTeX Warning: File `Number of loop times mp5\nobreakspace {}1.pdf' not found o
-n input line 66.
-
-
-! Package pdftex.def Error: File `Number of loop times mp5\unhbox\voidb@x \pena
-lty \@M \ {}1.pdf' not found: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.66 ..., angle=0]{Number of loop times mp5~1.pdf}
-                                                    % width changes size
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-<Rplots.pdf, id=12, 505.89pt x 505.89pt>
-File: Rplots.pdf Graphic file (type pdf)
-<use Rplots.pdf>
-Package pdftex.def Info: Rplots.pdf  used on input line 67.
-(pdftex.def)             Requested size: 213.39566pt x 213.39865pt.
-
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[2] [3 <./Rplots.pdf>] [4]
+[2] [3]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 203.
 
-
-(/usr/local/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
@@ -281,6 +255,7 @@ LaTeX Font Warning: Command \tiny invalid in math mode on input line 205.
 
 LaTeX Font Warning: Command \tiny invalid in math mode on input line 205.
 
+[4]
 
 Package natbib Warning: Citation `Coles2001' on page 5 undefined on input line 
 215.
@@ -289,16 +264,16 @@ Package natbib Warning: Citation `Coles2001' on page 5 undefined on input line
 Package natbib Warning: Citation `BCT2000' on page 5 undefined on input line 21
 8.
 
-No file "MSc dissertation".bbl.
+(./MSc dissertation.bbl)
 
 Package natbib Warning: There were undefined citations.
 
 [5] (./MSc dissertation.aux) ) 
 Here is how much of TeX's memory you used:
- 2722 strings out of 492649
- 35752 string characters out of 6129622
+ 2718 strings out of 492649
+ 35695 string characters out of 6129622
  105374 words of memory out of 5000000
- 6565 multiletter control sequences out of 15000+600000
+ 6561 multiletter control sequences out of 15000+600000
  13217 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,12n,27p,512b,250s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -318,10 +293,10 @@ cm/cmsy8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm
 /cmtt12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/sym
 bols/msam10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts
 /symbols/msbm10.pfb>
-Output written on "MSc dissertation.pdf" (6 pages, 170994 bytes).
+Output written on "MSc dissertation.pdf" (6 pages, 149474 bytes).
 PDF statistics:
- 91 PDF objects out of 1000 (max. 8388607)
- 65 compressed objects within 1 object stream
+ 83 PDF objects out of 1000 (max. 8388607)
+ 59 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
