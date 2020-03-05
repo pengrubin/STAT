@@ -5,7 +5,7 @@ library(ggplot2)
 library(parallel)                                      # 载入parallel包
 clnum<-detectCores()-1                                 # 计算可用线程数，并设置并行使用线程数
 cl <- makeCluster(getOption("cl.cores", clnum))        # 初始化并行
-Myriad_flag=F                                        # myriad_flag TRUE means in cluster environment 
+Myriad_flag=F                                          # myriad_flag TRUE means in cluster environment 
 if (Myriad_flag==TRUE)                                   # FALSE means in PC environment
 {
   rawdata <- readMat("/home/uczlhpe/Scratch/corn.mat")   # Myriad dir
