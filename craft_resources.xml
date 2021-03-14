@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- Ресурсы для сбора и изготовления -->
 <!-- Описание парамметров: -->
 <!-- 'name' - уникальное имя -->
@@ -17,7 +17,7 @@
 <!--5. 'seed=xx' - зерно, из него выростает блок xx-->
 <root>
     <!--************************* Добыча **********************-->
-    <resource name="dirt" title="%EarthT" desc="%EarthD" file="gfx\level_tiles\craft_res\craft_dirt_01" build="dirt" application="minning" properties="wall" shop_count="1" shop_cost="-498" />
+    <resource name="dirt" title="%EarthT" desc="%EarthD" file="gfx\level_tiles\craft_res\craft_dirt_01" build="dirt" application="minning" properties="wall" shop_count="-999" shop_cost="-498" />
     <resource name="sand" title="%SandT" desc="%SandD" file="gfx\level_tiles\craft_res\craft_send_01" build="sand" application="minning" properties="wall" shop_count="5" shop_cost="1" />
     <resource name="stone" title="%StoneT" desc="%StoneD" file="gfx\level_tiles\craft_res\craft_stone_01" build="stone" application="minning" properties="wall" shop_count="5" shop_cost="1" />
     <resource name="coal" title="%CoalT" desc="%CoalD" file="gfx\level_tiles\craft_res\coal3" application="minning" properties="no_back_craft" shop_count="2" shop_cost="1" />
